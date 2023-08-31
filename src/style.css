@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
+body {
+margin: 0;
+line-height: normal;
+display: flex;
+justify-content: center;
+}
+
+:root {
+  /* fonts */
+--font-inter: Inter;
+
+  /* font sizes */
+--font-size-xl: 20px;
+
+  /* Colors */
+--color-white: #fff;
+--color-black: #000;
+--color-gainsboro: #d9d9d9;
+}
+
+section {
+  width: 390px;
+  height: 844px;
+  flex-grow: 0;
+  padding: 50px;
+  background-color: #fff;
+}
+
+img {
+  position: absolute;
+  width: 280px;
+  height: 251px;
+  object-fit: cover;
+  align-items: initial;
+}
+
+p {
+  width: 253px;
+  height: 70px;
+  margin: 236px 14px 88px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  color: #353519;
+}
+
+button {
+  width: 289px;
+  height: 60px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 17px;
+  background-color: #ffb11e;
+  border-style: none;
+  font-size: 20px;
+  font-family: Ubuntu;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+
+h2 {
+  width: 253px;
+  height: 70px;
+  margin: 20px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  color: #353519;
+}
+
+figure {
+  width: 40px;
+  height: 40px;
+  flex-grow: 0;
+  margin: 11px 32px 0;
+  object-fit: contain;
+}
+
+.chevronIcon {
+  width: 40px;
+  height: 40px;
+  margin: 10px 120px 0 120px;
+}

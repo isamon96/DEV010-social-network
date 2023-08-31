@@ -14,7 +14,6 @@ const onNavigate = (pathname) => {
   root.appendChild(rutas[pathname]);
 };
 
-
 const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),
@@ -35,48 +34,3 @@ window.onpopstate = () => {
 
 root.appendChild(component());
 
-// // Este es el punto de entrada de tu aplicacio
-// // Nos permitirá controlar todo lo relacionado con la manipulación del DOM en nuestras rutas
-
-// // import { myFunction } from './.app/lib/index.js';
-// import home from './components/home.js';
-// import login from './components/login.js';
-// import error from './components/error.js';
-
-// // myFunction();
-
-// const routes = [
-//   { path: '/', component: home },
-//   { path: '/login', component: login },
-//   { path: '/error', component: error },
-// ];
-
-// const defaultRoute = '/';
-// const root = document.getElementById('root');
-
-// function navigateTo(hash) {
-//   const route = routes.find((routeFound) => routeFound.path === hash);
-
-//   if (route && route.component) {
-//     window.history.pushState(
-//       {},
-//       route.path,
-//       window.location.origin + route.path,
-//     );
-
-//     if (root.firstChild) {
-//       root.removeChild(root.firstChild);
-//     }
-//     root.appendChild(route.component(navigateTo));
-//   } else {
-//     navigateTo('/error');
-//   }
-// }
-
-// window.onpopstate = () => {
-//   navigateTo(window.location.pathname);
-// };
-
-// navigateTo(window.location.pathname || defaultRoute);
-
-// root.appendChild(home(navigateTo));
