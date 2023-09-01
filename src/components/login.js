@@ -14,13 +14,13 @@ function login(navigateTo) {
   homeIconImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  const logoIconImg = createImgWithClass('logoIcon', './assets/re+.png');
+  const logoIconImg = createImgWithClass('logoIcon', './assets/re+mini.png');
   const keyIconImg = createImgWithClass('key-01-icon', './assets/key-01.png');
   const userPlusIconImg = createImgWithClass('user-plus-01-icon', './assets/user-plus-01.png');
 
-  const loginItemButton = createButtonWithClass('Rectangle-2');
-  const loginItemButton2 = createButtonWithClass('Rectangle-1'); // Nuevo botón
-
+  const loginItemButton1 = createButtonWithClass('Rectangle-1'); // Nuevo botón
+  const loginItemButton2 = createButtonWithClass('Rectangle-2'); // Nuevo botón
+2
   // Append elements to the section
   section.appendChild(loginDiv);
   section.appendChild(registerDiv);
@@ -28,14 +28,14 @@ function login(navigateTo) {
   section.appendChild(orangeButtonDiv);
   orangeButtonDiv.appendChild(entrarDiv);
   section.appendChild(emailDiv);
-  section.appendChild(loginItemButton2); // Agregar nuevo botón
   section.appendChild(passwordDiv);
   section.appendChild(googleLoginIconImg);
   section.appendChild(homeIconImg);
   section.appendChild(logoIconImg);
   section.appendChild(keyIconImg);
   section.appendChild(userPlusIconImg);
-  section.appendChild(loginItemButton);
+  section.appendChild(loginItemButton1);
+  section.appendChild(loginItemButton2); // Agregar nuevo botón
 
   return section;
 }

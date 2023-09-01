@@ -155,22 +155,24 @@ figure {
   overflow: hidden;
   font-size: var(--font-size-6xl);
   color: var(--color-white);
-  font-family: var(--font-ubuntu-mono);
-}
-.pass,
+  }
 .email {
   position: absolute;
-  top: calc(50% - 47px);
-  left: calc(50% - 82px);
+  top: 372px;
+  left: 110px;
   font-weight: 300;
   color: var(--color-peru);
   display: inline-block;
   width: 173px;
-  height: 43px;
 }
 .pass {
-  top: calc(50% + 24px);
-  left: calc(50% - 110px);
+  position: absolute;
+  top: 450px;
+  left: 80px;
+  font-weight: 300;
+  color: var(--color-peru);
+  display: inline-block;
+  width: 173px;
 }
 .googleloginIcon {
   position: absolute;
@@ -222,8 +224,8 @@ figure {
 
 .Rectangle-1 {
   position: absolute;
-  top: 446px;
-  left: 87px;
+  top: 305px;
+  left: 5px;
   width: 252px;
   height: 45px;
   margin: 57px 69px 26px;
@@ -233,8 +235,9 @@ figure {
 }
 
 .Rectangle-2 {
-  top: 446px;
-  left: 87px;
+  position: absolute;
+  top: 419px;
+  left: 5px;
   width: 252px;
   height: 45px;
   margin: 18px 69px 50px;
