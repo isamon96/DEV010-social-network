@@ -1,3 +1,5 @@
+import { sigInWithGoogle, loginUser } from '../lib/index.js';
+
 function login(navigateTo) {
   const section = document.createElement('section');
   section.className = 'login';
@@ -11,6 +13,42 @@ function login(navigateTo) {
   const passwordDiv = createDivWithClass('pass', 'contraseña');
   const googleLoginIconImg = createImgWithClass('googleloginIcon', './assets/googlelogin@2x.png');
   const homeIconImg = createImgWithClass('home-03-icon', './assets/home-03.png');
+  // Las diferencias con Isa las incorporé comentadas
+  // const form = document.createElement('form');
+  // const inputEmail = document.createElement('input');
+  // const inputPass = document.createElement('input');
+  // const buttonLogin = document.createElement('button');
+  // const registrarButton = document.createElement('button');
+  // const buttonLoginUser = document.createElement('button');
+
+  // inputEmail.placeholder = 'Write email';
+  // inputPass.placeholder = 'pass';
+
+  // title.textContent = 'Login';
+  // buttonLogin.textContent = 'google';
+  // buttonReturn.textContent = 'Return to home';
+  // registrarButton.textContent = 'Registrar';
+  // buttonLoginUser.textContent = 'Login';
+
+  // buttonReturn.addEventListener('click', () => {
+  //   navigateTo('/');
+  // });
+  // buttonLogin.addEventListener('click', sigInWithGoogle);
+  // registrarButton.addEventListener('click', () => {
+  //   navigateTo('/registrar');
+  // });
+
+  // buttonLoginUser.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   const email = inputEmail.value;
+  //   const password = inputPass.value;
+  //   loginUser(email, password);
+  // });
+
+  // Así están ordenadas antes del return y export por Isa
+  // form.append(inputEmail, inputPass, buttonLoginUser);
+  // section.append(title, form, buttonReturn, registrarButton, buttonLogin);
+
   homeIconImg.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -20,7 +58,7 @@ function login(navigateTo) {
 
   const loginItemButton1 = createButtonWithClass('Rectangle-1'); // Nuevo botón
   const loginItemButton2 = createButtonWithClass('Rectangle-2'); // Nuevo botón
-2
+
   // Append elements to the section
   section.appendChild(loginDiv);
   section.appendChild(registerDiv);
@@ -37,6 +75,7 @@ function login(navigateTo) {
   section.appendChild(loginItemButton1);
   section.appendChild(loginItemButton2); // Agregar nuevo botón
 
+  
   return section;
 }
 
