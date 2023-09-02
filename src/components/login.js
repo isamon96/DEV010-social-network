@@ -95,7 +95,36 @@ function login(navigateTo) {
   //   form.append(inputEmail, inputPass, buttonLoginUser);
   //   section.append(form, buttonReturn, registrarButton, buttonLogin);
 
-  return section;
+//   // title.textContent = 'Login';
+//   buttonReturn.textContent = 'ENTRAR';
+//   newLogin.textContent = '¿Nuev@? Regístrate aquí.';
+//   newLogin.className = 'newLogin';
+//   forgotPassword.textContent = '¿Olvidaste tu contraseña?';
+//   forgotPassword.className = 'forgotPassword';
+
+//   // button.textContent = 'Return to home';
+//   buttonReturn.addEventListener('click', () => {
+//     navigateTo('/');
+//   });
+//   buttonLogin.addEventListener('click', sigInWithGoogle);
+//   registrarButton.addEventListener('click', () => {
+//     navigateTo('/registrar');
+//   });
+
+//   buttonLoginUser.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     const email = inputEmail.value;
+//     const password = inputPass.value;
+//     loginUser(email, password);
+//   });
+
+//   section.append(logoLogin, googleLogin);
+//   form.append(inputEmail, inputPass, buttonLoginUser);
+//   section.append(form, buttonReturn, registrarButton, buttonLogin);
+//   section.append(newLogin);
+//   section.append(forgotPassword);
+
+return section;
 }
 
 export default login;

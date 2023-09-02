@@ -20,9 +20,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// eslint-disable-next-line no-unused-vars
 const analytics = getAnalytics(app);
 
 // Obtén una referencia a tu base de datos Firestore
+// eslint-disable-next-line no-unused-vars
 const db = getFirestore();
 
 // Ahora puedes utilizar "db" para acceder a las colecciones y documentos en tu base de datos

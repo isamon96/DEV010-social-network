@@ -1,5 +1,6 @@
 // import {
 // GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged,
+
 // } from 'firebase/auth';
 // import { auth } from '../firebase';
 
