@@ -14,7 +14,7 @@ function home(navigateTo) {
   chevron.alt = 'flecha hacia abajo';
   chevron.className = 'chevronIcon';
 
-  button.textContent = 'Entrar';
+  button.textContent = 'ENTRAR';
   title.textContent = 'ACERCA DE';
   title.className = 'acercaDe';
 
