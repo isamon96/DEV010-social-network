@@ -7,51 +7,57 @@ function login(navigateTo) {
   const loginDiv = createDivWithClass('forget', '¿Olvidaste tu contraseña?');
   const registerDiv = createDivWithClass('new', '¿Nuevo? Regístrate aquí.');
   const loginInnerDiv = createDivWithClass('loginInner');
-  const orangeButtonDiv = createDivWithClass('orangeButton');
+  // const orangeButtonDiv = createDivWithClass('orangeButton');
   const entrarDiv = createDivWithClass('entrar', 'ENTRAR');
   const emailDiv = createDivWithClass('email', 'correo electrónico');
   const passwordDiv = createDivWithClass('pass', 'contraseña');
   const googleLoginIconImg = createImgWithClass('googleloginIcon', './assets/googlelogin@2x.png');
-  const homeIconImg = createImgWithClass('home-03-icon', './assets/home-03.png');
-  // Las diferencias con Isa las incorporé comentadas
-  // const form = document.createElement('form');
-  // const inputEmail = document.createElement('input');
-  // const inputPass = document.createElement('input');
-  // const buttonLogin = document.createElement('button');
-  // const registrarButton = document.createElement('button');
-  // const buttonLoginUser = document.createElement('button');
+  // const buttonReturn = createImgWithClass('home-03-icon', './assets/home-03.png');
+  const buttonReturn = document.createElement('button');
 
-  // inputEmail.placeholder = 'Write email';
-  // inputPass.placeholder = 'pass';
+  // Incorporaciones de Isa
+  const form = document.createElement('form');
+  const inputEmail = document.createElement('input');
+  const inputPass = document.createElement('input');
+  const buttonLogin = document.createElement('button');
+  const registrarButton = document.createElement('button');
+  const buttonLoginUser = document.createElement('button');
 
-  // title.textContent = 'Login';
-  // buttonLogin.textContent = 'google';
-  // buttonReturn.textContent = 'Return to home';
-  // registrarButton.textContent = 'Registrar';
-  // buttonLoginUser.textContent = 'Login';
+  inputEmail.placeholder = 'Write email';
+  inputPass.placeholder = 'pass';
 
-  // buttonReturn.addEventListener('click', () => {
-  //   navigateTo('/');
-  // });
-  // buttonLogin.addEventListener('click', sigInWithGoogle);
-  // registrarButton.addEventListener('click', () => {
-  //   navigateTo('/registrar');
-  // });
+  buttonLogin.textContent = 'google';
+  registrarButton.textContent = 'Registrar';
+  buttonLoginUser.textContent = 'Login';
 
-  // buttonLoginUser.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   const email = inputEmail.value;
-  //   const password = inputPass.value;
-  //   loginUser(email, password);
-  // });
+  buttonLogin.addEventListener('click', sigInWithGoogle);
+  registrarButton.addEventListener('click', () => {
+    navigateTo('/registrar');
+  });
 
-  // Así están ordenadas antes del return y export por Isa
-  // form.append(inputEmail, inputPass, buttonLoginUser);
-  // section.append(title, form, buttonReturn, registrarButton, buttonLogin);
+  buttonLoginUser.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+  });
 
-  homeIconImg.addEventListener('click', () => {
+  buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
+
+  buttonLogin.addEventListener('click', sigInWithGoogle);
+  registrarButton.addEventListener('click', () => {
+    navigateTo('/registrar');
+  });
+
+  buttonLoginUser.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+  });
+
   const logoIconImg = createImgWithClass('logoIcon', './assets/re+mini.png');
   const keyIconImg = createImgWithClass('key-01-icon', './assets/key-01.png');
   const userPlusIconImg = createImgWithClass('user-plus-01-icon', './assets/user-plus-01.png');
@@ -63,19 +69,21 @@ function login(navigateTo) {
   section.appendChild(loginDiv);
   section.appendChild(registerDiv);
   section.appendChild(loginInnerDiv);
-  section.appendChild(orangeButtonDiv);
-  orangeButtonDiv.appendChild(entrarDiv);
+  // section.appendChild(orangeButtonDiv);
+  // orangeButtonDiv.appendChild(entrarDiv);
   section.appendChild(emailDiv);
   section.appendChild(passwordDiv);
   section.appendChild(googleLoginIconImg);
-  section.appendChild(homeIconImg);
+  section.appendChild(buttonReturn);
   section.appendChild(logoIconImg);
   section.appendChild(keyIconImg);
   section.appendChild(userPlusIconImg);
   section.appendChild(loginItemButton1);
   section.appendChild(loginItemButton2); // Agregar nuevo botón
+  // Así están ordenadas antes del return y export por Isa
+  form.append(inputEmail, inputPass, buttonLoginUser);
+  section.append(form, buttonReturn, registrarButton, buttonLogin);
 
-  
   return section;
 }
 
