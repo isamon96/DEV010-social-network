@@ -1,16 +1,18 @@
+import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');
   section.className = 'login';
 
-  const loginDiv = createDivWithClass('forget', '¿Olvidaste tu contraseña?');
-  const registerDiv = createDivWithClass('new', '¿Nuevo? Regístrate aquí.');
+  const buttonLogin = createButtonWithClass('forget');
+  const buttonRegistar = createButtonWithClass('new');
   const loginInnerDiv = createDivWithClass('loginInner');
   const orangeButtonDiv = createDivWithClass('orangeButton');
-  const entrarDiv = createDivWithClass('entrar', 'ENTRAR');
-  const emailDiv = createDivWithClass('email', 'correo electrónico');
-  const passwordDiv = createDivWithClass('pass', 'contraseña');
-  const googleLoginIconImg = createImgWithClass('googleloginIcon', './assets/googlelogin@2x.png');
+  const buttonLoginUser = createButtonWithClass('entrar');
+  const form = document.createElement('form'); // Crear el elemento <form>
+  const inputEmail = createInputWithClass('email'); // Crear el input para el correo electrónico
+  const inputPass = createInputWithClass('pass'); // Crear el input para la contraseña
+  const buttonGoogleLogin = createButtonWithClass('googleLogin');
   const homeIconImg = createImgWithClass('home-03-icon', './assets/home-03.png');
   homeIconImg.addEventListener('click', () => {
     navigateTo('/');
@@ -21,16 +23,44 @@ function login(navigateTo) {
 
   const loginItemButton1 = createButtonWithClass('Rectangle-1'); // Nuevo botón
   const loginItemButton2 = createButtonWithClass('Rectangle-2'); // Nuevo botón
-2
+
+  inputEmail.placeholder = 'correo electrónico';
+  inputPass.placeholder = 'contraseña';
+  
+  // title.textContent = 'Login';
+  buttonLogin.textContent = 'google';
+  buttonRegistar.textContent = 'Registrar';
+  buttonLoginUser.textContent = 'Ingresar';
+
+
+
+  buttonLogin.addEventListener('click', sigInWithGoogle);
+    registrarButton.addEventListener('click', () => {
+      navigateTo('/registrar');
+    });
+  
+  buttonLoginUser.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+    });
+  
+  form.append(inputEmail, inputPass, buttonLoginUser);;
+  section.append(title, form, buttonReturn, registrarButton, buttonLogin);
+  
+  
+
   // Append elements to the section
-  section.appendChild(loginDiv);
-  section.appendChild(registerDiv);
+  section.appendChild(buttonLogin);
+  section.appendChild(buttonRegistar);
   section.appendChild(loginInnerDiv);
   section.appendChild(orangeButtonDiv);
   orangeButtonDiv.appendChild(entrarDiv);
-  section.appendChild(emailDiv);
-  section.appendChild(passwordDiv);
-  section.appendChild(googleLoginIconImg);
+  section.appendChild(form);
+  // section.appendChild(imputEmail);
+  // section.appendChild(imputPass);
+  section.appendChild(buttonGoogleLogin);
   section.appendChild(homeIconImg);
   section.appendChild(logoIconImg);
   section.appendChild(keyIconImg);
@@ -39,6 +69,11 @@ function login(navigateTo) {
   section.appendChild(loginItemButton2); // Agregar nuevo botón
 
   return section;
+}
+function createInputWithClass(className) {
+  const input = document.createElement('input');
+  input.className = className;
+  return input;
 }
 
 function createDivWithClass(className, textContent) {
