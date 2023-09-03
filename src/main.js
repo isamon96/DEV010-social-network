@@ -1,7 +1,7 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
-import about from './components/about.js';
+// import about from './components/about.js';
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -19,7 +19,7 @@ const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),
   '/error': error(onNavigate),
-  '/about': about(onNavigate),
+  // '/about': about(onNavigate),
 
     // '/Registro': registroCorreo(onNavigate),
   // '/FotoPerfil': FotoPerfil(onNavigate),
