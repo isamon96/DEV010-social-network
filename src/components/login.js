@@ -1,25 +1,71 @@
+import { sigInWithGoogle, loginUser } from '../lib/index.js';
+
 function login(navigateTo) {
   const section = document.createElement('section');
-  const title = document.createElement('h2');
-  const buttonReturn = document.createElement('button');
+  const logoImg = document.createElement('img');
+  const btnLoginGoogle = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  const googleText = document.createElement('p');
+  const hr = document.createElement('hr');
   const form = document.createElement('form');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
-  const buttonLogin = document.createElement('button');
+  const registerAnchor = document.createElement('a');
+  const btnLogin = document.createElement('button');
+  const passAnchor = document.createElement('a');
+  const homeImg = document.createElement('img');
 
-  inputEmail.placeholder = 'Write email';
-  inputPass.placeholder = 'pass';
+  section.className = 'container';
 
-  title.textContent = 'Login';
-  buttonLogin.textContent = 'go';
+  logoImg.className = 'logoImg';
+  logoImg.alt = 'Logo de la página';
+  logoImg.src = '../assets/logo.png';
 
-  buttonReturn.textContent = 'Return to home';
-  buttonReturn.addEventListener('click', () => {
+  btnLoginGoogle.className = 'btnGoogle';
+
+  logoGoogle.id = 'iconGoogle';
+  logoGoogle.alt = 'Logo de Google';
+  logoGoogle.src = '../assets/googleIcon.svg';
+
+  googleText.textContent = 'Inicia sesión con Google';
+
+  inputEmail.className = 'inputLog';
+  inputEmail.type = 'text';
+  inputEmail.placeholder = 'Correo electrónico';
+
+  inputPass.className = 'inputLog';
+  inputPass.type = 'password';
+  inputPass.placeholder = 'Contraseña';
+
+  registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
+
+  btnLogin.className = 'btnLogin';
+  btnLogin.textContent = 'Iniciar sesión';
+
+  passAnchor.textContent = '¿Olvidaste tu contraseña?';
+
+  homeImg.className = 'iconImg';
+  homeImg.alt = 'Icono de inicio00';
+  homeImg.src = '../assets/home.png';
+
+  homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
+  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  registerAnchor.addEventListener('click', () => {
+    navigateTo('/registrar');
+  });
 
-  form.append(inputEmail, inputPass, buttonLogin);
-  section.append(title, form, buttonReturn);
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+  });
+
+  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  btnLoginGoogle.append(logoGoogle, googleText);
+  form.append(inputEmail, inputPass);
 
   return section;
 }

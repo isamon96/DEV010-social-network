@@ -1,50 +1,124 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
-body {
-margin: 0;
-line-height: normal;
+html {
+  height: 100%;
 }
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 :root {
-  /* fonts */
---font-inter: Inter;
+  /*Colores*/
+  --naranja: #bb713C;
+  --naranjaclaro: #ffb11e;
+  --verdeclaro: #c6dfc5;
+  --verdeoscuro: #353519;
+  --inputField: rgba(255, 255, 0, 0.3);
+  --azulGoogle: #4285f4;
+  --azulGoogleActivo: #1669F2;
 
-  /* font sizes */
---font-size-xl: 20px;
-
-  /* Colors */
---color-white: #fff;
---color-black: #000;
---color-gainsboro: #d9d9d9;
+  /*FUENTES*/
+  --titulos: 'Tenor Sans', sans-serif;
+  --principal: 'Ubuntu', sans-serif;
+  --googleButton: 'Roboto', sans-serif;
 }
 
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: red;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: var(--principal);
+}
 
-  title {
-    font-size: 240px;
-    font-weight: bold;
-    color: blue;
-  }
-  
- section {
-  font-size: 30px;
-  color: black;
- }
+.logoImg {
+  width: 50%;
+}
 
- form {
-  font-size: medium;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color:#007bff;
- }
+.inputLog {
+  font-family: var(--principal);
+  background-color: var(--inputField);
+  color: var(--naranja);
+  border: none;
+  padding: 1%;
+  border-radius: 10px;
+  min-width: 252px;
+  min-height: 45px;
+  margin: 10px;
+  text-align: center;
+
+}
+
+.inputLog::placeholder {
+  color: var(--naranja);
+}
+
+hr{
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.145);
+}
+
+a, button, .iconImg {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLogin {
+  background-color: var(--naranjaclaro);
+  color: white;
+  border: none;
+  padding: 1%;
+  border-radius: 10px;
+  min-width: 252px;
+  min-height: 45px;
+  font-family: var(--principal);
+  cursor: pointer;
+}
+
+.btnGoogle {
+  background-color: var(--azulGoogle);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  min-width: 300px;
+  min-height: 41px;
+  font-family: var(--principal);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
   
- input {
-  font-family: 'Courier New', Courier, monospace;
-  color: purple;
- } 
+  align-items: center;
+}	
+
+.btnGoogle:hover {
+  box-shadow: 0 0 6px var(--azulGoogle);
+}
+
+.btnGoogle:active {
+  background-color: var(--azulGoogleActivo);
+}
+
+.btnGoogle p {
+  font-family: var(--googleButton);
+  font-size: 1rem;
+  padding: 0;
+  margin-left: 40px;
+}
+
+#iconGoogle {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin-top: 1px;
+  margin-left: 1px;
+  border-radius: 2px;
+}
