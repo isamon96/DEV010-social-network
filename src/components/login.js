@@ -1,4 +1,4 @@
-// import { sigInWithGoogle, loginUser } from '../lib/index.js';
+import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
   function createImgWithClass(className, src) {
@@ -24,76 +24,70 @@ function login(navigateTo) {
   }
 
   const section = document.createElement('section');
-  section.className = 'login';
+  const logoImg = document.createElement('img');
+  const btnLoginGoogle = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  const googleText = document.createElement('p');
+  const hr = document.createElement('hr');
+  const form = document.createElement('form');
+  const inputEmail = document.createElement('input');
+  const inputPass = document.createElement('input');
+  const registerAnchor = document.createElement('a');
+  const btnLogin = document.createElement('button');
+  const passAnchor = document.createElement('a');
+  const homeImg = document.createElement('img');
 
-  const loginDiv = createDivWithClass('forget', '¿Olvidaste tu contraseña?');
-  const registerDiv = createDivWithClass('new', '¿Nuevo? Regístrate aquí.');
-  const loginInnerDiv = createDivWithClass('loginInner');
-  const orangeButtonDiv = createDivWithClass('orangeButton');
-  const entrarDiv = createDivWithClass('entrar', 'ENTRAR');
-  const emailDiv = createDivWithClass('email', 'correo electrónico');
-  const passwordDiv = createDivWithClass('pass', 'contraseña');
-  const googleLoginIconImg = createImgWithClass('googleloginIcon', './assets/googlelogin@2x.png');
-  const buttonReturn = createImgWithClass('home-03-icon', './assets/home-03.png');
+  section.className = 'container';
 
-  // Incorporaciones de Isa
-  buttonReturn.textContent = 'Regresar';
-  //   const form = document.createElement('form');
-  //   const inputEmail = document.createElement('input');
-  //   const inputPass = document.createElement('input');
-  //   const buttonLogin = document.createElement('button');
-  //   const registrarButton = document.createElement('button');
-  //   const buttonLoginUser = document.createElement('button');
+  logoImg.className = 'logoImg';
+  logoImg.alt = 'Logo de la página';
+  logoImg.src = '../assets/logo.png';
 
-  //   inputEmail.placeholder = 'Write email';
-  //   inputPass.placeholder = 'pass';
+  btnLoginGoogle.className = 'btnGoogle';
 
-  //   buttonLogin.textContent = 'google';
-  //   registrarButton.textContent = 'Registrar';
-  //   buttonLoginUser.textContent = 'Login';
+  logoGoogle.id = 'iconGoogle';
+  logoGoogle.alt = 'Logo de Google';
+  logoGoogle.src = '../assets/googleIcon.svg';
 
-  //   buttonLogin.addEventListener('click', sigInWithGoogle);
-  //   registrarButton.addEventListener('click', () => {
-  //     navigateTo('/registrar');
-  //   });
+  googleText.textContent = 'Inicia sesión con Google';
 
-  //   buttonLoginUser.addEventListener('click', (event) => {
-  //     event.preventDefault();
-  //     const email = inputEmail.value;
-  //     const password = inputPass.value;
-  //     loginUser(email, password);
-  //   });
+  inputEmail.className = 'inputLog';
+  inputEmail.type = 'text';
+  inputEmail.placeholder = 'Correo electrónico';
 
-  buttonReturn.addEventListener('click', () => {
+  inputPass.className = 'inputLog';
+  inputPass.type = 'password';
+  inputPass.placeholder = 'Contraseña';
+
+  registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
+
+  btnLogin.className = 'btnLogin';
+  btnLogin.textContent = 'Iniciar sesión';
+
+  passAnchor.textContent = '¿Olvidaste tu contraseña?';
+
+  homeImg.className = 'iconImg';
+  homeImg.alt = 'Icono de inicio00';
+  homeImg.src = '../assets/home.png';
+
+  homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
+  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  registerAnchor.addEventListener('click', () => {
+    navigateTo('/registrar');
+  });
 
-  const logoIconImg = createImgWithClass('logoIcon', './assets/re+mini.png');
-  const keyIconImg = createImgWithClass('key-01-icon', './assets/key-01.png');
-  const userPlusIconImg = createImgWithClass('user-plus-01-icon', './assets/user-plus-01.png');
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+  });
 
-  const loginItemButton1 = createButtonWithClass('Rectangle-1'); // Nuevo botón
-  const loginItemButton2 = createButtonWithClass('Rectangle-2'); // Nuevo botón
-
-  // Append elements to the section
-  section.appendChild(loginDiv);
-  section.appendChild(registerDiv);
-  section.appendChild(loginInnerDiv);
-  section.appendChild(orangeButtonDiv);// Y si lo dejamos como el otro button?
-  orangeButtonDiv.appendChild(entrarDiv);
-  section.appendChild(emailDiv);
-  section.appendChild(passwordDiv);
-  section.appendChild(googleLoginIconImg);
-  section.appendChild(buttonReturn);
-  section.appendChild(logoIconImg);
-  section.appendChild(keyIconImg);
-  section.appendChild(userPlusIconImg);
-  section.appendChild(loginItemButton1);
-  section.appendChild(loginItemButton2); // Agregar nuevo botón
-
-  //   Así están ordenadas antes del return y export por Isa
-  //   form.append(inputEmail, inputPass, buttonLoginUser);
-  //   section.append(form, buttonReturn, registrarButton, buttonLogin);
+  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  btnLoginGoogle.append(logoGoogle, googleText);
+  form.append(inputEmail, inputPass);
 
   return section;
 }
