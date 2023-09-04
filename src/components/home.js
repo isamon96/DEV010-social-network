@@ -18,6 +18,7 @@ function home(navigateTo) {
   title.textContent = 'ACERCA DE';
   title.className = 'acercaDe';
 
+
   slogan.textContent = 'Conectando personas por un mundo más sostenible';
   slogan.className = 'slogan';
 

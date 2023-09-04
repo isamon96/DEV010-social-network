@@ -1,10 +1,10 @@
 import home from './components/home.js';
-import login from './components/login.js';
+// import login from './components/login.js';
 import error from './components/error.js';
 import registrar from './components/registrar.js';
 
 const root = document.getElementById('root');
-/* eslint-disable */
+
 const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
 
@@ -17,13 +17,13 @@ const onNavigate = (pathname) => {
 
 const rutas = {
   '/': home(onNavigate),
-  '/login': login(onNavigate),
+  // '/login': login(onNavigate),
   '/error': error(onNavigate),
   '/registrar': registrar(onNavigate),
   // '/FotoPerfil': FotoPerfil(onNavigate),
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };
-/* eslint-enable */
+
 const component = () => rutas[window.location.pathname];
 
 window.onpopstate = () => {
