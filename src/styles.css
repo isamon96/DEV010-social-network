@@ -1,157 +1,246 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
 
 body {
-margin: 0;
-line-height: normal;
-display: grid;
-justify-content: center;
-}
-
-:root {
-  /* fonts */
---font-inter: Inter;
-
-  /* font sizes */
---font-size-xl: 20px;
-
-  /* Colors */
---color-white: #fff;
---color-black: #000;
---color-gainsboro: #d9d9d9;
-}
-
-section {
-  width: 390px;
-  height: 844px;
-  flex-grow: 0;
-  padding: 50px;
-  background-color: #fff;
-}
-
-.logoIcon {
-  position: absolute;
-  width: 280px;
-  height: 251px;
-  object-fit: cover;
-  align-items: initial;
-}
-
-.logoIconLogin {
-  width: 100px;
-  height: 116px;
-  top: 83px;
-  object-fit: cover;
-  align-items: center;
+  margin: 0;
+  line-height: normal;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  position: absolute;
-  margin: 7px 69px 40.5px;
-}
-
-p {
-  width: 253px;
-  height: 70px;
-  margin: 236px 14px 88px;
-  font-family: Ubuntu;
-  font-size: 20px;
-  font-weight: 300;
-  text-align: center;
-  color: #353519;
-}
-
-button {
-  width: 289px;
-  height: 60px;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 32px;
-  border-radius: 17px;
-  background-color: #ffb11e;
-  border-style: none;
-  font-size: 20px;
-  font-family: Ubuntu;
-  text-align: center;
-  color: #fff;
-}
-
-h2 {
-  width: 253px;
-  height: 70px;
-  margin: 20px;
-  font-family: Ubuntu;
-  font-size: 18px;
-  font-weight: 300;
-  text-align: center;
-  color: #353519;
-}
-
-figure {
-  width: 40px;
-  height: 40px;
-  flex-grow: 0;
-  margin: 11px 32px 0;
-  object-fit: contain;
-}
-
-.chevronIcon {
-  width: 40px;
-  height: 40px;
-  margin: 10px 120px 0 120px;
-}
-
-.googleLogin {
-  position: absolute;
-  top: 206px;
-  width: 252px;
-  height: 60.5px;
-  margin: 7px 69px 40.5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-form {
-  display:table-column-group;
-}
-input {
-  width: 252px;
-  height: 45px;
-  margin: 57px 69px 26px;
-  padding: 10px 210px 11px 18px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 0, 0.3);
-  align-items: center;
-  font: Ubuntu;
-  font-size: 18px;
-  display:list-item;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.newLogin {
-  width: 200px;
-  height: 21px;
-  margin: 42px 95px 41px;
-  font-family: Ubuntu;
-  font-size: 18px;
-  color: #353519;
-  justify-items: center;
-}
-
-.forgotPassword {
-  width: 208px;
-  height: 21px;
-  margin: 42px 87px 35px 95px;
-  font-family: Ubuntu;
-  font-size: 18px;
-  color: #353519;
-}
-
+  }
+  
+  :root {
+    /* fonts */
+    --font-ubuntu: Ubuntu;
+    --font-ubuntu-mono: "Ubuntu Mono";
+  
+    /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-lg: 18px;
+  --font-size-6xl: 25px;
+  
+    /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gainsboro: #d9d9d9;
+  --color-peru: #bb713c;
+  --color-orange: #ffb11e;
+  
+  /* border radiuses */
+  --br-xl: 20px;
+  --br-3xs: 10px;
+  --color-darkslategray: #353519;
+  }
+  
+  section {
+    width: 390px;
+    height: 844px;
+    flex-grow: 0;
+    padding: 50px;
+    background-color: #fff;
+  }
+  
+  img {
+    position: absolute;
+    width: 280px;
+    height: 251px;
+    object-fit: cover;
+    align-items: initial;
+  }
+  
+  p {
+    width: 253px;
+    height: 70px;
+    margin: 236px 14px 88px;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #353519;
+  }
+  
+  button {
+    width: 289px;
+    height: 60px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 17px;
+    background-color: #ffb11e;
+    border-style: none;
+    font-size: 20px;
+    font-family: Ubuntu;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+  
+  h2 {
+    width: 253px;
+    height: 70px;
+    margin: 20px;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #353519;
+  }
+  
+  figure {
+    width: 40px;
+    height: 40px;
+    flex-grow: 0;
+    margin: 11px 32px 0;
+    object-fit: contain;
+  }
+  
+  .chevronIcon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 120px 0 120px;
+  }
+  
+  .new,
+  .forget {
+    position: absolute;
+    top: 694px;
+    left: 95px;
+    text-align: left;
+  }
+  .new {
+    top: 531px;
+  }
+  .loginChild,
+  .loginItem {
+    position: absolute;
+    top: 365px;
+    left: 69px;
+    border-radius: var(--br-3xs);
+    width: 252px;
+    height: 45px;
+  }
+  .loginItem {
+    top: 436px;
+  }
+  .loginInner {
+    position: absolute;
+    top: 307.5px;
+    left: -0.5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    width: 391px;
+    height: 1px;
+  }
+  .entrar {
+    position: absolute;
+    top: calc(50% - 14.5px);
+    left: 61px;
+    display: inline-block;
+    width: 129px;
+    height: 38px;
+  }
+  .orangeButton {
+    position: absolute;
+    top: 593px;
+    left: 69px;
+    border-radius: var(--br-xl);
+    background-color: var(--color-orange);
+    width: 252px;
+    height: 59px;
+    overflow: hidden;
+    font-size: var(--font-size-6xl);
+    color: var(--color-white);
+    }
+  .email {
+    position: absolute;
+    top: 372px;
+    left: 110px;
+    font-weight: 300;
+    color: var(--color-peru);
+    display: inline-block;
+    width: 173px;
+  }
+  .pass {
+    position: absolute;
+    top: 450px;
+    left: 80px;
+    font-weight: 300;
+    color: var(--color-peru);
+    display: inline-block;
+    width: 173px;
+  }
+  .googleloginIcon {
+    position: absolute;
+    top: 206px;
+    left: 69px;
+    width: 252px;
+    height: 60.52px;
+    object-fit: cover;
+  }
+  .home-03-icon {
+    position: absolute;
+    top: 750px;
+    left: 175px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+  }
+  .logoIcon {
+    position: absolute;
+    top: 83px;
+    left: 145px;
+    width: 100px;
+    height: 116px;
+    object-fit: cover;
+  }
+  .key-01-icon,
+  .user-plus-01-icon {
+    position: absolute;
+    top: 446px;
+    left: 87px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+  }
+  .user-plus-01-icon {
+    top: 375px;
+  }
+  .login {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 844px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--color-darkslategray);
+    font-family: var(--font-ubuntu);
+  }
+  
+  .Rectangle-1 {
+    position: absolute;
+    top: 305px;
+    left: 5px;
+    width: 252px;
+    height: 45px;
+    margin: 57px 69px 26px;
+    padding: 10px 210px 11px 18px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 0, 0.3);
+  }
+  
+  .Rectangle-2 {
+    position: absolute;
+    top: 419px;
+    left: 5px;
+    width: 252px;
+    height: 45px;
+    margin: 18px 69px 50px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 0, 0.3);
+  }

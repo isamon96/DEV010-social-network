@@ -3,18 +3,21 @@ function home(navigateTo) {
   const title = document.createElement('h2');
   const button = document.createElement('button');
   const slogan = document.createElement('p');
-  const logo = document.createElement('img');
+  const logoInicio = document.createElement('img');
   const chevron = document.createElement('img');
 
-  logo.src = './assets/re+.png';
-  logo.alt = 'logo de re+';
-  logo.className = 'logoIcon';
-  chevron.src = './assets/chevron.png';
+  logoInicio.src = './assets/re+.png';
+  logoInicio.alt = 'logo de re+';
+  logoInicio.className = 'logoInicio';
+
+  chevron.src = './assets/chevron.gif';
   chevron.alt = 'flecha hacia abajo';
   chevron.className = 'chevronIcon';
+
   button.textContent = 'ENTRAR';
   title.textContent = 'ACERCA DE';
   title.className = 'acercaDe';
+
   slogan.textContent = 'Conectando personas por un mundo más sostenible';
   slogan.className = 'slogan';
 
@@ -22,7 +25,7 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  section.append(logo);
+  section.append(logoInicio);
   section.append(slogan);
   section.append(button);
   section.append(title);

@@ -1,6 +1,5 @@
 // import {
-// eslint-disable-next-line max-len
-//   GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged,
+// GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged,
 // } from 'firebase/auth';
 // import { auth } from '../firebase';
 
