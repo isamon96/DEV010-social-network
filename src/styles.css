@@ -79,6 +79,13 @@ body {
     text-align: center;
     color: #fff;
   }
+
+  .registerButton{
+    color: black;
+    background-color: white;
+    
+
+  }
   
   h2 {
     width: 253px;
@@ -222,7 +229,7 @@ body {
     font-family: var(--font-ubuntu);
   }
   
-  .Rectangle-1 {
+.inputEmail {
     position: absolute;
     top: 305px;
     left: 5px;
@@ -234,7 +241,7 @@ body {
     background-color: rgba(255, 255, 0, 0.3);
   }
   
-  .Rectangle-2 {
+.inputPass {
     position: absolute;
     top: 419px;
     left: 5px;
