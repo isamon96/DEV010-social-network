@@ -1,7 +1,9 @@
 // Crear un elemento de sección
 function about(navigateTo) {
-    const section = document.createElement('section');
-    section.className = 'about';
+
+  const section = document.createElement('section');
+  section.className = 'container';
+
 
     
   // Función para crear un div con clase y texto opcional
