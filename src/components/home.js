@@ -6,6 +6,7 @@ function home(navigateTo) {
   const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
 
+  section.className = 'container';
   logoImgPlus.src = './assets/re+.png';
   logoImgPlus.alt = 'logo de re+';
   logoImgPlus.className = 'logoImgPlus';
