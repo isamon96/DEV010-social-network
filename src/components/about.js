@@ -21,20 +21,22 @@ function about(navigateTo) {
   }
 
   // Crear elementos hijos
-  const returnDiv = createDivWithClass('return', 'REGRESAR');
+  // const returnDiv = createDivWithClass('return', 'REGRESAR');
   const reDiv = createDivWithClass('re', 'BIENVENID@ A  RE+');
   const misionDiv = createDivWithClass('mision', 'MISIÓN');
   const whatDiv = createDivWithClass('what', 'Creemos que cada pequeño esfuerzo suma, y a través de la educación, la inspiración y la colaboración, podemos hacer una diferencia significativa en la preservación de nuestro hogar.');
   const planetImg = createImgWithClass('planetImg', './assets/planet.png');
   const logoIconImg = createImgWithClass('logoIconImg', './assets/re+mini.png');
-  const chevronHomeImg = createImgWithClass('chevronHomeImg', './assets/chevron.gif');
+  const chevron = createImgWithClass('chevronIcon', './assets/chevron.gif');
 
-  chevronHomeImg.addEventListener('click', () => {
-    navigateTo('/home');
+  chevron.addEventListener('click', () => {
+    navigateTo('/');
   });
 
   // Agregar elementos hijos a la sección
-  section.append(returnDiv, reDiv, misionDiv, whatDiv, planetImg, logoIconImg, chevronHomeImg);
+  section.append(chevron);
+  section.append(logoIconImg);
+  section.append(reDiv, misionDiv, whatDiv, planetImg);
   return section;
 }
 

@@ -164,7 +164,7 @@ body {
     align-items: center;
   }
   
-  .logoInicio {
+  .logoImgPlus {
     /* position: absolute; */
     width: 280px;
     height: 251px;
@@ -217,12 +217,11 @@ body {
   }
   
   h2 {
-    width: 253px;
-    height: 70px;
-    margin: 20px;
+    width: 240px;
+    height: 30px;
+    margin: 60px 20px 0px 20px;
     font-family: Ubuntu;
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 18px;
     text-align: center;
     color: #353519;
   }
@@ -238,7 +237,9 @@ body {
   .chevronIcon {
     width: 40px;
     height: 40px;
-    margin: 10px 120px 0 120px;
+    margin: 0px 120px 0 120px;
+    position: flex;
+    flex-grow: 0;
   }
   
   .new,
@@ -379,16 +380,6 @@ body {
     margin: 18px 69px 50px;
     border-radius: 10px;
     background-color: rgba(255, 255, 0, 0.3);
-  }
-
-  .chevronHomeImg {
-    position: flex;
-    top: 20px;
-    flex-grow: 0;
-    /* left: 160px; */
-    width: 40px;
-    height: 40px;
-    /* margin: 10px 120px 0 120px; */
   }
   
   .return {

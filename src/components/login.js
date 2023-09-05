@@ -53,7 +53,7 @@ function login(navigateTo) {
   });
   btnLoginGoogle.addEventListener('click', sigInWithGoogle);
   registerAnchor.addEventListener('click', () => {
-    navigateTo('/registrar');
+    navigateTo('/register');
   });
 
   btnLogin.addEventListener('click', (event) => {
@@ -61,6 +61,10 @@ function login(navigateTo) {
     const email = inputEmail.value;
     const password = inputPass.value;
     loginUser(email, password);
+  });
+
+  passAnchor.addEventListener('click', () => {
+    navigateTo('/forgotPassword');
   });
 
   section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);

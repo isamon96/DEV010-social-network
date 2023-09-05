@@ -1,6 +1,6 @@
 import { createUser } from '../lib/index.js';
 
-function registrar(navigateTo) {
+function register(navigateTo) {
   const section = document.createElement('section');
   const logoImg = document.createElement('img');
   const homeImg = document.createElement('img');
@@ -12,7 +12,8 @@ function registrar(navigateTo) {
   const logoGoogle = document.createElement('img');
   const googleText = document.createElement('p');
   const hr = document.createElement('hr');
-  const registrarButton = document.createElement('button');
+  const registerButton = document.createElement('button');
+  const loginAnchor = document.createElement('a');
   
   section.className = 'container';
   logoImg.className = 'logoImg';
@@ -26,7 +27,8 @@ function registrar(navigateTo) {
   logoGoogle.src = '../assets/googleIcon.svg';
 
   googleText.textContent = 'Inicia sesión con Google';
-  
+  loginAnchor.textContent = '¿Ya tienes una cuenta?';
+
   homeImg.className = 'iconImg';
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
@@ -48,23 +50,27 @@ function registrar(navigateTo) {
   });
 
   homeImg.textContent = 'Return to home';
-  registrarButton.textContent = 'Registrar';
+  registerButton.textContent = 'Registrar';
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
 
-  registrarButton.addEventListener('click', (event) => {
+  registerButton.addEventListener('click', (event) => {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
     createUser(email, password);
   });
 
-  form.append(inputEmail, inputName, inputPass, registrarButton);
+  loginAnchor.addEventListener('click', () => {
+    navigateTo('/login');
+  });
+
+  form.append(inputName, inputEmail, inputPass, registerButton, loginAnchor);
   btnLoginGoogle.append(logoGoogle, googleText);
   section.append(logoImg, btnLoginGoogle, hr, form, homeImg);
 
   return section;
 }
 
-export default registrar;
+export default register;
