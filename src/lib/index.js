@@ -1,12 +1,11 @@
 import {
-
   GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
 
 const sigInWithGoogle = async (event) => {
-  event.preventDefault();
-  const provider = new GoogleAuthProvider();
-  try {
+event.preventDefault();
+const provider = new GoogleAuthProvider();
+try {
     const userCredential = await signInWithPopup(auth, provider);
     const user = (userCredential);
     console.log(user);
@@ -28,12 +27,10 @@ const sigInWithGoogle2 = async (event) => {
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
-  
     });
 };
 
 const createUser = (email, password) => {
-
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       alert('Usuario creado');
@@ -51,12 +48,10 @@ const createUser = (email, password) => {
       } else if (errorCode === 'auth/weak-password') {
         alert('La contraseña es muy débil');
       }
-
     });
 };
 
 const loginUser = (email, password) => {
-
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       alert('Usuario logueado');
@@ -73,12 +68,9 @@ const loginUser = (email, password) => {
       } else if (errorCode === 'auth/wrong-password') {
         alert('La contraseña es incorrecta');
       }
-
     });
 };
 
 export {
-
   sigInWithGoogle, sigInWithGoogle2, createUser, loginUser,
 };
-

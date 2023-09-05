@@ -1,11 +1,9 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
-
 import register from './components/register.js';
 import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
-
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -19,6 +17,7 @@ const onNavigate = (pathname) => {
   root.appendChild(rutas[pathname]);
 };
 
+
 const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),
@@ -26,7 +25,6 @@ const rutas = {
   '/register': register(onNavigate),
   '/about': about(onNavigate),
   '/forgotPassword': forgotPassword(onNavigate),
-
   // '/FotoPerfil': FotoPerfil(onNavigate),
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };
@@ -40,6 +38,4 @@ window.onpopstate = () => {
   root.appendChild(rutas[window.location.pathname]);
 };
 
-
 root.appendChild(component());
-

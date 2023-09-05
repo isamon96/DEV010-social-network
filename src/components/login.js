@@ -2,7 +2,6 @@ import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');
-
   const logoImg = document.createElement('img');
   const btnLoginGoogle = document.createElement('button');
   const logoGoogle = document.createElement('img');
@@ -58,6 +57,11 @@ function login(navigateTo) {
   });
 
   btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    loginUser(email, password);
+  });
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
@@ -67,41 +71,7 @@ function login(navigateTo) {
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass);
 
-    });
-  
-  form.append(inputEmail, inputPass, buttonLoginUser);;
-  section.append(title, form, buttonReturn, registrarButton, buttonLogin);
-  
   return section;
 }
 
-function createInputWithClass(className) {
-  const input = document.createElement('input');
-  input.className = className;
-  return input;
-}
-
-function createDivWithClass(className, textContent) {
-  const div = document.createElement('div');
-  div.className = className;
-  div.textContent = textContent || '';
-  return div;
-}
-
-function createButtonWithClass(className) {
-  const button = document.createElement('button');
-  button.className = className;
-  button.textContent = '';
-  return button;
-}
-
-function createImgWithClass(className, src) {
-  const img = document.createElement('img');
-  img.className = className;
-  img.alt = '';
-  img.src = src;
-  return img;
-}
-
 export default login;
-
