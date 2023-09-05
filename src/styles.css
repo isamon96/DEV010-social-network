@@ -1,3 +1,130 @@
+html {
+  height: 100%;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+:root {
+  /*Colores*/
+  --naranja: #bb713C;
+  --naranjaclaro: #ffb11e;
+  --verdeclaro: #c6dfc5;
+  --verdeoscuro: #353519;
+  --inputField: rgba(255, 255, 0, 0.3);
+  --azulGoogle: #4285f4;
+  --azulGoogleActivo: #1669F2;
+
+  /*FUENTES*/
+  --titulos: 'Tenor Sans', sans-serif;
+  --principal: 'Ubuntu', sans-serif;
+  --googleButton: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: var(--principal);
+}
+
+.logoImg {
+  width: 50%;
+}
+
+.inputLog {
+  font-family: var(--principal);
+  background-color: var(--inputField);
+  color: var(--naranja);
+  border: none;
+  padding: 1%;
+  border-radius: 10px;
+  min-width: 252px;
+  min-height: 45px;
+  margin: 10px;
+  text-align: center;
+
+}
+
+.inputLog::placeholder {
+  color: var(--naranja);
+}
+
+hr{
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.145);
+}
+
+a, button, .iconImg {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLogin {
+  background-color: var(--naranjaclaro);
+  color: white;
+  border: none;
+  padding: 1%;
+  border-radius: 10px;
+  min-width: 252px;
+  min-height: 45px;
+  font-family: var(--principal);
+  cursor: pointer;
+}
+
+.btnGoogle {
+  background-color: var(--azulGoogle);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  min-width: 300px;
+  min-height: 41px;
+  font-family: var(--principal);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  
+  align-items: center;
+}	
+
+.btnGoogle:hover {
+  box-shadow: 0 0 6px var(--azulGoogle);
+}
+
+.btnGoogle:active {
+  background-color: var(--azulGoogleActivo);
+}
+
+.btnGoogle p {
+  font-family: var(--googleButton);
+  font-size: 1rem;
+  padding: 0;
+  margin-left: 40px;
+}
+
+#iconGoogle {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin-top: 1px;
+  margin-left: 1px;
+  border-radius: 2px;
+}
+
+/*CSS ANTERIOR*/
+
 
 body {
   margin: 0;
@@ -30,25 +157,27 @@ body {
   }
   
   section {
-    width: 390px;
-    height: 844px;
     flex-grow: 0;
-    padding: 50px;
+    /* padding: 50px; */
     background-color: #fff;
+    justify-content: center;
+    align-items: center;
   }
   
-  img {
-    position: absolute;
+  .logoImgPlus {
+    /* position: absolute; */
     width: 280px;
     height: 251px;
     object-fit: cover;
-    align-items: initial;
+    justify-content: center;
+    align-items: center;
+    /* align-items: initial; */
   }
   
-  p {
+  .slogan {
     width: 253px;
     height: 70px;
-    margin: 236px 14px 88px;
+    margin: 100px 20px;
     font-family: Ubuntu;
     font-size: 20px;
     font-weight: 300;
@@ -88,12 +217,11 @@ body {
   }
   
   h2 {
-    width: 253px;
-    height: 70px;
-    margin: 20px;
+    width: 240px;
+    height: 30px;
+    margin: 60px 20px 0px 20px;
     font-family: Ubuntu;
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 18px;
     text-align: center;
     color: #353519;
   }
@@ -109,7 +237,9 @@ body {
   .chevronIcon {
     width: 40px;
     height: 40px;
-    margin: 10px 120px 0 120px;
+    margin: 0px 120px 0 120px;
+    position: flex;
+    flex-grow: 0;
   }
   
   .new,
@@ -250,4 +380,71 @@ body {
     margin: 18px 69px 50px;
     border-radius: 10px;
     background-color: rgba(255, 255, 0, 0.3);
+  }
+  
+  .return {
+    top: 120em;
+    left: 160px;
+    width: 344px;
+    height: 40px;
+    flex-grow: 0;
+    margin: 75px 120px 4px 131px;
+    font-family: Ubuntu;
+    font-size: 18px;
+    /* text-align: left; */
+    color: #353519;
+  }
+  
+  .logoIconImg {
+  position: flex;
+  top: 83px;
+  left: 145px;
+  width: 100px;
+  height: 116px;
+  object-fit: cover;
+  }
+  
+  
+  .re {
+  margin: 100px 4.8px 31px 0;
+  font-size: 20px;
+  font-family: Ubuntu;
+  text-align: center;
+  }
+  
+  .re-container {
+  position: flex;
+  top: 265px;
+  left: 102px;
+  white-space: pre-wrap;
+  justify-content: center;
+  
+  }
+  
+  .mision {
+    width: 344px;
+    height: 24px;
+    margin: 40px 4.8px 31px 0;
+    font-family: Ubuntu;
+    font-size: 20px;
+    text-align: center;
+    color: #c992d2;
+  }
+  
+  .what {
+  width: 294px;
+  height: 71px;
+  margin: 31px 29.8px 108px 25px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: justify;
+  color: #353519;
+  }
+  
+  .planetImg {
+  width: 336.8px;
+  height: 279px;
+  margin: 108px 0px 0 12px;
+  padding: 0 5.7px 0 0;
   }

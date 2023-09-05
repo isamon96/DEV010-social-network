@@ -1,7 +1,5 @@
 import {
-GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged,
-
-} from 'firebase/auth';
+  GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
 
 const sigInWithGoogle = async (event) => {
@@ -16,21 +14,21 @@ const sigInWithGoogle = async (event) => {
   }
 };
 
-// const sigInWithGoogle2 = async (event) => {
-//   event.preventDefault();
-//   const provider = new GoogleAuthProvider();
-//   signInWithPopup(auth, provider)
-//     .then((result) => {
-//       const credential = GoogleAuthProvider.credentialFromResult(result);
-//       const token = credential.accessToken;
-//       const user = result.user;
-//     }).catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       const email = error.customData.email;
-//       const credential = GoogleAuthProvider.credentialFromError(error);
-//     });
-// };
+const sigInWithGoogle2 = async (event) => {
+  event.preventDefault();
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+};
 
 const createUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
@@ -53,27 +51,26 @@ const createUser = (email, password) => {
     });
 };
 
-// const loginUser = (email, password) => {
-//   signInWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       alert('Usuario logueado');
-//       console.log(userCredential);
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       if (errorCode === 'auth/invalid-email') {
-//         alert('El correo no es válido');
-//       } else if (errorCode === 'auth/user-disabled') {
-//         alert('El usuario está deshabilitado');
-//       } else if (errorCode === 'auth/user-not-found') {
-//         alert('El usuario no existe');
-//       } else if (errorCode === 'auth/wrong-password') {
-//         alert('La contraseña es incorrecta');
-//       }
-//     });
-// };
+const loginUser = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert('Usuario logueado');
+      console.log(userCredential);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === 'auth/invalid-email') {
+        alert('El correo no es válido');
+      } else if (errorCode === 'auth/user-disabled') {
+        alert('El usuario está deshabilitado');
+      } else if (errorCode === 'auth/user-not-found') {
+        alert('El usuario no existe');
+      } else if (errorCode === 'auth/wrong-password') {
+        alert('La contraseña es incorrecta');
+      }
+    });
+};
 
-// export {
-//   sigInWithGoogle, sigInWithGoogle2, createUser, loginUser,
-// };
-export { sigInWithGoogle, createUser };
+export {
+  sigInWithGoogle, sigInWithGoogle2, createUser, loginUser,
+};
