@@ -2,74 +2,79 @@ import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');
-  section.className = 'login';
 
-  const buttonLogin = createButtonWithClass('forget');
-  const buttonRegistar = createButtonWithClass('new');
-  const loginInnerDiv = createDivWithClass('loginInner');
-  const orangeButtonDiv = createDivWithClass('orangeButton');
-  const buttonLoginUser = createButtonWithClass('entrar');
-  const form = document.createElement('form'); // Crear el elemento <form>
-  const inputEmail = createInputWithClass('email'); // Crear el input para el correo electrónico
-  const inputPass = createInputWithClass('pass'); // Crear el input para la contraseña
-  const buttonGoogleLogin = createButtonWithClass('googleLogin');
-  const homeIconImg = createImgWithClass('home-03-icon', './assets/home-03.png');
-  homeIconImg.addEventListener('click', () => {
+  const logoImg = document.createElement('img');
+  const btnLoginGoogle = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  const googleText = document.createElement('p');
+  const hr = document.createElement('hr');
+  const form = document.createElement('form');
+  const inputEmail = document.createElement('input');
+  const inputPass = document.createElement('input');
+  const registerAnchor = document.createElement('a');
+  const btnLogin = document.createElement('button');
+  const passAnchor = document.createElement('a');
+  const homeImg = document.createElement('img');
+
+  section.className = 'container';
+
+  logoImg.className = 'logoImg';
+  logoImg.alt = 'Logo de la página';
+  logoImg.src = '../assets/logo.png';
+
+  btnLoginGoogle.className = 'btnGoogle';
+
+  logoGoogle.id = 'iconGoogle';
+  logoGoogle.alt = 'Logo de Google';
+  logoGoogle.src = '../assets/googleIcon.svg';
+
+  googleText.textContent = 'Inicia sesión con Google';
+
+  inputEmail.className = 'inputLog';
+  inputEmail.type = 'text';
+  inputEmail.placeholder = 'Correo electrónico';
+
+  inputPass.className = 'inputLog';
+  inputPass.type = 'password';
+  inputPass.placeholder = 'Contraseña';
+
+  registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
+
+  btnLogin.className = 'btnLogin';
+  btnLogin.textContent = 'Iniciar sesión';
+
+  passAnchor.textContent = '¿Olvidaste tu contraseña?';
+
+  homeImg.className = 'iconImg';
+  homeImg.alt = 'Icono de inicio';
+  homeImg.src = '../assets/home.png';
+
+  homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  const logoIconImg = createImgWithClass('logoIcon', './assets/re+mini.png');
-  const keyIconImg = createImgWithClass('key-01-icon', './assets/key-01.png');
-  const userPlusIconImg = createImgWithClass('user-plus-01-icon', './assets/user-plus-01.png');
+  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  registerAnchor.addEventListener('click', () => {
+    navigateTo('/register');
+  });
 
-  const loginItemButton1 = createButtonWithClass('Rectangle-1'); // Nuevo botón
-  const loginItemButton2 = createButtonWithClass('Rectangle-2'); // Nuevo botón
+  btnLogin.addEventListener('click', (event) => {
 
-  inputEmail.placeholder = 'correo electrónico';
-  inputPass.placeholder = 'contraseña';
-  
-  // title.textContent = 'Login';
-  buttonLogin.textContent = 'google';
-  buttonRegistar.textContent = 'Registrar';
-  buttonLoginUser.textContent = 'Ingresar';
+  passAnchor.addEventListener('click', () => {
+    navigateTo('/forgotPassword');
+  });
 
+  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  btnLoginGoogle.append(logoGoogle, googleText);
+  form.append(inputEmail, inputPass);
 
-
-  buttonLogin.addEventListener('click', sigInWithGoogle);
-    registrarButton.addEventListener('click', () => {
-      navigateTo('/registrar');
-    });
-  
-  buttonLoginUser.addEventListener('click', (event) => {
-    event.preventDefault();
-    const email = inputEmail.value;
-    const password = inputPass.value;
-    loginUser(email, password);
     });
   
   form.append(inputEmail, inputPass, buttonLoginUser);;
   section.append(title, form, buttonReturn, registrarButton, buttonLogin);
   
-  
-
-  // Append elements to the section
-  section.appendChild(buttonLogin);
-  section.appendChild(buttonRegistar);
-  section.appendChild(loginInnerDiv);
-  section.appendChild(orangeButtonDiv);
-  orangeButtonDiv.appendChild(entrarDiv);
-  section.appendChild(form);
-  // section.appendChild(imputEmail);
-  // section.appendChild(imputPass);
-  section.appendChild(buttonGoogleLogin);
-  section.appendChild(homeIconImg);
-  section.appendChild(logoIconImg);
-  section.appendChild(keyIconImg);
-  section.appendChild(userPlusIconImg);
-  section.appendChild(loginItemButton1);
-  section.appendChild(loginItemButton2); // Agregar nuevo botón
-
   return section;
 }
+
 function createInputWithClass(className) {
   const input = document.createElement('input');
   input.className = className;
