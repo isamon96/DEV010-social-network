@@ -29,7 +29,6 @@ function home(navigateTo) {
     navigateTo('/about');
   });
 
-
   section.append(logoInicio);
   section.append(slogan);
   section.append(button);

@@ -1,13 +1,8 @@
-//Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+import { getAuth } from 'firebase/auth'; // Servicio de autenticación
+import { getFirestore } from 'firebase/firestore'; // Servicio de base de datos
 
-import { getFirestore } from 'firebase/firestore';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyCoGmbTy2vNte1Lju2vk-lRx0yF5NvOaPU',
   authDomain: 'dev010-social-network-c83f9.firebaseapp.com',
@@ -18,13 +13,9 @@ const firebaseConfig = {
   measurementId: 'G-KELY29X5TF',
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// eslint-disable-next-line no-unused-vars
-const analytics = getAnalytics(app);
 
-// Obtén una referencia a tu base de datos Firestore
-// eslint-disable-next-line no-unused-vars
-const db = getFirestore();
+const auth = getAuth(app);
+const dataBase = getFirestore(app);
 
-// Ahora puedes utilizar "db" para acceder a las colecciones y documentos en tu base de datos
+export { auth, dataBase };

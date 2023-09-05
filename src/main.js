@@ -1,7 +1,8 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
-// import about from './components/about.js';
+import registrar from './components/registrar.js';
+import about from './components/about.js';
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -15,13 +16,14 @@ const onNavigate = (pathname) => {
   root.appendChild(rutas[pathname]);
 };
 
+
 const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),
   '/error': error(onNavigate),
-  // '/about': about(onNavigate),
+  '/registrar': registrar(onNavigate),
+  '/about': about(onNavigate),
 
-    // '/Registro': registroCorreo(onNavigate),
   // '/FotoPerfil': FotoPerfil(onNavigate),
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };
