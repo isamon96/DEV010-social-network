@@ -3,7 +3,6 @@ function home(navigateTo) {
   const title = document.createElement('h2');
   const button = document.createElement('button');
   const slogan = document.createElement('p');
-
   const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
 
@@ -15,7 +14,7 @@ function home(navigateTo) {
   chevron.alt = 'flecha hacia abajo';
   chevron.className = 'chevronIcon';
 
-  button.textContent = 'ENTRAR';
+  button.textContent = 'Entrar';
   title.textContent = 'ACERCA DE';
   title.className = 'acercaDe';
 
@@ -27,17 +26,10 @@ function home(navigateTo) {
   });
 
   chevron.addEventListener('click', () => {
-  navigateTo('/about');
+    navigateTo('/about');
   });
 
   section.append(logoImgPlus, slogan, button, title, chevron);
-
-
-  section.append(logoInicio);
-  section.append(slogan);
-  section.append(button);
-  section.append(title);
-  section.append(chevron);
   return section;
 }
 
