@@ -3,12 +3,13 @@ function home(navigateTo) {
   const title = document.createElement('h2');
   const button = document.createElement('button');
   const slogan = document.createElement('p');
-  const logoInicio = document.createElement('img');
+
+  const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
 
-  logoInicio.src = './assets/re+.png';
-  logoInicio.alt = 'logo de re+';
-  logoInicio.className = 'logoInicio';
+  logoImgPlus.src = './assets/re+.png';
+  logoImgPlus.alt = 'logo de re+';
+  logoImgPlus.className = 'logoImgPlus';
 
   chevron.src = './assets/chevron.gif';
   chevron.alt = 'flecha hacia abajo';
@@ -26,8 +27,11 @@ function home(navigateTo) {
   });
 
   chevron.addEventListener('click', () => {
-    navigateTo('/about');
+  navigateTo('/about');
   });
+
+  section.append(logoImgPlus, slogan, button, title, chevron);
+
 
   section.append(logoInicio);
   section.append(slogan);

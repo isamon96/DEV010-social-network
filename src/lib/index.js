@@ -3,9 +3,9 @@ import {
 import { auth } from '../firebase';
 
 const sigInWithGoogle = async (event) => {
-  event.preventDefault();
-  const provider = new GoogleAuthProvider();
-  try {
+event.preventDefault();
+const provider = new GoogleAuthProvider();
+try {
     const userCredential = await signInWithPopup(auth, provider);
     const user = (userCredential);
     console.log(user);

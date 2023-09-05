@@ -45,7 +45,7 @@ function login(navigateTo) {
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
 
   homeImg.className = 'iconImg';
-  homeImg.alt = 'Icono de inicio00';
+  homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
   homeImg.addEventListener('click', () => {
@@ -67,7 +67,55 @@ function login(navigateTo) {
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass);
 
+  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  registerAnchor.addEventListener('click', () => {
+    navigateTo('/register');
+  });
+
+  btnLogin.addEventListener('click', (event) => {
+
+  passAnchor.addEventListener('click', () => {
+    navigateTo('/forgotPassword');
+  });
+
+  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  btnLoginGoogle.append(logoGoogle, googleText);
+  form.append(inputEmail, inputPass);
+
+    });
+  
+  form.append(inputEmail, inputPass, buttonLoginUser);;
+  section.append(title, form, buttonReturn, registrarButton, buttonLogin);
+  
   return section;
+}
+
+function createInputWithClass(className) {
+  const input = document.createElement('input');
+  input.className = className;
+  return input;
+}
+
+function createDivWithClass(className, textContent) {
+  const div = document.createElement('div');
+  div.className = className;
+  div.textContent = textContent || '';
+  return div;
+}
+
+function createButtonWithClass(className) {
+  const button = document.createElement('button');
+  button.className = className;
+  button.textContent = '';
+  return button;
+}
+
+function createImgWithClass(className, src) {
+  const img = document.createElement('img');
+  img.className = className;
+  img.alt = '';
+  img.src = src;
+  return img;
 }
 
 export default login;
