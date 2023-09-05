@@ -122,3 +122,338 @@ form {
   margin-left: 1px;
   border-radius: 2px;
 }
+
+/*CSS ANTERIOR*/
+
+
+body {
+  margin: 0;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  }
+  
+  :root {
+    /* fonts */
+    --font-ubuntu: Ubuntu;
+    --font-ubuntu-mono: "Ubuntu Mono";
+  
+    /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-lg: 18px;
+  --font-size-6xl: 25px;
+  
+    /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gainsboro: #d9d9d9;
+  --color-peru: #bb713c;
+  --color-orange: #ffb11e;
+  
+  /* border radiuses */
+  --br-xl: 20px;
+  --br-3xs: 10px;
+  --color-darkslategray: #353519;
+  }
+  
+  section {
+    flex-grow: 0;
+    /* padding: 50px; */
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logoInicio {
+    /* position: absolute; */
+    width: 280px;
+    height: 251px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    /* align-items: initial; */
+  }
+  
+  .slogan {
+    width: 253px;
+    height: 70px;
+    margin: 100px 20px;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #353519;
+  }
+  
+  button {
+    width: 289px;
+    height: 60px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 17px;
+    background-color: #ffb11e;
+    border-style: none;
+    font-size: 20px;
+    font-family: Ubuntu;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+
+  .registerButton{
+    color: black;
+    background-color: white;
+    
+
+  }
+  
+  h2 {
+    width: 253px;
+    height: 70px;
+    margin: 20px;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #353519;
+  }
+  
+  figure {
+    width: 40px;
+    height: 40px;
+    flex-grow: 0;
+    margin: 11px 32px 0;
+    object-fit: contain;
+  }
+  
+  .chevronIcon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 120px 0 120px;
+  }
+  
+  .new,
+  .forget {
+    position: absolute;
+    top: 694px;
+    left: 95px;
+    text-align: left;
+  }
+  .new {
+    top: 531px;
+  }
+  .loginChild,
+  .loginItem {
+    position: absolute;
+    top: 365px;
+    left: 69px;
+    border-radius: var(--br-3xs);
+    width: 252px;
+    height: 45px;
+  }
+  .loginItem {
+    top: 436px;
+  }
+  .loginInner {
+    position: absolute;
+    top: 307.5px;
+    left: -0.5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    width: 391px;
+    height: 1px;
+  }
+  .entrar {
+    position: absolute;
+    top: calc(50% - 14.5px);
+    left: 61px;
+    display: inline-block;
+    width: 129px;
+    height: 38px;
+  }
+  .orangeButton {
+    position: absolute;
+    top: 593px;
+    left: 69px;
+    border-radius: var(--br-xl);
+    background-color: var(--color-orange);
+    width: 252px;
+    height: 59px;
+    overflow: hidden;
+    font-size: var(--font-size-6xl);
+    color: var(--color-white);
+    }
+  .email {
+    position: absolute;
+    top: 372px;
+    left: 110px;
+    font-weight: 300;
+    color: var(--color-peru);
+    display: inline-block;
+    width: 173px;
+  }
+  .pass {
+    position: absolute;
+    top: 450px;
+    left: 80px;
+    font-weight: 300;
+    color: var(--color-peru);
+    display: inline-block;
+    width: 173px;
+  }
+  .googleloginIcon {
+    position: absolute;
+    top: 206px;
+    left: 69px;
+    width: 252px;
+    height: 60.52px;
+    object-fit: cover;
+  }
+  .home-03-icon {
+    position: absolute;
+    top: 750px;
+    left: 175px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+  }
+  .logoIcon {
+    position: absolute;
+    top: 83px;
+    left: 145px;
+    width: 100px;
+    height: 116px;
+    object-fit: cover;
+  }
+  .key-01-icon,
+  .user-plus-01-icon {
+    position: absolute;
+    top: 446px;
+    left: 87px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+  }
+  .user-plus-01-icon {
+    top: 375px;
+  }
+  .login {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 844px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--color-darkslategray);
+    font-family: var(--font-ubuntu);
+  }
+  
+.inputEmail {
+    position: absolute;
+    top: 305px;
+    left: 5px;
+    width: 252px;
+    height: 45px;
+    margin: 57px 69px 26px;
+    padding: 10px 210px 11px 18px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 0, 0.3);
+  }
+  
+.inputPass {
+    position: absolute;
+    top: 419px;
+    left: 5px;
+    width: 252px;
+    height: 45px;
+    margin: 18px 69px 50px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 0, 0.3);
+  }
+
+  .chevronHomeImg {
+    position: flex;
+    top: 20px;
+    flex-grow: 0;
+    /* left: 160px; */
+    width: 40px;
+    height: 40px;
+    /* margin: 10px 120px 0 120px; */
+  }
+  
+  .return {
+    top: 120em;
+    left: 160px;
+    width: 344px;
+    height: 40px;
+    flex-grow: 0;
+    margin: 75px 120px 4px 131px;
+    font-family: Ubuntu;
+    font-size: 18px;
+    /* text-align: left; */
+    color: #353519;
+  }
+  
+  .logoIconImg {
+  position: flex;
+  top: 83px;
+  left: 145px;
+  width: 100px;
+  height: 116px;
+  object-fit: cover;
+  }
+  
+  
+  .re {
+  margin: 100px 4.8px 31px 0;
+  font-size: 20px;
+  font-family: Ubuntu;
+  text-align: center;
+  }
+  
+  .re-container {
+  position: flex;
+  top: 265px;
+  left: 102px;
+  white-space: pre-wrap;
+  justify-content: center;
+  
+  }
+  
+  .mision {
+    width: 344px;
+    height: 24px;
+    margin: 40px 4.8px 31px 0;
+    font-family: Ubuntu;
+    font-size: 20px;
+    text-align: center;
+    color: #c992d2;
+  }
+  
+  .what {
+  width: 294px;
+  height: 71px;
+  margin: 31px 29.8px 108px 25px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: justify;
+  color: #353519;
+  }
+  
+  .planetImg {
+  width: 336.8px;
+  height: 279px;
+  margin: 108px 0px 0 12px;
+  padding: 0 5.7px 0 0;
+  }

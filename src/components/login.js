@@ -1,28 +1,6 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
-  function createImgWithClass(className, src) {
-    const img = document.createElement('img');
-    img.className = className;
-    img.alt = '';
-    img.src = src;
-    return img;
-  }
-
-  function createDivWithClass(className, textContent) {
-    const div = document.createElement('div');
-    div.className = className;
-    div.textContent = textContent || '';
-    return div;
-  }
-
-  function createButtonWithClass(className) {
-    const button = document.createElement('button');
-    button.className = className;
-    button.textContent = '';
-    return button;
-  }
-
   const section = document.createElement('section');
   const logoImg = document.createElement('img');
   const btnLoginGoogle = document.createElement('button');
@@ -67,7 +45,7 @@ function login(navigateTo) {
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
 
   homeImg.className = 'iconImg';
-  homeImg.alt = 'Icono de inicio00';
+  homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
   homeImg.addEventListener('click', () => {
@@ -89,36 +67,7 @@ function login(navigateTo) {
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass);
 
-//   // title.textContent = 'Login';
-//   buttonReturn.textContent = 'ENTRAR';
-//   newLogin.textContent = '¿Nuev@? Regístrate aquí.';
-//   newLogin.className = 'newLogin';
-//   forgotPassword.textContent = '¿Olvidaste tu contraseña?';
-//   forgotPassword.className = 'forgotPassword';
-
-//   // button.textContent = 'Return to home';
-//   buttonReturn.addEventListener('click', () => {
-//     navigateTo('/');
-//   });
-//   buttonLogin.addEventListener('click', sigInWithGoogle);
-//   registrarButton.addEventListener('click', () => {
-//     navigateTo('/registrar');
-//   });
-
-//   buttonLoginUser.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     const email = inputEmail.value;
-//     const password = inputPass.value;
-//     loginUser(email, password);
-//   });
-
-//   section.append(logoLogin, googleLogin);
-//   form.append(inputEmail, inputPass, buttonLoginUser);
-//   section.append(form, buttonReturn, registrarButton, buttonLogin);
-//   section.append(newLogin);
-//   section.append(forgotPassword);
-
-return section;
+  return section;
 }
 
 export default login;
