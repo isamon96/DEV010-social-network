@@ -3,6 +3,7 @@ function home(navigateTo) {
   const title = document.createElement('h2');
   const button = document.createElement('button');
   const slogan = document.createElement('p');
+
   const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
 
@@ -15,7 +16,7 @@ function home(navigateTo) {
   chevron.alt = 'flecha hacia abajo';
   chevron.className = 'chevronIcon';
 
-  button.textContent = 'Entrar';
+  button.textContent = 'ENTRAR';
   title.textContent = 'ACERCA DE';
   title.className = 'acercaDe';
 
@@ -31,6 +32,8 @@ function home(navigateTo) {
   });
 
   section.append(logoImgPlus, slogan, button, title, chevron);
+
+
   return section;
 }
 

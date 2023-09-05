@@ -1,3 +1,4 @@
+
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'; // Servicio de autenticación
 import { getFirestore } from 'firebase/firestore'; // Servicio de base de datos
@@ -18,3 +19,13 @@ const auth = getAuth(app);
 const dataBase = getFirestore(app);
 
 export { auth, dataBase };
+
+// eslint-disable-next-line no-unused-vars
+const analytics = getAnalytics(app);
+
+// Obtén una referencia a tu base de datos Firestore
+// eslint-disable-next-line no-unused-vars
+const db = getFirestore();
+
+// Ahora puedes utilizar "db" para acceder a las colecciones y documentos en tu base de datos
+
