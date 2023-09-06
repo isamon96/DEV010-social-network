@@ -124,39 +124,7 @@ form {
 }
 
 /*CSS ANTERIOR*/
-
-
-body {
-  margin: 0;
-  line-height: normal;
-  display: flex;
-  justify-content: center;
-  }
-  
-  :root {
-    /* fonts */
-    --font-ubuntu: Ubuntu;
-    --font-ubuntu-mono: "Ubuntu Mono";
-  
-    /* font sizes */
-  --font-size-xl: 20px;
-  --font-size-lg: 18px;
-  --font-size-6xl: 25px;
-  
-    /* Colors */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-gainsboro: #d9d9d9;
-  --color-peru: #bb713c;
-  --color-orange: #ffb11e;
-  
-  /* border radiuses */
-  --br-xl: 20px;
-  --br-3xs: 10px;
-  --color-darkslategray: #353519;
-  }
-  
-  section {
+   section {
     flex-grow: 0;
     /* padding: 50px; */
     background-color: #fff;
@@ -178,7 +146,7 @@ body {
     width: 253px;
     height: 70px;
     margin: 100px 20px;
-    font-family: Ubuntu;
+    font-family: var(--principal);
     font-size: 20px;
     font-weight: 300;
     text-align: center;
@@ -199,7 +167,7 @@ body {
     background-color: #ffb11e;
     border-style: none;
     font-size: 20px;
-    font-family: Ubuntu;
+    font-family: var(--principal);
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -220,7 +188,7 @@ body {
     width: 240px;
     height: 30px;
     margin: 60px 20px 0px 20px;
-    font-family: Ubuntu;
+    font-family: var(--principal);
     font-size: 18px;
     text-align: center;
     color: #353519;
@@ -389,7 +357,7 @@ body {
     height: 40px;
     flex-grow: 0;
     margin: 75px 120px 4px 131px;
-    font-family: Ubuntu;
+    font-family: var(--principal);
     font-size: 18px;
     /* text-align: left; */
     color: #353519;
@@ -408,7 +376,7 @@ body {
   .re {
   margin: 100px 4.8px 31px 0;
   font-size: 20px;
-  font-family: Ubuntu;
+  font-family: var(--principal);
   text-align: center;
   }
   
@@ -425,7 +393,7 @@ body {
     width: 344px;
     height: 24px;
     margin: 40px 4.8px 31px 0;
-    font-family: Ubuntu;
+    font-family: var(--principal);
     font-size: 20px;
     text-align: center;
     color: #c992d2;
@@ -435,7 +403,7 @@ body {
   width: 294px;
   height: 71px;
   margin: 31px 29.8px 108px 25px;
-  font-family: Ubuntu;
+  font-family: var(--principal);
   font-size: 20px;
   font-weight: 300;
   text-align: justify;

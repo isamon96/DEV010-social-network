@@ -6,7 +6,7 @@ function forgotPassword(navigateTo) {
   const form = document.createElement('form');
   const btnRecover = document.createElement('button');
   const homeImg = document.createElement('img');
-  
+
   section.className = 'container';
 
   logoImg.className = 'logoImg';
