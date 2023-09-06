@@ -1,7 +1,7 @@
 // Crear un elemento de sección
 function about(navigateTo) {
   const section = document.createElement('section');
-  section.className = 'about';
+  section.className = 'container';
 
   // Función para crear un elemento de imagen con clase y fuente
   function createImgWithClass(className, src) {

@@ -14,12 +14,10 @@ function register(navigateTo) {
   const hr = document.createElement('hr');
   const registerButton = document.createElement('button');
   const loginAnchor = document.createElement('a');
-
   section.className = 'container';
   logoImg.className = 'logoImg';
   logoImg.alt = 'Logo de la página';
   logoImg.src = '../assets/logo.png';
-
   btnLoginGoogle.className = 'btnGoogle';
 
   logoGoogle.id = 'iconGoogle';

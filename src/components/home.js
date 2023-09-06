@@ -3,9 +3,11 @@ function home(navigateTo) {
   const title = document.createElement('h2');
   const button = document.createElement('button');
   const slogan = document.createElement('p');
+
   const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
 
+  section.className = 'container';
   logoImgPlus.src = './assets/re+.png';
   logoImgPlus.alt = 'logo de re+';
   logoImgPlus.className = 'logoImgPlus';
@@ -30,6 +32,7 @@ function home(navigateTo) {
   });
 
   section.append(logoImgPlus, slogan, button, title, chevron);
+
   return section;
 }
 
