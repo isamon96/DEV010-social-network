@@ -1,11 +1,17 @@
 import {
-  GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+
 import { auth } from '../firebase';
 
 const sigInWithGoogle = async (event) => {
-event.preventDefault();
-const provider = new GoogleAuthProvider();
-try {
+  event.preventDefault();
+  const provider = new GoogleAuthProvider();
+  try {
     const userCredential = await signInWithPopup(auth, provider);
     const user = (userCredential);
     console.log(user);
@@ -14,25 +20,10 @@ try {
   }
 };
 
-const sigInWithGoogle2 = async (event) => {
-  event.preventDefault();
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    });
-};
-
 const createUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      console.log(userCredential);
       alert('Usuario creado');
       auth.signOut();
       sendEmailVerification(auth.currentUser).then(() => {
@@ -72,5 +63,5 @@ const loginUser = (email, password) => {
 };
 
 export {
-  sigInWithGoogle, sigInWithGoogle2, createUser, loginUser,
+  sigInWithGoogle, createUser, loginUser,
 };
