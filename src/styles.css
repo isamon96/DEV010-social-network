@@ -375,3 +375,8 @@ figure {
   margin: 50px 0px 0 0px;
   padding: 0 5.7px 0 0;
 }
+
+#mensaje {
+  font-family: var(--principal);
+  color: var(--naranjaclaro);
+}
