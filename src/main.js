@@ -4,6 +4,7 @@ import error from './components/error.js';
 import register from './components/register.js';
 import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
+import upload from './components/upload.js';
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -25,6 +26,8 @@ const rutas = {
   '/register': register(onNavigate),
   '/about': about(onNavigate),
   '/forgotPassword': forgotPassword(onNavigate),
+  '/forgotPassword': upload(onNavigate),
+
   // '/FotoPerfil': FotoPerfil(onNavigate),
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };

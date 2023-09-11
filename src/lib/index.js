@@ -72,6 +72,7 @@ const loginUser = (email, password, element) => {
     });
 };
 
+
 export {
   sigInWithGoogle, createUser, loginUser, updateOutput,
 };
