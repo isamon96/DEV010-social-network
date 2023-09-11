@@ -1,76 +1,77 @@
 import {
-  GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+
 import { auth } from '../firebase';
 
-const sigInWithGoogle = async (event) => {
-event.preventDefault();
-const provider = new GoogleAuthProvider();
-try {
-    const userCredential = await signInWithPopup(auth, provider);
-    const user = (userCredential);
-    console.log(user);
-  } catch (error) {
-    console.log(error);
+const updateOutput = (outputElement, message) => {
+  if (outputElement) {
+    outputElement.textContent = message;
   }
 };
 
-const sigInWithGoogle2 = async (event) => {
+const sigInWithGoogle = async (event) => {
   event.preventDefault();
   const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    });
+  try {
+    const userCredential = await signInWithPopup(auth, provider);
+    const user = (userCredential);
+    return user;
+  } catch (error) {
+    return error;
+  }
 };
 
-const createUser = (email, password) => {
+const createUser = (email, password, element) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      alert('Usuario creado');
       auth.signOut();
       sendEmailVerification(auth.currentUser).then(() => {
-        alert('Se envió un correo de verificación');
+        const message = 'Usuario creado, revisa tu correo para verificar tu cuenta.';
+        updateOutput(element, message);
       });
+      return userCredential;
     })
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/email-already-in-use') {
-        alert('El correo ya está en uso');
+        const message = 'El correo ya está en uso.';
+        updateOutput(element, message);
       } else if (errorCode === 'auth/invalid-email') {
-        alert('El correo no es válido');
+        const message = 'El correo no es válido.';
+        updateOutput(element, message);
       } else if (errorCode === 'auth/weak-password') {
-        alert('La contraseña es muy débil');
+        const message = 'La contraseña es muy débil.';
+        updateOutput(element, message);
       }
     });
 };
 
-const loginUser = (email, password) => {
+const loginUser = (email, password, element) => {
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      alert('Usuario logueado');
-      console.log(userCredential);
-    })
+    .then((userCredential) => userCredential)
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/invalid-email') {
-        alert('El correo no es válido');
+        const message = 'El correo no es válido.';
+        updateOutput(element, message);
       } else if (errorCode === 'auth/user-disabled') {
-        alert('El usuario está deshabilitado');
+        const message = 'El usuario ha sido deshabilitado.';
+        updateOutput(element, message);
       } else if (errorCode === 'auth/user-not-found') {
-        alert('El usuario no existe');
+        const message = 'El usuario no existe.';
+        updateOutput(element, message);
       } else if (errorCode === 'auth/wrong-password') {
-        alert('La contraseña es incorrecta');
+        const message = 'La contraseña es incorrecta.';
+        updateOutput(element, message);
       }
     });
 };
 
 export {
-  sigInWithGoogle, sigInWithGoogle2, createUser, loginUser,
+  sigInWithGoogle, createUser, loginUser, updateOutput,
 };
