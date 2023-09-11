@@ -14,7 +14,7 @@ function forgotPassword(navigateTo) {
 
   inputEmail.className = 'inputLog';
   inputEmail.type = 'text';
-  inputEmail.placeholder = 'Correo electrónico';
+  inputEmail.placeholder = '📧 Correo electrónico';
   emailSearchAnchor.textContent = 'Ingresa tu correo electrónico para recuperar tu cuenta';
 
   homeImg.className = 'iconImg';

@@ -32,11 +32,11 @@ function login(navigateTo) {
 
   inputEmail.className = 'inputLog';
   inputEmail.type = 'text';
-  inputEmail.placeholder = 'Correo electrónico';
+  inputEmail.placeholder = '📧 Correo electrónico';
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = 'Contraseña';
+  inputPass.placeholder = '🔒 Contraseña';
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
