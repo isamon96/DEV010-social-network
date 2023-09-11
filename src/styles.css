@@ -22,7 +22,7 @@ body{
 
   /*FUENTES*/
   --titulos: 'Tenor Sans', sans-serif;
-  --principal: 'Ubuntu', sans-serif;
+  --principal: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --googleButton: 'Roboto', sans-serif;
 }
 
@@ -50,7 +50,6 @@ body{
   min-height: 45px;
   margin: 10px;
   text-align: center;
-
 }
 
 .inputLog::placeholder {
@@ -64,7 +63,7 @@ hr{
 
 a, button, .iconImg {
   cursor: pointer;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 form {
@@ -88,16 +87,16 @@ form {
 
 .btnGoogle {
   background-color: var(--azulGoogle);
+  padding: 0rem;
   color: white;
   border: none;
   border-radius: 2px;
-  min-width: 300px;
-  min-height: 41px;
+  /* min-width: 300px;
+  min-height: 41px; */
   font-family: var(--principal);
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-  display: flex;
-  
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
 }	
 
 .btnGoogle:hover {
@@ -110,206 +109,25 @@ form {
 
 .btnGoogle p {
   font-family: var(--googleButton);
-  font-size: 1rem;
+  font-size: 14px;
   padding: 0;
-  margin-left: 40px;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 
 #iconGoogle {
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: auto;
   background-color: white;
-  margin-top: 1px;
-  margin-left: 1px;
   border-radius: 2px;
+  flex-direction: initial;
 }
 
-/*CSS ANTERIOR*/
-
-
-body {
-  margin: 0;
-  line-height: normal;
-  display: flex;
+section {
+  flex-grow: 0;
+  background-color: #fff;
   justify-content: center;
-  }
-  
-  :root {
-    /* fonts */
-    --font-ubuntu: Ubuntu;
-    --font-ubuntu-mono: "Ubuntu Mono";
-  
-    /* font sizes */
-  --font-size-xl: 20px;
-  --font-size-lg: 18px;
-  --font-size-6xl: 25px;
-  
-    /* Colors */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-gainsboro: #d9d9d9;
-  --color-peru: #bb713c;
-  --color-orange: #ffb11e;
-  
-  /* border radiuses */
-  --br-xl: 20px;
-  --br-3xs: 10px;
-  --color-darkslategray: #353519;
-  }
-  
-  section {
-    flex-grow: 0;
-    /* padding: 50px; */
-    background-color: #fff;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .logoImgPlus {
-    /* position: absolute; */
-    width: 280px;
-    height: 251px;
-    object-fit: cover;
-    justify-content: center;
-    align-items: center;
-    /* align-items: initial; */
-  }
-  
-  .slogan {
-    width: 253px;
-    height: 70px;
-    margin: 100px 20px;
-    font-family: Ubuntu;
-    font-size: 20px;
-    font-weight: 300;
-    text-align: center;
-    color: #353519;
-  }
-  
-  button {
-    width: 289px;
-    height: 60px;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 32px;
-    border-radius: 17px;
-    background-color: #ffb11e;
-    border-style: none;
-    font-size: 20px;
-    font-family: Ubuntu;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #fff;
-  }
-
-  .registerButton{
-    color: black;
-    background-color: white;
-    
-
-  }
-  
-  h2 {
-    width: 240px;
-    height: 30px;
-    margin: 60px 20px 0px 20px;
-    font-family: Ubuntu;
-    font-size: 18px;
-    text-align: center;
-    color: #353519;
-  }
-  
-  figure {
-    width: 40px;
-    height: 40px;
-    flex-grow: 0;
-    margin: 11px 32px 0;
-    object-fit: contain;
-  }
-  
-  .chevronIcon {
-    width: 40px;
-    height: 40px;
-    margin: 0px 120px 0 120px;
-    position: flex;
-    flex-grow: 0;
-  }
-  
-  .new,
-  .forget {
-    position: absolute;
-    top: 694px;
-    left: 95px;
-    text-align: left;
-  }
-  .new {
-    top: 531px;
-  }
-  .loginChild,
-  .loginItem {
-    position: absolute;
-    top: 365px;
-    left: 69px;
-    border-radius: var(--br-3xs);
-    width: 252px;
-    height: 45px;
-  }
-  .loginItem {
-    top: 436px;
-  }
-  .loginInner {
-    position: absolute;
-    top: 307.5px;
-    left: -0.5px;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    box-sizing: border-box;
-    width: 391px;
-    height: 1px;
-  }
-  .entrar {
-    position: absolute;
-    top: calc(50% - 14.5px);
-    left: 61px;
-    display: inline-block;
-    width: 129px;
-    height: 38px;
-  }
-  .orangeButton {
-    position: absolute;
-    top: 593px;
-    left: 69px;
-    border-radius: var(--br-xl);
-    background-color: var(--color-orange);
-    width: 252px;
-    height: 59px;
-    overflow: hidden;
-    font-size: var(--font-size-6xl);
-    color: var(--color-white);
-    }
-  .email {
-    position: absolute;
-    top: 372px;
-    left: 110px;
-    font-weight: 300;
-    color: var(--color-peru);
-    display: inline-block;
-    width: 173px;
-  }
-
-  .re {
-  margin: 100px 4.8px 31px 0;
-  font-size: 20px;
-  font-family: Ubuntu;
-  text-align: center;
-  }
+<
   
   .re-container {
   position: flex;
@@ -317,34 +135,17 @@ body {
   left: 102px;
   white-space: pre-wrap;
   justify-content: center;
+  align-items: center;
+}
   
-  }
-  
-  .mision {
-    width: 344px;
-    height: 24px;
-    margin: 40px 4.8px 31px 0;
-    font-family: Ubuntu;
-    font-size: 20px;
-    text-align: center;
-    color: #c992d2;
-  }
-  
-  .what {
-  width: 294px;
-  height: 71px;
-  margin: 31px 29.8px 108px 25px;
-  font-family: Ubuntu;
+.slogan {
+  width: 253px;
+  height: 70px;
+  margin: 100px 20px;
+  font-family: var(--principal);
   font-size: 20px;
   font-weight: 300;
-  text-align: justify;
+  text-align: center;
   color: #353519;
-  }
-  
-  .planetImg {
-  width: 336.8px;
-  height: 279px;
-  margin: 108px 0px 0 12px;
-  padding: 0 5.7px 0 0;
-  }
+
 

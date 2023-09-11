@@ -14,6 +14,7 @@ function login(navigateTo) {
   const btnLogin = document.createElement('button');
   const passAnchor = document.createElement('a');
   const homeImg = document.createElement('img');
+  const mensaje = document.createElement('p');
 
   section.className = 'container';
 
@@ -48,6 +49,9 @@ function login(navigateTo) {
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
+  // Agregando mensaje
+  mensaje.id = 'mensaje';
+
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -60,7 +64,7 @@ function login(navigateTo) {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
-    loginUser(email, password);
+    loginUser(email, password, mensaje);
   });
 
   passAnchor.addEventListener('click', () => {
@@ -69,7 +73,7 @@ function login(navigateTo) {
 
   section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
   btnLoginGoogle.append(logoGoogle, googleText);
-  form.append(inputEmail, inputPass);
+  form.append(inputEmail, inputPass, mensaje);
 
   return section;
 }

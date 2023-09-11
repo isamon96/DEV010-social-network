@@ -14,12 +14,11 @@ function register(navigateTo) {
   const hr = document.createElement('hr');
   const registerButton = document.createElement('button');
   const loginAnchor = document.createElement('a');
-  
+  const mensaje = document.createElement('p');
   section.className = 'container';
   logoImg.className = 'logoImg';
   logoImg.alt = 'Logo de la página';
   logoImg.src = '../assets/logo.png';
-  
   btnLoginGoogle.className = 'btnGoogle';
 
   logoGoogle.id = 'iconGoogle';
@@ -28,6 +27,8 @@ function register(navigateTo) {
 
   googleText.textContent = 'Inicia sesión con Google';
   loginAnchor.textContent = '¿Ya tienes una cuenta?';
+  // Agregando mensaje
+  mensaje.id = 'mensaje';
 
   homeImg.className = 'iconImg';
   homeImg.alt = 'Icono de inicio';
@@ -59,14 +60,17 @@ function register(navigateTo) {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
-    createUser(email, password);
+    createUser(email, password, mensaje);
+    inputEmail.value = '';
+    inputPass.value = '';
+    inputName.value = '';
   });
 
   loginAnchor.addEventListener('click', () => {
     navigateTo('/login');
   });
 
-  form.append(inputName, inputEmail, inputPass, registerButton, loginAnchor);
+  form.append(inputName, inputEmail, inputPass, mensaje, registerButton, loginAnchor);
   btnLoginGoogle.append(logoGoogle, googleText);
   section.append(logoImg, btnLoginGoogle, hr, form, homeImg);
 
