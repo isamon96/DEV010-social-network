@@ -66,4 +66,3 @@ describe('createUser', () => {
     expect(createUser).toHaveLength(3);
   });
 });
-
