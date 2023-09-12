@@ -51,6 +51,38 @@ const createUser = (email, password, element) => {
     });
 };
 
+/* const createUser = async (email, password, element) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log('alerta1');
+    await auth.signOut();
+    console.log('alerta2');
+    await sendEmailVerification(auth.currentUser);
+    console.log('alerta3');
+    const message = 'Usuario creado, revisa tu correo para verificar tu cuenta.';
+    console.log('alerta4');
+    updateOutput(element, message);
+    console.log('alerta5');
+    return userCredential;
+  } catch (error) {
+    const errorCode = error.code;
+    if (errorCode === 'auth/email-already-in-use') {
+      const message = 'El correo ya está en uso.';
+      updateOutput(element, message);
+      console.log('alerta6');
+    } else if (errorCode === 'auth/invalid-email') {
+      const message = 'El correo no es válido.';
+      updateOutput(element, message);
+      console.log('alerta7');
+    } else if (errorCode === 'auth/weak-password') {
+      const message = 'La contraseña es muy débil.';
+      updateOutput(element, message);
+      console.log('alerta8');
+    }
+    return error;
+  }
+}; */
+
 const loginUser = (email, password, element) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => userCredential)

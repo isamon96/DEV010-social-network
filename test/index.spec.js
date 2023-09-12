@@ -1,32 +1,63 @@
 import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification,
 } from 'firebase/auth';
+import { sigInWithGoogle, updateOutput, createUser } from '../src/lib/index.js'; // Importa la función
+import { auth } from '../src/firebase.js'; // Importa la instancia de Firebase auth
 
-import { auth } from '../firebase';
+jest.mock('firebase/auth', () => ({
+  signInWithPopup: jest.fn(),
+  getAuth: jest.fn(() => ({
+    currentUser: {
+      emailVerified: false,
+    },
+    signOut: jest.fn(),
+  })),
+  GoogleAuthProvider: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(() => Promise.resolve({})),
+  auth: jest.fn(() => Promise.resolve({})),
+}));
 
-const updateOutput = (outputElement, message) => {
-  if (outputElement) {
-    outputElement.textContent = message;
-  }
-};
+describe('updateOutput', () => {
+  it('should be a function', () => {
+    expect(typeof updateOutput).toBe('function');
+  });
+  it('should update outputElement textContent with message', () => {
+    const outputElement = document.createElement('p');
+    const message = 'Hola';
+    updateOutput(outputElement, message);
+    expect(outputElement.textContent).toBe(message);
+  });
+});
 
-const sigInWithGoogle = async (event) => {
-  event.preventDefault();
-  const provider = new GoogleAuthProvider();
-  try {
-    const userCredential = await signInWithPopup(auth, provider);
-    const user = (userCredential);
-    return user;
-  } catch (error) {
-    return error;
-  }
-};
+describe('SigInWithGoogle', () => {
+  it('should be a function', () => {
+    expect(typeof sigInWithGoogle).toBe('function');
+  });
+  it('it should call sigInWithPopUp', async () => {
+    const event = { preventDefault: jest.fn() };
+    await sigInWithGoogle(event);
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  });
+  it('it should call sigInWithPopUp with GoogleAuthProvider and auth as arguments', async () => {
+    const event = { preventDefault: jest.fn() };
+    await sigInWithGoogle(event);
+    expect(signInWithPopup).toHaveBeenCalledWith(auth, new GoogleAuthProvider());
+  });
+  it('should return user if success', async () => {
+    const event = { preventDefault: jest.fn() };
+    signInWithPopup.mockResolvedValueOnce({});
+    const user = await sigInWithGoogle(event);
+    expect(user).toEqual({});
+  });
+  it('should return error if fails', async () => {
+    const event = { preventDefault: jest.fn() };
+    signInWithPopup.mockRejectedValueOnce(new Error('error'));
+    const error = await sigInWithGoogle(event);
+    expect(error).toEqual(new Error('error'));
+  });
+});
 
-const createUser = (email, password, element) => {
+/* const createUser = (email, password, element) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       auth.signOut();
@@ -49,29 +80,35 @@ const createUser = (email, password, element) => {
         updateOutput(element, message);
       }
     });
-};
+}; */
 
-const loginUser = (email, password, element) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => userCredential)
-    .catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/invalid-email') {
-        const message = 'El correo no es válido.';
-        updateOutput(element, message);
-      } else if (errorCode === 'auth/user-disabled') {
-        const message = 'El usuario ha sido deshabilitado.';
-        updateOutput(element, message);
-      } else if (errorCode === 'auth/user-not-found') {
-        const message = 'El usuario no existe.';
-        updateOutput(element, message);
-      } else if (errorCode === 'auth/wrong-password') {
-        const message = 'La contraseña es incorrecta.';
-        updateOutput(element, message);
-      }
-    });
-};
-
-export {
-  sigInWithGoogle, createUser, loginUser, updateOutput,
-};
+describe('createUser', () => {
+  it('should be a function', () => {
+    expect(typeof createUser).toBe('function');
+  });
+  it('should receive email, password and element as arguments', () => {
+    expect(createUser).toHaveLength(3);
+  });
+  it('should call createUserWithEmailAndPassword 1 time', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    createUser('email', 'password', element2);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  });
+  it('should call auth.signOut 1 time if success', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    auth.signOut.mockReturnValueOnce({});
+    createUser('email', 'password', element2);
+    expect(auth.signOut).toHaveBeenCalledTimes(1);
+  });
+  // deberia llamar a sendEmailVerification 1 vez si es exitoso //MUESTRA ERROR AL CORRER TEST
+  it('should call sendEmailVerification 1 time if success', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    auth.signOut.mockReturnValueOnce({});
+    sendEmailVerification.mockResolvedValueOnce({});
+    createUser('email', 'password', element2);
+    expect(sendEmailVerification).toHaveBeenCalledTimes(1);
+  });
+});
