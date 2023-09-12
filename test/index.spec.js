@@ -1,5 +1,5 @@
 import {
-  signInWithPopup, GoogleAuthProvider, /* createUserWithEmailAndPassword, sendEmailVerification, */
+  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification,
 } from 'firebase/auth';
 import { sigInWithGoogle, updateOutput, createUser } from '../src/lib/index.js'; // Importa la función
 import { auth } from '../src/firebase.js'; // Importa la instancia de Firebase auth
@@ -13,8 +13,8 @@ jest.mock('firebase/auth', () => ({
     signOut: jest.fn(),
   })),
   GoogleAuthProvider: jest.fn(),
-  createUserWithEmailAndPassword: jest.fn(),
-  sendEmailVerification: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(() => Promise.resolve({})),
+  auth: jest.fn(() => Promise.resolve({})),
 }));
 
 describe('updateOutput', () => {
@@ -57,11 +57,58 @@ describe('SigInWithGoogle', () => {
   });
 });
 
+/* const createUser = (email, password, element) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      auth.signOut();
+      sendEmailVerification(auth.currentUser).then(() => {
+        const message = 'Usuario creado, revisa tu correo para verificar tu cuenta.';
+        updateOutput(element, message);
+      });
+      return userCredential;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === 'auth/email-already-in-use') {
+        const message = 'El correo ya está en uso.';
+        updateOutput(element, message);
+      } else if (errorCode === 'auth/invalid-email') {
+        const message = 'El correo no es válido.';
+        updateOutput(element, message);
+      } else if (errorCode === 'auth/weak-password') {
+        const message = 'La contraseña es muy débil.';
+        updateOutput(element, message);
+      }
+    });
+}; */
+
 describe('createUser', () => {
   it('should be a function', () => {
     expect(typeof createUser).toBe('function');
   });
   it('should receive email, password and element as arguments', () => {
     expect(createUser).toHaveLength(3);
+  });
+  it('should call createUserWithEmailAndPassword 1 time', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    createUser('email', 'password', element2);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  });
+  it('should call auth.signOut 1 time if success', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    auth.signOut.mockReturnValueOnce({});
+    createUser('email', 'password', element2);
+    expect(auth.signOut).toHaveBeenCalledTimes(1);
+  });
+  // deberia llamar a sendEmailVerification 1 vez si es exitoso //MUESTRA ERROR AL CORRER TEST
+  it('should call sendEmailVerification 1 time if success', () => {
+    const element2 = document.createElement('p');
+    createUserWithEmailAndPassword.mockResolvedValueOnce({});
+    auth.signOut.mockReturnValueOnce({});
+    sendEmailVerification.mockResolvedValueOnce({});
+    createUser('email', 'password', element2);
+    expect(sendEmailVerification).toHaveBeenCalledTimes(1);
   });
 });
