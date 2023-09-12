@@ -18,13 +18,19 @@ describe('Testing about component', () => {
   });
 
   it('Must be a function', () => {
-    // Corrige el nombre de la función a probar 
+    // Corrige el nombre de la función a probar (debe ser 'about' en lugar de 'home')
     expect(typeof about).toBe('function');
   });
 
-  test('error function should return error text content', () => {
+  test('about function should return a section element', () => {
     // Utiliza la variable aboutComponent en lugar de crear una nueva instancia
-    expect(errorComponent.tagName).toBe('SECTION');
+    expect(aboutComponent.tagName).toBe('SECTION');
   });
 
+  it('Should navigate to home when clicking the button', async () => {
+    // Comprueba que el evento de clic en 'chevron' redirige correctamente
+    const chevron = aboutComponent.querySelector('.chevronIcon');
+    chevron.click();
+    expect(navigateToMockAbout).toHaveBeenCalledWith('/'); // Verifica que se llamó con el argumento '/'
+  });
 });
