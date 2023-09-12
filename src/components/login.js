@@ -44,6 +44,7 @@ function login(navigateTo) {
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
+  passAnchor.id = 'passAnchor';
 
   homeImg.className = 'iconImg';
   homeImg.alt = 'Icono de inicio';
