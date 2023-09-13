@@ -39,11 +39,12 @@ function login(navigateTo) {
   inputPass.placeholder = '🔒 Contraseña';
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
-
+  
   btnLogin.className = 'btnLogin';
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
+  passAnchor.id = 'passAnchor';
 
   homeImg.className = 'iconImg';
   homeImg.alt = 'Icono de inicio';
