@@ -44,7 +44,7 @@ function register(navigateTo) {
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = '🔒   Contraseña';
+  inputPass.placeholder = '🔑   Contraseña';
 
   registerButton.id = 'btnRegister';
 

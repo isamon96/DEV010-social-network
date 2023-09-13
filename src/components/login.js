@@ -36,7 +36,7 @@ function login(navigateTo) {
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = '🔒   Contraseña';
+  inputPass.placeholder = '🔑   Contraseña';
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 

@@ -28,7 +28,7 @@ function home(navigateTo) {
   });
 
   chevron.addEventListener('click', () => {
-    navigateTo('/about'); // LÍNEA 31 NO CUBIERTA POR TEST
+    navigateTo('/about');
   });
 
   section.append(logoImgPlus, slogan, button, title, chevron);
