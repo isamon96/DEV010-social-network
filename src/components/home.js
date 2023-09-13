@@ -24,11 +24,11 @@ function home(navigateTo) {
   slogan.className = 'slogan';
 
   button.addEventListener('click', () => {
-  navigateTo('/login');
+    navigateTo('/login');
   });
 
   chevron.addEventListener('click', () => {
-  navigateTo('/about');
+    navigateTo('/about');
   });
 
   section.append(logoImgPlus, slogan, button, title, chevron);
