@@ -34,7 +34,7 @@ describe('Testing home component', () => {
   });
 
   it('Should navigate to About when clicking the chevron icon', async () => {
-    const chevron = homeComponent.querySelector('chevronIcon');
+    const chevron = homeComponent.querySelector('.chevronIcon');
     chevron.click();
 
     expect(navigateToMockHome).toHaveBeenCalledWith('/about');

@@ -36,17 +36,15 @@ function register(navigateTo) {
 
   inputName.className = 'inputLog';
   inputName.type = 'text';
-  inputName.placeholder = 'Nombre';
+  inputName.placeholder = '😎   Nombre';
 
   inputEmail.className = 'inputLog';
   inputEmail.type = 'text';
-  inputEmail.placeholder = 'Correo electrónico';
+  inputEmail.placeholder = '📧   Correo electrónico';
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = 'Contraseña';
-
-  registerButton.id = 'btnRegister';
+  inputPass.placeholder = '🔑   Contraseña';
 
   registerButton.id = 'btnRegister';
 
