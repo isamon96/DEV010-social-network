@@ -48,6 +48,8 @@ function register(navigateTo) {
 
   registerButton.id = 'btnRegister';
 
+  registerButton.id = 'btnRegister';
+
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
