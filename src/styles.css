@@ -380,3 +380,43 @@ figure {
   font-family: var(--principal);
   color: var(--naranjaclaro);
 }
+
+/*Feed*/
+.logoImgFeed {
+  width: 100px;
+  position: absolute;
+  margin: 20px;
+  top: 0.5rem;
+  left: 0.5rem;
+  overflow: hidden;
+}
+
+.userIcon {
+  position: absolute;
+  margin: 50px;
+  top: 0.5rem;
+  right: 0.1rem;
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+}
+
+.hrFeed {
+  width: 40%;
+  border: 2px solid #f6b142;
+  position: absolute;
+  top: 12rem;
+  left: 0px;
+}
+
+.feedName {
+  position: absolute;
+  top: 9.5rem;
+  left: 2.5rem;
+}
+
+.feedPost {
+  position: absolute;
+  top: 9.5rem;
+  right: 2.5rem;
+}

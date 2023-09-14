@@ -66,6 +66,7 @@ function login(navigateTo) {
     const email = inputEmail.value;
     const password = inputPass.value;
     loginUser(email, password, mensaje);
+    navigateTo('/feed');
   });
 
   passAnchor.addEventListener('click', () => {

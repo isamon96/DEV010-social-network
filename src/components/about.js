@@ -14,7 +14,7 @@ function about(navigateTo) {
 
   // Función para crear un div con clase y texto opcional
   function createDivWithClass(className, textContent) {
-    const div = document.createElement('div');
+    const div = document.createElement('testDiv');
     div.className = className;
     div.textContent = textContent || '';
     return div;
