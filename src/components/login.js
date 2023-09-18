@@ -32,14 +32,14 @@ function login(navigateTo) {
 
   inputEmail.className = 'inputLog';
   inputEmail.type = 'text';
-  inputEmail.placeholder = '📧 Correo electrónico';
+  inputEmail.placeholder = '📧   Correo electrónico';
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = '🔒 Contraseña';
+  inputPass.placeholder = '🔑   Contraseña';
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
-  
+
   btnLogin.className = 'btnLogin';
   btnLogin.textContent = 'Iniciar sesión';
 
@@ -56,7 +56,13 @@ function login(navigateTo) {
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  btnLoginGoogle.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const user = await sigInWithGoogle(event);
+    if (user) {
+      navigateTo('/feed');
+    }
+  });
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });

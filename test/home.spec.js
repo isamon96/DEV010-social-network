@@ -25,11 +25,18 @@ describe('Testing home component', () => {
     const section = home();
     expect(section.tagName).toBe('SECTION');
   });
-  
-  it('Should navigate to about when clicking the button', async () => {
-    // Comprueba que el evento de clic en 'chevron' redirige correctamente
+
+  it('Should navigate to Login when clicking the button', async () => {
+    const buttonLogin = homeComponent.querySelector('button');
+    buttonLogin.click();
+
+    expect(navigateToMockHome).toHaveBeenCalledWith('/login');
+  });
+
+  it('Should navigate to About when clicking the chevron icon', async () => {
     const chevron = homeComponent.querySelector('.chevronIcon');
     chevron.click();
-    expect(navigateToMockHome).toHaveBeenCalledWith('/about'); // Verifica que se llamó con el argumento '/'
+
+    expect(navigateToMockHome).toHaveBeenCalledWith('/about');
   });
 });
