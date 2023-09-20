@@ -18,7 +18,6 @@ const onNavigate = (pathname) => {
   root.appendChild(rutas[pathname]);
 };
 
-
 const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),

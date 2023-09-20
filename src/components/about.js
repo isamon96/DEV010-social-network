@@ -34,8 +34,8 @@ function about(navigateTo) {
   });
 
   // Agregar elementos hijos a la sección
-  section.append(chevron);
-  section.append(logoIconImg);
+  // section.append(chevron);
+  section.append(chevron, logoIconImg);
   section.append(reDiv, misionDiv, whatDiv, planetImg);
   return section;
 }

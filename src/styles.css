@@ -30,7 +30,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   font-family: var(--principal);
 }
 
@@ -420,3 +420,4 @@ figure {
   top: 9.5rem;
   right: 2.5rem;
 }
+

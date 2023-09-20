@@ -1,3 +1,5 @@
+import { addPost, getPosts } from '../lib/index.js';
+
 function feed(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
@@ -16,22 +18,49 @@ function feed(navigateTo) {
   feedPost.className = 'feedPost';
   feedPost.textContent = 'Tus publicaciones';
   const form = document.createElement('form');
-  const postFeed = document.createElement('input');
-  postFeed.className = 'inputLog';
-  postFeed.type = 'text';
-  postFeed.placeholder = 'Escribe aquí tu postFeed';
   const hr = document.createElement('hr');
   hr.className = 'hrFeed';
 
-  // Foto de usuario
-  // Nombre de usuario
-  // Corazón plus (conteo)
-  // Post
+  const inputTitle = document.createElement('input');
+  const inputPost = document.createElement('input');
+  const btnPost = document.createElement('button');
+  const withOutPost = document.createElement('p');
+
+  inputPost.className = 'inputLog';
+  inputPost.type = 'text';
+  inputPost.placeholder = 'Escribe tu post';
+
+  inputTitle.className = 'inputLog';
+  inputTitle.type = 'text';
+  inputTitle.placeholder = 'Título de tu post';
+
+  btnPost.className = 'btnLogin';
+  btnPost.textContent = 'Enviar';
 
   section.append(logoImg, userIcon, feedName, feedPost, hr);
-  form.append(postFeed);
-  section.append(hr, form);
+  form.append(inputTitle, inputPost, btnPost);
+  section.append(form, withOutPost, logoImg);
 
+  btnPost.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const title = inputTitle.value.trim();
+    const post = inputPost.value.trim();
+    if (title === '' || post === '') {
+      withOutPost.textContent = 'No puedes enviar un post vacío';
+      return;
+    }
+    const postContainer = await addPost(title, post);
+    document.body.appendChild(postContainer);
+    await addPost(title, post);
+    inputTitle.value = '';
+    inputPost.value = '';
+    withOutPost.textContent = '';
+    getPosts();
+  });
+
+  logoImg.addEventListener('click', () => {
+    navigateTo('/');
+  });
   return section;
 }
 

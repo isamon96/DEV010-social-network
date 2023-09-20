@@ -56,7 +56,13 @@ function login(navigateTo) {
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  btnLoginGoogle.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const user = await sigInWithGoogle(event);
+    if (user) {
+      navigateTo('/feed');
+    }
+  });
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });
@@ -66,7 +72,6 @@ function login(navigateTo) {
     const email = inputEmail.value;
     const password = inputPass.value;
     loginUser(email, password, mensaje);
-    navigateTo('/feed');
   });
 
   passAnchor.addEventListener('click', () => {
@@ -81,3 +86,4 @@ function login(navigateTo) {
 }
 
 export default login;
+
