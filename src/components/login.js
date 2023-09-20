@@ -56,7 +56,13 @@ function login(navigateTo) {
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  btnLoginGoogle.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const user = await sigInWithGoogle(event);
+    if (user) {
+      navigateTo('/feed');
+    }
+  });
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });

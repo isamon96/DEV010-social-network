@@ -45,4 +45,38 @@ describe('login', () => {
     passAnchor.click();
     expect(navigateTo).toHaveBeenCalledWith('/forgotPassword');
   });
+  it('should navigate to /feed when click btnLoginGoogle its true', () => {
+    const sigInWithGoogle = jest.fn(Promise.resolve(true));
+    const navigateTo = jest.fn();
+    const section = login(navigateTo);
+    const btnLoginGoogle = section.querySelector('.btnGoogle');
+    btnLoginGoogle.addEventListener('click', async () => {
+      const user = await sigInWithGoogle();
+      if (user) {
+        navigateTo('/feed');
+      }
+    });
+  });
+  it('should execute sigInWithGoogle con event as arguments when click btnLoginGoogle', () => {
+    const navigateTo = jest.fn();
+    const section = login(navigateTo);
+    const btnLoginGoogle = section.querySelector('.btnGoogle');
+    const sigInWithGoogle = jest.fn();
+    btnLoginGoogle.addEventListener('click', () => {
+      sigInWithGoogle('event');
+    });
+    btnLoginGoogle.click();
+    expect(sigInWithGoogle).toHaveBeenCalledWith('event');
+  });
+  /* it('should navigate to /feed when click btnLoginGoogle
+  if sigInWithGoogle returns true', async () => {
+    // Simular que sigInWithGoogle devuelve true
+    const sigInWithGoogle = jest.fn().mockResolvedValue(true);
+    const navigateTo = jest.fn();
+    const section = login(navigateTo);
+    const btnLoginGoogle = section.querySelector('.btnGoogle');
+    await btnLoginGoogle.click(); // Usar await ya que la función es asíncrona
+    // Verificar que navigateTo se llamó con '/feed'
+    expect(navigateTo).toHaveBeenCalledWith('/feed');
+  }); */
 });

@@ -6,7 +6,11 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { auth } from '../firebase';
+import {
+  addDoc, collection, Timestamp, getDocs, query, orderBy,
+} from 'firebase/firestore';
+
+import { db, auth } from '../firebase';
 
 const updateOutput = (outputElement, message) => {
   if (outputElement) {
@@ -69,6 +73,42 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     }
   });
 
+const addPost = async (title, post) => {
+  const name = auth.currentUser.displayName;
+  const date = Timestamp.now().toDate().toLocaleString();
+  const postsCollection = collection(db, 'posts');
+  await addDoc(postsCollection, {
+    name,
+    date,
+    title,
+    post,
+  });
+  console.log(auth);
+  const postContainer = document.createElement('section');
+  const postName = document.createElement('p');
+  postName.textContent = name;
+  const postDate = document.createElement('p');
+  postDate.textContent = date;
+  const postTitle = document.createElement('h2');
+  postTitle.textContent = title;
+  const postContent = document.createElement('p');
+  postContent.textContent = post;
+  postContainer.append(postTitle, postName, postDate, postContent);
+  return postContainer;
+};
+
+const getPosts = async () => {
+  const postsCollection = collection(db, 'posts');
+  const q = query(postsCollection, orderBy('date', 'desc'));
+  const postsQuery = await getDocs((q));
+  console.log(postsQuery);
+  const posts = [];
+  postsQuery.forEach((post) => {
+    posts.push(post.data());
+  });
+  console.log(posts);
+  return posts;
+};
 export {
-  sigInWithGoogle, createUser, loginUser, updateOutput,
+  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts,
 };
