@@ -1,4 +1,3 @@
-
 html {
   height: 100%;
 }
@@ -381,3 +380,150 @@ figure {
   font-family: var(--principal);
   color: var(--naranjaclaro);
 }
+
+/*CSS para FEED */s
+.logoImgFeed {
+  width: 20%;
+}
+
+/* CSS PARA createnewpost*/
+.content-child {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: var(--color-moccasin);
+}
+.content,
+.content-item {
+  position: absolute;
+  top: 127px;
+  left: 15px;
+  width: 281px;
+  height: 251px;
+}
+.content-item {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px;
+  background-color: var(--color-moccasin);
+}
+.content1 {
+  position: absolute;
+  top: 174px;
+  left: 316px;
+  width: 101px;
+  height: 204px;
+}
+.logo-icon,
+.publication-child {
+  position: absolute;
+  top: 135px;
+  left: 25px;
+  width: 29.7px;
+  height: 29.7px;
+}
+.logo-icon {
+  top: 39px;
+  left: 33px;
+  width: 59px;
+  height: 69px;
+  object-fit: cover;
+}
+.publication-item {
+  position: absolute;
+  top: 48px;
+  left: 307px;
+  border-radius: 50%;
+  background-color: rgba(222, 184, 252, 0.5);
+  width: 50px;
+  height: 50px;
+}
+.user-plus-01-icon {
+  position: absolute;
+  top: 53px;
+  left: 316px;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+}
+.attachment-02-icon,
+.camera-plus-icon,
+.link-02-icon {
+  position: absolute;
+  top: 212px;
+  left: 327px;
+  width: 40px;
+  height: 40px;
+}
+.camera-plus-icon,
+.link-02-icon {
+  top: 265px;
+  overflow: hidden;
+}
+.link-02-icon {
+  top: 318px;
+}
+.publication-inner {
+  position: absolute;
+  top: 318px;
+  left: 246px;
+  border-radius: 50%;
+  background-color: var(--color-gainsboro);
+  width: 50px;
+  height: 50px;
+}
+.line-icon,
+.save-01-icon {
+  position: absolute;
+  top: 171.03px;
+  left: 16px;
+  width: 289.5px;
+  height: 2px;
+}
+.save-01-icon {
+  top: 323px;
+  left: 251px;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+.entrar {
+  position: absolute;
+  top: calc(50% - 8.5px);
+  left: 61px;
+  display: inline-block;
+  width: 129px;
+  height: 38px;
+}
+.buttonorange {
+  position: absolute;
+  top: 422px;
+  left: 120px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-orange);
+  width: 252px;
+  height: 59px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.publication {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 844px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-ubuntu-mono);
+}
+
