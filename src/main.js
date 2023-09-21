@@ -5,7 +5,7 @@ import register from './components/register.js';
 import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
 import feed from './components/feed.js';
-import createNewPost from './components/createNewPost.js';
+
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -28,9 +28,10 @@ const rutas = {
   '/about': about(onNavigate),
   '/forgotPassword': forgotPassword(onNavigate),
   '/feed': feed(onNavigate),
-  '/createNewPost': createNewPost(onNavigate),
+  
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };
+
 /* eslint-enable */
 const component = () => rutas[window.location.pathname];
 
