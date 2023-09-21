@@ -7,6 +7,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-image: url("assets/background3.jpg");
 }
 
 :root {
@@ -31,7 +32,9 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 50vh;
   font-family: var(--principal);
+  /* background-image: url("assets/background.jpg"); */
 }
 
 .logoImg {
@@ -140,7 +143,7 @@ section {
 .slogan {
   width: 253px;
   height: 70px;
-  margin: 100px 20px;
+  margin: 20px 20px;
   font-family: var(--principal);
   font-size: 20px;
   font-weight: 300;
@@ -361,7 +364,7 @@ figure {
   
 .what {
   width: 294px;
-  height: 71px;
+  height: 0px;
   margin: 31px 29.8px 108px 25px;
   font-family: var(--principal);
   font-weight: 300;
@@ -372,7 +375,7 @@ figure {
 .planetImg {
   width: 336.8px;
   height: 279px;
-  margin: 50px 0px 0 0px;
+  margin: 10px 0px 0 0px;
   padding: 0 5.7px 0 0;
 }
 
