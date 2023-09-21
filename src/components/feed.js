@@ -2,39 +2,39 @@ import { addPost, getPosts } from '../lib/index.js';
 
 function feed(navigateTo) {
   const section = document.createElement('section');
-  section.className = 'container';
+  section.classList = 'container';
   const userIcon = document.createElement('img');
-  userIcon.className = 'userIcon';
+  userIcon.classList = 'userIcon';
   userIcon.alt = 'user icon';
   userIcon.src = '../assets/userIcon.png';
   const logoImg = document.createElement('img');
-  logoImg.className = 'logoImgFeed';
+  logoImg.classList = 'logoImgFeed';
   logoImg.alt = 'Logo de la página';
   logoImg.src = '../assets/logo.png';
   const feedName = document.createElement('h1');
-  feedName.className = 'feedName';
+  feedName.classList = 'feedName';
   feedName.textContent = 'Tu muro';
   const feedPost = document.createElement('h1');
-  feedPost.className = 'feedPost';
+  feedPost.classList = 'feedPost';
   feedPost.textContent = 'Tus publicaciones';
   const form = document.createElement('form');
   const hr = document.createElement('hr');
-  hr.className = 'hrFeed';
+  hr.classList = 'hrFeed';
 
   const inputTitle = document.createElement('input');
   const inputPost = document.createElement('input');
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
-  inputPost.className = 'inputLog';
+  inputPost.classList = 'inputLog';
   inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
-  inputTitle.className = 'inputLog';
+  inputTitle.classList = 'inputLog';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
-  btnPost.className = 'btnLogin';
+  btnPost.cclassList = 'btnLogin';
   btnPost.textContent = 'Enviar';
 
   section.append(logoImg, userIcon, feedName, feedPost, hr);
