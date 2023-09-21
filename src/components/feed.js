@@ -1,4 +1,4 @@
-import { addPost, getPosts } from '../lib/index.js';
+import { addPost, getPosts, showPosts } from '../lib/index.js';
 
 function feed(navigateTo) {
   const section = document.createElement('section');
@@ -35,13 +35,13 @@ function feed(navigateTo) {
       withOutPost.textContent = 'No puedes enviar un post vacío';
       return;
     }
-    const postContainer = await addPost(title, post);
-    document.body.appendChild(postContainer);
     await addPost(title, post);
     inputTitle.value = '';
     inputPost.value = '';
     withOutPost.textContent = '';
-    getPosts();
+    const postsList = await getPosts();
+    const postContainer = await showPosts(postsList);
+    document.body.appendChild(postContainer);
   });
 
   logoImg.addEventListener('click', () => {

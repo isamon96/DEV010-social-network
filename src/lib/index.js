@@ -83,32 +83,37 @@ const addPost = async (title, post) => {
     title,
     post,
   });
-  console.log(auth);
-  const postContainer = document.createElement('section');
-  const postName = document.createElement('p');
-  postName.textContent = name;
-  const postDate = document.createElement('p');
-  postDate.textContent = date;
-  const postTitle = document.createElement('h2');
-  postTitle.textContent = title;
-  const postContent = document.createElement('p');
-  postContent.textContent = post;
-  postContainer.append(postTitle, postName, postDate, postContent);
-  return postContainer;
 };
 
 const getPosts = async () => {
   const postsCollection = collection(db, 'posts');
   const q = query(postsCollection, orderBy('date', 'desc'));
   const postsQuery = await getDocs((q));
-  console.log(postsQuery);
   const posts = [];
   postsQuery.forEach((post) => {
     posts.push(post.data());
   });
-  console.log(posts);
   return posts;
 };
+
+const showPosts = async (array) => {
+  const postsContainer = document.createElement('section');
+  array.forEach((post) => {
+    const postContainer = document.createElement('section');
+    const postName = document.createElement('p');
+    postName.textContent = post.name;
+    const postDate = document.createElement('p');
+    postDate.textContent = post.date;
+    const postTitle = document.createElement('h2');
+    postTitle.textContent = post.title;
+    const postContent = document.createElement('p');
+    postContent.textContent = post.post;
+    postContainer.append(postTitle, postName, postDate, postContent);
+    postsContainer.appendChild(postContainer);
+  });
+  return postsContainer;
+};
+
 export {
-  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts,
+  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts, showPosts,
 };
