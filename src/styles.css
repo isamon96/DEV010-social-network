@@ -410,37 +410,10 @@ figure {
   margin: 10px;
 }
 
-/* .userIcon {
-  position:fixed;
-  width: 45px;
-  height: 45px;
-} */
-
-/* .hrFeed {
-  width: 30%;
-  border: 2px solid #f6b142;
-  position: absolute;
-  top: 12rem;
-  left: 16%;
-}
-
-.feedName {
-  position: absolute;
-  top: 9.5rem;
-  left: 7.5rem;
-}
-
-.feedPost {
-  position: absolute;
-  top: 9.5rem;
-  right: 7.5rem;
-} */
-
 .textAreaSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 40px;
   margin: 0px auto;
 }
 
@@ -456,11 +429,19 @@ figure {
 
 .postsSection {
   margin: auto;
-  font-size: 12px;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
   max-height: calc(100vh - 200px); /* Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
   width: 100%;
   height: 40vh;
+}
+
+.individualPost {
+font-size: 10px;
+text-align: justify;
+padding: 20px; /* Agregamos espacio de 20px alrededor de cada publicación */
+margin: 10px 0; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
+background-color: hsl(270, 6%, 94%); /* Agrega un fondo gris claro */
+
 }
 
 .footer {

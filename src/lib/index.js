@@ -97,12 +97,8 @@ const getPosts = async () => {
 };
 
 const showPosts = async (array) => {
-  const postsSection = document.createElement('section');
-  // individual-post
-  // const individualPost = document.createElement('article');
-  // individualPost.setAttribute('id', 'individual-post');
-  // individualPost.classList.add('individual-post');
-  // https://github.com/ginapedraza/DEV010-social-network/blob/main/src/lib/index.js
+  const individualPost = document.createElement('section');
+  individualPost.className = 'individualPost';
   array.forEach((post) => {
     const postContainer = document.createElement('section');
     const postName = document.createElement('p');
@@ -114,9 +110,9 @@ const showPosts = async (array) => {
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
     postContainer.append(postTitle, postName, postDate, postContent);
-    postsSection.appendChild(postContainer);
+    individualPost.appendChild(postContainer);
   });
-  return postsSection;
+  return individualPost;
 };
 
 export {
