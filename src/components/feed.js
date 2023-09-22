@@ -4,8 +4,20 @@ function feed(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
 
+  // const backgroundSection = document.createElement('section');
+  // backgroundSection.classList.add('backgroundSection');
+
   const header = document.createElement('header');
   header.classList.add('header');
+
+  // const textArea = document.createElement('textarea');
+  // textArea.classList.add('textArea');
+  // textArea.placeholder = 'Escribe tu post aquí';
+
+  const postsSection = document.createElement('section');
+  postsSection.setAttribute('id', 'postsSection');
+  postsSection.append(addPost());
+  // addPost (con textarea y boton submit) importado
 
   const userIcon = document.createElement('img');
   userIcon.className = 'userIcon';
@@ -17,40 +29,27 @@ function feed(navigateTo) {
   logoImg.alt = 'Logo de la página';
   logoImg.src = '../assets/logo.png';
 
-  const feedName = document.createElement('h1');
-  feedName.className = 'feedName';
-  feedName.textContent = 'Tu muro';
+  // const feedName = document.createElement('h1');
+  // feedName.className = 'feedName';
+  // feedName.textContent = 'Tu muro';
 
-  const footer = document.createElement('footer');
-  // header.append(titleFeed, userIcon);
-
-  const sectionPosts = document.createElement('secton');
-  sectionPosts.classList.add('sectionPost');
-  // sectionPosts.appendChild(addPost())
-  // addPost (con textarea y boton submit) importado
+  const textAreaSection = document.createElement('section');
+  textAreaSection.classList.add('textAreaSection');
 
   const containerPost = document.createElement('section');
   // luego se agrega en onSnapshot con .innerHTML = ''
   // postContainer.append(postLikeContainer) dentro de un for each
-  
-  const textArea = document.createElement('textarea');
-  textArea.classList.add('text-area');
-  textArea.placeholder = '¿Qué quieres compartir hoy?';
-
-  // sectionPosts.appendChild(postContainer) // se añade contenedor de post
-  // footer.appendChild(navigationBar(navigateTo)) // navigationBar importada
-  // section.append(header, sectionPost, footer) // se añade contendor padre section a body
 
   const form = document.createElement('form');
-  const hr = document.createElement('hr');
-  hr.className = 'hrFeed';
+  // const hr = document.createElement('hr');
+  // hr.className = 'hrFeed';
 
   const inputTitle = document.createElement('input');
   const inputPost = document.createElement('input');
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
-  inputPost.className = 'inputLog';
+  inputPost.className = 'inputPost';
   inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
@@ -58,19 +57,18 @@ function feed(navigateTo) {
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
-  btnPost.className = 'btnLogin';
+  btnPost.className = 'button';
   btnPost.textContent = 'Enviar';
 
-  const backgroundSection = document.createElement('section');
-  backgroundSection.classList.add('background-section');
-  const textAreaSection = document.createElement('section');
-  textAreaSection.classList.add('textAreaSection');
-
+  const footer = document.createElement('footer');
+  footer.classList.add('footer');
+  // footer.appendChild(navigationBar(navigateTo)) // navigationBar importada
+  // section.append(header, sectionPost, footer) // se añade contendor padre section a body
   
-  section.append(header, feedName, hr, backgroundSection, footer);
+  section.append(header, textAreaSection, withOutPost, postsSection, footer);
   header.append(logoImg, userIcon);
-  backgroundSection.append(containerPost, textAreaSection, form, withOutPost);
-  textAreaSection.append(textArea, form);
+  textAreaSection.append(form);
+  postsSection.appendChild(containerPost);
   form.append(inputTitle, inputPost, btnPost);
   
   btnPost.addEventListener('click', async (event) => {
