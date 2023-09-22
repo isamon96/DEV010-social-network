@@ -3,44 +3,20 @@ import { addPost, getPosts, showPosts } from '../lib/index.js';
 function feed(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
-
-  const header = document.createElement('header');
-  header.classList.add('header');
-
   const userIcon = document.createElement('img');
   userIcon.className = 'userIcon';
   userIcon.alt = 'user icon';
   userIcon.src = '../assets/userIcon.png';
-
   const logoImg = document.createElement('img');
   logoImg.className = 'logoImgFeed';
   logoImg.alt = 'Logo de la página';
   logoImg.src = '../assets/logo.png';
-
   const feedName = document.createElement('h1');
   feedName.className = 'feedName';
   feedName.textContent = 'Tu muro';
-
-  const footer = document.createElement('footer');
-  // header.append(titleFeed, userIcon);
-
-  const sectionPosts = document.createElement('secton');
-  sectionPosts.classList.add('sectionPost');
-  // sectionPosts.appendChild(addPost())
-  // addPost (con textarea y boton submit) importado
-
-  const containerPost = document.createElement('section');
-  // luego se agrega en onSnapshot con .innerHTML = ''
-  // postContainer.append(postLikeContainer) dentro de un for each
-  
-  const textArea = document.createElement('textarea');
-  textArea.classList.add('text-area');
-  textArea.placeholder = '¿Qué quieres compartir hoy?';
-
-  // sectionPosts.appendChild(postContainer) // se añade contenedor de post
-  // footer.appendChild(navigationBar(navigateTo)) // navigationBar importada
-  // section.append(header, sectionPost, footer) // se añade contendor padre section a body
-
+  const feedPost = document.createElement('h1');
+  feedPost.className = 'feedPost';
+  feedPost.textContent = 'Tus publicaciones';
   const form = document.createElement('form');
   const hr = document.createElement('hr');
   hr.className = 'hrFeed';
@@ -65,14 +41,17 @@ function feed(navigateTo) {
   backgroundSection.classList.add('background-section');
   const textAreaSection = document.createElement('section');
   textAreaSection.classList.add('textAreaSection');
+  const textArea = document.createElement('textarea');
+  textArea.classList.add('text-area');
+  textArea.placeholder = '¿Qué quieres compartir hoy?';
 
-  
-  section.append(header, feedName, hr, backgroundSection, footer);
-  header.append(logoImg, userIcon);
-  backgroundSection.append(containerPost, textAreaSection, form, withOutPost);
-  textAreaSection.append(textArea, form);
+  section.append(logoImg, userIcon, feedName, feedPost, hr, backgroundSection);
+  backgroundSection.append(textAreaSection);
+  textAreaSection.append(textArea);
   form.append(inputTitle, inputPost, btnPost);
-  
+  section.append(form, withOutPost, logoImg);
+  const btnSendPost = 
+
   btnPost.addEventListener('click', async (event) => {
     event.preventDefault();
     const title = inputTitle.value.trim();
