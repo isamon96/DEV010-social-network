@@ -31,6 +31,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
   height: 100vh;
   width: 50vh;
   font-family: var(--principal);
@@ -180,6 +181,11 @@ h2 {
   font-size: 18px;
   text-align: center;
   color: #353519;
+}
+
+h3{
+  font-size: 14px;
+  text-align: center;
 }
   
 figure {
@@ -394,15 +400,14 @@ figure {
 /*Feed*/
 
 .header {
-  position: relative;
   width: 100%;
   height: 100px;
-  background-color: var(--verdeclaro);
+  background-color: var(--naranjaclaro);
 }
 
 .logoImgFeed {
   width: 100px;
-  position:fixed;
+  margin: 10px;
 }
 
 /* .userIcon {
@@ -411,7 +416,7 @@ figure {
   height: 45px;
 } */
 
-.hrFeed {
+/* .hrFeed {
   width: 30%;
   border: 2px solid #f6b142;
   position: absolute;
@@ -429,7 +434,7 @@ figure {
   position: absolute;
   top: 9.5rem;
   right: 7.5rem;
-}
+} */
 
 .textAreaSection {
   display: flex;
@@ -449,16 +454,18 @@ figure {
   font-family: var(--principal);
 }
 
-#postsSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.postsSection {
   margin: auto;
-  padding: 50px;
+  font-size: 12px;
+  overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la sección */
+  max-height: calc(100vh - 200px); /* Establecemos una altura máxima para los posts, dejando espacio para el header y el footer */
+  width: 100%;
+  height: 40vh;
 }
 
 .footer {
-  position: relative;
+  /* position: fixed; */
+  bottom: 0;
   width: 100%;
   height: 100px;
   background-color: var(--verdeclaro);

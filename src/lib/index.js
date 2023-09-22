@@ -97,7 +97,7 @@ const getPosts = async () => {
 };
 
 const showPosts = async (array) => {
-  const postsContainer = document.createElement('section');
+  const postsSection = document.createElement('section');
   // individual-post
   // const individualPost = document.createElement('article');
   // individualPost.setAttribute('id', 'individual-post');
@@ -109,14 +109,14 @@ const showPosts = async (array) => {
     postName.textContent = post.name;
     const postDate = document.createElement('p');
     postDate.textContent = post.date;
-    const postTitle = document.createElement('h2');
+    const postTitle = document.createElement('h3');
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
     postContainer.append(postTitle, postName, postDate, postContent);
-    postsContainer.appendChild(postContainer);
+    postsSection.appendChild(postContainer);
   });
-  return postsContainer;
+  return postsSection;
 };
 
 export {

@@ -8,8 +8,9 @@ function feed(navigateTo) {
   header.classList.add('header');
 
   const postsSection = document.createElement('section');
-  postsSection.setAttribute('id', 'postsSection');
-  postsSection.append(addPost());
+  postsSection.className = 'postsSection';
+  // postsSection.setAttribute('id', 'postsSection');
+  // postsSection.append(addPost());
   // addPost (con textarea y boton submit) importado
 
   // const userIcon = document.createElement('img');
@@ -31,7 +32,8 @@ function feed(navigateTo) {
   const textAreaSection = document.createElement('section');
   textAreaSection.classList.add('textAreaSection');
 
-  const containerPost = document.createElement('section');
+  const postContainer = document.createElement('container');
+  // postContainer.append(addPost());
   // luego se agrega en onSnapshot con .innerHTML = ''
   // postContainer.append(postLikeContainer) dentro de un for each
 
@@ -62,12 +64,6 @@ function feed(navigateTo) {
   // footer.appendChild(navigationBar(navigateTo)) // navigationBar importada
   // section.append(header, sectionPost, footer) // se añade contendor padre section a body
   
-  section.append(header, textAreaSection, withOutPost, postsSection, footer);
-  header.append(logoImg /* userIcon*/);
-  textAreaSection.append(form, inputTitle, inputPost, btnPost);
-  postsSection.appendChild(containerPost);
-  form.append(inputTitle, inputPost, btnPost);
-  
   btnPost.addEventListener('click', async (event) => {
     event.preventDefault();
     const title = inputTitle.value.trim();
@@ -81,9 +77,17 @@ function feed(navigateTo) {
     inputPost.value = '';
     withOutPost.textContent = '';
     const postsList = await getPosts();
-    const postContainer = await showPosts(postsList);
-    document.body.appendChild(postContainer);
+    const posts = await showPosts(postsList);
+    // document.body.section.append(posts);
+    // postsSection.innerHTML = '';
+    postsSection.appendChild(posts);
   });
+
+  section.append(header, textAreaSection, withOutPost, postsSection, footer);
+  header.append(logoImg /* userIcon*/);
+  textAreaSection.append(form, inputTitle, inputPost, btnPost);
+  postsSection.append(postContainer);
+  form.append(inputTitle, inputPost, btnPost);
 
   logoImg.addEventListener('click', () => {
     navigateTo('/');
