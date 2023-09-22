@@ -4,25 +4,18 @@ function feed(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
 
-  // const backgroundSection = document.createElement('section');
-  // backgroundSection.classList.add('backgroundSection');
-
   const header = document.createElement('header');
   header.classList.add('header');
-
-  // const textArea = document.createElement('textarea');
-  // textArea.classList.add('textArea');
-  // textArea.placeholder = 'Escribe tu post aquí';
 
   const postsSection = document.createElement('section');
   postsSection.setAttribute('id', 'postsSection');
   postsSection.append(addPost());
   // addPost (con textarea y boton submit) importado
 
-  const userIcon = document.createElement('img');
-  userIcon.className = 'userIcon';
-  userIcon.alt = 'user icon';
-  userIcon.src = '../assets/userIcon.png';
+  // const userIcon = document.createElement('img');
+  // userIcon.className = 'userIcon';
+  // userIcon.alt = 'user icon';
+  // userIcon.src = '../assets/userIcon.png';
 
   const logoImg = document.createElement('img');
   logoImg.className = 'logoImgFeed';
@@ -32,6 +25,8 @@ function feed(navigateTo) {
   // const feedName = document.createElement('h1');
   // feedName.className = 'feedName';
   // feedName.textContent = 'Tu muro';
+  // const hr = document.createElement('hr');
+  // hr.className = 'hrFeed';
 
   const textAreaSection = document.createElement('section');
   textAreaSection.classList.add('textAreaSection');
@@ -41,21 +36,23 @@ function feed(navigateTo) {
   // postContainer.append(postLikeContainer) dentro de un for each
 
   const form = document.createElement('form');
-  // const hr = document.createElement('hr');
-  // hr.className = 'hrFeed';
 
   const inputTitle = document.createElement('input');
   const inputPost = document.createElement('input');
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
+  inputTitle.className = 'inputLog';
+  inputTitle.type = 'text';
+  inputTitle.placeholder = 'Título de tu post';
+
   inputPost.className = 'inputPost';
   inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
-  inputTitle.className = 'inputLog';
-  inputTitle.type = 'text';
-  inputTitle.placeholder = 'Título de tu post';
+  // const textArea = document.createElement('textarea');
+  // textArea.classList.add('textArea');
+  // textArea.placeholder = 'Escribe tu post aquí';
 
   btnPost.className = 'button';
   btnPost.textContent = 'Enviar';
@@ -66,8 +63,8 @@ function feed(navigateTo) {
   // section.append(header, sectionPost, footer) // se añade contendor padre section a body
   
   section.append(header, textAreaSection, withOutPost, postsSection, footer);
-  header.append(logoImg, userIcon);
-  textAreaSection.append(form);
+  header.append(logoImg /* userIcon*/);
+  textAreaSection.append(form, inputTitle, inputPost, btnPost);
   postsSection.appendChild(containerPost);
   form.append(inputTitle, inputPost, btnPost);
   

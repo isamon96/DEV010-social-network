@@ -98,6 +98,11 @@ const getPosts = async () => {
 
 const showPosts = async (array) => {
   const postsContainer = document.createElement('section');
+  // individual-post
+  // const individualPost = document.createElement('article');
+  // individualPost.setAttribute('id', 'individual-post');
+  // individualPost.classList.add('individual-post');
+  // https://github.com/ginapedraza/DEV010-social-network/blob/main/src/lib/index.js
   array.forEach((post) => {
     const postContainer = document.createElement('section');
     const postName = document.createElement('p');

@@ -7,7 +7,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-image: url("assets/background3.jpg");
+  /* background-image: url("assets/background3.jpg"); */
 }
 
 :root {
@@ -35,7 +35,7 @@ body{
   width: 50vh;
   font-family: var(--principal);
   justify-content: space-evenly;
-  /* background-image: url("assets/background.jpg"); */
+  box-shadow: 0 0 10px var(--verdeclaro);
 }
 
 .logoImg {
@@ -392,9 +392,6 @@ figure {
 }
 
 /*Feed*/
-.backgroundSection {
-  display: flex;
-}
 
 .header {
   position: relative;
@@ -406,26 +403,13 @@ figure {
 .logoImgFeed {
   width: 100px;
   position:fixed;
-  /* margin: 20px; */
-  /* top: 0.5rem;
-  left: 0rem; */
-  /* overflow: hidden; */
-  /* flex-direction: row; */
-  /* justify-content: space-between; */
-  /* flex-wrap: wrap; */
 }
 
-.userIcon {
+/* .userIcon {
   position:fixed;
   width: 45px;
-  /* margin: 50px; */
-  /* top: 0.5rem; */
   height: 45px;
-  /* overflow: hidden; */
-  /* flex-direction: row; */
-  /* justify-content: space-between; */
-  /* flex-wrap: wrap; */
-}
+} */
 
 .hrFeed {
   width: 30%;
