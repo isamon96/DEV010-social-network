@@ -414,7 +414,7 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0px auto;
+  /* margin: 3px 0; */
 }
 
 .inputPost {
@@ -425,7 +425,14 @@ figure {
   min-height: 100px;
   resize: none;
   font-family: var(--principal);
+  padding: 10px; /* Agrega un espacio interno para el texto */
+  font-size: 14px; /*Tamaño de fuente */
 }
+
+/* Estilo para el contador de caracteres */
+.charCount {
+  font-size: 9px;
+  }
 
 .postsSection {
   margin: auto;

@@ -40,17 +40,27 @@ function feed(navigateTo) {
   const form = document.createElement('form');
 
   const inputTitle = document.createElement('input');
-  const inputPost = document.createElement('input');
+  // const inputPost = document.createElement('input');
+  const inputPost = document.createElement('textarea'); // Cambia input a textarea para un área de texto
+  const charCount = document.createElement('span'); // Para contar los caracteres
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
+  
 
   inputTitle.className = 'inputLog';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
-  inputPost.type = 'text';
+  // inputPost.type = 'text'; <textarea> no tiene una propiedad type
   inputPost.placeholder = 'Escribe tu post';
+
+  // Escuchar cambios en el área de texto y actualizar el contador de caracteres
+inputPost.addEventListener('input', function () {
+  const characterCount = this.value.length;
+  charCount.textContent = characterCount + '/2000'; // Cambia 280 al límite deseado
+});
+
 
   // const textArea = document.createElement('textarea');
   // textArea.classList.add('textArea');
@@ -87,7 +97,7 @@ function feed(navigateTo) {
   header.append(logoImg /* userIcon*/);
   textAreaSection.append(form, inputTitle, inputPost, btnPost);
   postsSection.append(postContainer);
-  form.append(inputTitle, inputPost, btnPost);
+  form.append(inputTitle, inputPost, charCount, btnPost);
 
   logoImg.addEventListener('click', () => {
     navigateTo('/');
