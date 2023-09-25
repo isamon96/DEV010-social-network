@@ -56,16 +56,25 @@ function login(navigateTo) {
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
-  btnLoginGoogle.addEventListener('click', sigInWithGoogle);
+  btnLoginGoogle.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const user = await sigInWithGoogle(event);
+    if (user) {
+      navigateTo('/feed');
+    }
+  });
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });
 
-  btnLogin.addEventListener('click', (event) => {
+  btnLogin.addEventListener('click', async (event) => {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
-    loginUser(email, password, mensaje);
+    const user = await loginUser(email, password, mensaje);
+    if (user) {
+      navigateTo('/feed');
+    }
   });
 
   passAnchor.addEventListener('click', () => {

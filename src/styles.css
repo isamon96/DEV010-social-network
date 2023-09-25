@@ -7,6 +7,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100%;
+  /* background-image: url("assets/background3.jpg"); */
 }
 
 :root {
@@ -30,8 +31,12 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  width: 50vh;
   font-family: var(--principal);
+  justify-content: space-evenly;
+  box-shadow: 0 0 10px var(--verdeclaro);
 }
 
 .logoImg {
@@ -140,7 +145,7 @@ section {
 .slogan {
   width: 253px;
   height: 70px;
-  margin: 100px 20px;
+  margin: 20px 20px;
   font-family: var(--principal);
   font-size: 20px;
   font-weight: 300;
@@ -164,6 +169,10 @@ button {
   font-family: var(--principal);
   color: #fff;
 }
+
+button:hover {
+  box-shadow: #c992d2;
+}
   
 h2 {
   width: 240px;
@@ -172,6 +181,11 @@ h2 {
   font-size: 18px;
   text-align: center;
   color: #353519;
+}
+
+h3{
+  font-size: 14px;
+  text-align: center;
 }
   
 figure {
@@ -361,7 +375,7 @@ figure {
   
 .what {
   width: 294px;
-  height: 71px;
+  height: 0px;
   margin: 31px 29.8px 108px 25px;
   font-family: var(--principal);
   font-weight: 300;
@@ -372,11 +386,75 @@ figure {
 .planetImg {
   width: 336.8px;
   height: 279px;
-  margin: 50px 0px 0 0px;
-  padding: 0 5.7px 0 0;
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+  align-items: flex-end;
 }
 
 #mensaje {
   font-family: var(--principal);
   color: var(--naranjaclaro);
+}
+
+/*Feed*/
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: var(--naranjaclaro);
+}
+
+.logoImgFeed {
+  width: 100px;
+  margin: 10px;
+}
+
+.textAreaSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 3px 0; */
+}
+
+.inputPost {
+  margin: 15px;
+  border: 1px solid var(--naranja);
+  border-radius: 5px;
+  min-width: 250px;
+  min-height: 100px;
+  resize: none;
+  font-family: var(--principal);
+  padding: 10px; /* Agrega un espacio interno para el texto */
+  font-size: 14px; /*Tamaño de fuente */
+}
+
+/* Estilo para el contador de caracteres */
+.charCount {
+  font-size: 9px;
+  }
+
+.postsSection {
+  margin: auto;
+  overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
+  max-height: calc(100vh - 200px); /* Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
+  width: 100%;
+  height: 40vh;
+}
+
+.individualPost {
+font-size: 10px;
+text-align: justify;
+padding: 20px; /* Agregamos espacio de 20px alrededor de cada publicación */
+margin: 10px 0; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
+background-color: hsl(270, 6%, 94%); /* Agrega un fondo gris claro */
+
+}
+
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: var(--verdeclaro);
 }

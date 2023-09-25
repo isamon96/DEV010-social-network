@@ -4,9 +4,14 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 
-import { auth } from '../firebase';
+import {
+  addDoc, collection, Timestamp, getDocs, query, orderBy,
+} from 'firebase/firestore';
+
+import { db, auth } from '../firebase';
 
 const updateOutput = (outputElement, message) => {
   if (outputElement) {
@@ -69,6 +74,66 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     }
   });
 
+const addPost = async (title, post) => {
+  const name = auth.currentUser.displayName;
+  const date = Timestamp.now().toDate().toLocaleString();
+  const postsCollection = collection(db, 'posts');
+  await addDoc(postsCollection, {
+    name,
+    date,
+    title,
+    post,
+  });
+};
+
+const getPosts = async () => {
+  const postsCollection = collection(db, 'posts');
+  const q = query(postsCollection, orderBy('date', 'desc'));
+  const postsQuery = await getDocs((q));
+  const posts = [];
+  postsQuery.forEach((post) => {
+    posts.push(post.data());
+  });
+  return posts;
+};
+
+const showPosts = async (array) => {
+  const individualPost = document.createElement('section');
+  individualPost.className = 'individualPost';
+  array.forEach((post) => {
+    const postContainer = document.createElement('section');
+    const postName = document.createElement('p');
+    postName.textContent = post.name;
+    const postDate = document.createElement('p');
+    postDate.textContent = post.date;
+    const postTitle = document.createElement('h3');
+    postTitle.textContent = post.title;
+    const postContent = document.createElement('p');
+    postContent.textContent = post.post;
+    postContainer.append(postTitle, postName, postDate, postContent);
+    individualPost.appendChild(postContainer);
+  });
+  return individualPost;
+};
+
+const updateDisplayName = async (newDisplayName) => {
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: newDisplayName,
+    });
+    return true;
+  } catch (error) {
+    return error;
+  }
+};
+
 export {
-  sigInWithGoogle, createUser, loginUser, updateOutput,
+  sigInWithGoogle,
+  createUser,
+  loginUser,
+  updateOutput,
+  addPost,
+  getPosts,
+  showPosts,
+  updateDisplayName,
 };
