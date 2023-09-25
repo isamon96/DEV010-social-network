@@ -32,8 +32,8 @@ function navigationBar(navigateTo) {
     navigateTo('/profile');
   });
 
-  if (window.location.pathname === '/home') {
-    homeButton.style.color = 'var--';
+  if (window.location.pathname === '/login') {
+    homeButton.style.color = '#FFB11E';
     homeButton.style.fontSize = '1rem';
     homeButton.innerHTML = '<b>home</b>';
     feedButton.style.color = 'black';

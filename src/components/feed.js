@@ -26,7 +26,7 @@ function feed(navigateTo) {
   const inputTitle = document.createElement('input');
   const inputPost = document.createElement('textarea'); // Cambia input a textarea para un área de texto
   const charCount = document.createElement('span'); // Para contar los caracteres
-  const btnPost = document.createElement('buttons');
+  const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
   inputTitle.className = 'inputLog';
@@ -37,7 +37,7 @@ function feed(navigateTo) {
   // inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
-  btnPost.className = 'buttons';
+  btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
   // Escuchar cambios en el área de texto y actualizar el contador de caracteres
