@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -97,23 +98,42 @@ const getPosts = async () => {
 };
 
 const showPosts = async (array) => {
-  const postsContainer = document.createElement('section');
+  const individualPost = document.createElement('section');
+  individualPost.className = 'individualPost';
   array.forEach((post) => {
     const postContainer = document.createElement('section');
     const postName = document.createElement('p');
     postName.textContent = post.name;
     const postDate = document.createElement('p');
     postDate.textContent = post.date;
-    const postTitle = document.createElement('h2');
+    const postTitle = document.createElement('h3');
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
     postContainer.append(postTitle, postName, postDate, postContent);
-    postsContainer.appendChild(postContainer);
+    individualPost.appendChild(postContainer);
   });
-  return postsContainer;
+  return individualPost;
+};
+
+const updateDisplayName = async (newDisplayName) => {
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: newDisplayName,
+    });
+    return true;
+  } catch (error) {
+    return error;
+  }
 };
 
 export {
-  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts, showPosts,
+  sigInWithGoogle,
+  createUser,
+  loginUser,
+  updateOutput,
+  addPost,
+  getPosts,
+  showPosts,
+  updateDisplayName,
 };

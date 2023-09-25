@@ -68,15 +68,4 @@ describe('login', () => {
     btnLoginGoogle.click();
     expect(sigInWithGoogle).toHaveBeenCalledWith('event');
   });
-  /* it('should navigate to /feed when click btnLoginGoogle
-  if sigInWithGoogle returns true', async () => {
-    // Simular que sigInWithGoogle devuelve true
-    const sigInWithGoogle = jest.fn().mockResolvedValue(true);
-    const navigateTo = jest.fn();
-    const section = login(navigateTo);
-    const btnLoginGoogle = section.querySelector('.btnGoogle');
-    await btnLoginGoogle.click(); // Usar await ya que la función es asíncrona
-    // Verificar que navigateTo se llamó con '/feed'
-    expect(navigateTo).toHaveBeenCalledWith('/feed');
-  }); */
 });
