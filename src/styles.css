@@ -7,7 +7,6 @@ body{
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* background-image: url("assets/background3.jpg"); */
 }
 
 :root {
@@ -31,7 +30,6 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   height: 100vh;
   width: 50vh;
   font-family: var(--principal);
@@ -40,7 +38,7 @@ body{
 }
 
 .logoImg {
-  width: 50%;
+  width: 40%;
 }
 
 .inputLog {
@@ -68,6 +66,7 @@ hr{
 a, button, .iconImg {
   cursor: pointer;
   margin: 20px 0;
+  font-size: 14px;
 }
 
 form {
@@ -75,18 +74,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.btnLogin {
-  background-color: var(--naranjaclaro);
-  color: white;
-  border: none;
-  padding: 1%;
-  border-radius: 10px;
-  min-width: 252px;
-  min-height: 45px;
-  font-family: var(--principal);
-  cursor: pointer;
+  font-size: 14px;
 }
 
 .btnGoogle {
@@ -95,12 +83,15 @@ form {
   color: white;
   border: none;
   border-radius: 2px;
-  /* min-width: 300px;
-  min-height: 41px; */
   font-family: var(--principal);
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-  /* display: flex; */
-  /* align-items: center; */
+  width: 252px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 16px;
 }	
 
 .btnGoogle:hover {
@@ -138,48 +129,40 @@ section {
   width: 280px;
   height: 251px;
   object-fit: cover;
-  justify-content: center;
-  align-items: center;
 }
   
 .slogan {
   width: 253px;
-  height: 70px;
-  margin: 20px 20px;
   font-family: var(--principal);
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 18px;
   text-align: center;
   color: #353519;
 }
   
-button {
-  height: 50px;
+.buttons {
   min-width: 252px;
   min-height: 45px;
-  flex-grow: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 16px 32px;
+  padding: 14px;
   border-radius: 10px;
   background-color: #ffb11e;
   border-style: none;
-  font-size: 18px;
+  font-size: 16px;
   font-family: var(--principal);
   color: #fff;
 }
 
-button:hover {
-  box-shadow: #c992d2;
+.buttons:hover {
+  background-color:#fffbba;
+  color:#bb713C;
 }
   
 h2 {
-  width: 240px;
+  /* width: 240px; */
   height: 30px;
   margin: 60px 20px 0px 20px;
   font-size: 18px;
-  text-align: center;
   color: #353519;
 }
 
@@ -440,7 +423,6 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 40px;
   margin: 0px auto;
 }
 
@@ -469,4 +451,9 @@ figure {
   width: 100%;
   height: 100px;
   background-color: var(--verdeclaro);
+}
+
+.individualPost {
+  border-color: #1669F2;
+  border-radius: 20px;
 }

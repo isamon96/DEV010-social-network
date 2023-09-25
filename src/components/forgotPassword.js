@@ -21,7 +21,7 @@ function forgotPassword(navigateTo) {
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
-  btnRecover.className = 'btnRecover';
+  btnRecover.className = 'buttons';
   btnRecover.textContent = 'Recuperar';
 
   section.append(logoImg, emailSearchAnchor, form, btnRecover, homeImg);

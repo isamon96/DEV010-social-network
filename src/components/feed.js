@@ -9,14 +9,6 @@ function feed(navigateTo) {
 
   const postsSection = document.createElement('section');
   postsSection.className = 'postsSection';
-  // postsSection.setAttribute('id', 'postsSection');
-  // postsSection.append(addPost());
-  // addPost (con textarea y boton submit) importado
-
-  // const userIcon = document.createElement('img');
-  // userIcon.className = 'userIcon';
-  // userIcon.alt = 'user icon';
-  // userIcon.src = '../assets/userIcon.png';
 
   const logoImg = document.createElement('img');
   logoImg.className = 'logoImgFeed';
@@ -56,7 +48,7 @@ function feed(navigateTo) {
   // textArea.classList.add('textArea');
   // textArea.placeholder = 'Escribe tu post aquí';
 
-  btnPost.className = 'button';
+  btnPost.className = 'buttons';
   btnPost.textContent = 'Enviar';
 
   const footer = document.createElement('footer');
@@ -78,7 +70,7 @@ function feed(navigateTo) {
     withOutPost.textContent = '';
     const postsList = await getPosts();
     const posts = await showPosts(postsList);
-    // document.body.section.append(posts);
+    // document.body.append(posts);
     // postsSection.innerHTML = '';
     postsSection.appendChild(posts);
   });
