@@ -201,5 +201,5 @@ describe('loginUser', () => {
     signInWithEmailAndPassword.mockRejectedValueOnce({ code: 'auth/wrong-password' });
     await loginUser(email, password, element);
     expect(element.textContent).toBe('La contraseña es incorrecta.');
-    });
+  });
 });

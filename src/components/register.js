@@ -1,4 +1,4 @@
-import { createUser } from '../lib/index.js';
+import { createUser, updateDisplayName } from '../lib/index.js';
 
 function register(navigateTo) {
   const section = document.createElement('section');
@@ -44,9 +44,9 @@ function register(navigateTo) {
 
   inputPass.className = 'inputLog';
   inputPass.type = 'password';
-  inputPass.placeholder = '🔒 Contraseña';
+  inputPass.placeholder = '🔑 Contraseña';
 
-  registerButton.id = 'btnRegister';
+   registerButton.className = 'buttons';
   
   homeImg.addEventListener('click', () => {
     navigateTo('/');
@@ -58,14 +58,21 @@ function register(navigateTo) {
     navigateTo('/');
   });
 
-  registerButton.addEventListener('click', (event) => {
+  registerButton.addEventListener('click', async (event) => {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
-    createUser(email, password, mensaje);
-    inputEmail.value = '';
-    inputPass.value = '';
-    inputName.value = '';
+    const name = inputName.value;
+    try {
+      await createUser(email, password, mensaje);
+      await updateDisplayName(name);
+      inputEmail.value = '';
+      inputPass.value = '';
+      inputName.value = '';
+      return true;
+    } catch (error) {
+      return error;
+    }
   });
 
   loginAnchor.addEventListener('click', () => {

@@ -14,14 +14,14 @@ function forgotPassword(navigateTo) {
 
   inputEmail.className = 'inputLog';
   inputEmail.type = 'text';
-  inputEmail.placeholder = '📧 Correo electrónico';
+  inputEmail.placeholder = '📧   Correo electrónico';
   emailSearchAnchor.textContent = 'Ingresa tu correo electrónico para recuperar tu cuenta';
 
   homeImg.className = 'iconImg';
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
-  btnRecover.className = 'btnRecover';
+  btnRecover.className = 'buttons';
   btnRecover.textContent = 'Recuperar';
 
   section.append(logoImg, emailSearchAnchor, form, btnRecover, homeImg);

@@ -35,7 +35,7 @@ describe('Testing about component', () => {
   });
 
   it('Should create a div with no text content when textContent is not provided', () => {
-    const div = aboutComponent.querySelector('.testDiv'); // Use the appropriate class name
+    const div = aboutComponent.querySelector('.testdiv'); // Use the appropriate class name
     expect(div.textContent).toBe('');
   });
 });
