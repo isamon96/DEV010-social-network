@@ -40,7 +40,7 @@ function login(navigateTo) {
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
-  btnLogin.className = 'buttons';
+  btnLogin.className = 'buttons'; // btn Login
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
@@ -67,11 +67,14 @@ function login(navigateTo) {
     navigateTo('/register');
   });
 
-  btnLogin.addEventListener('click', (event) => {
+  btnLogin.addEventListener('click', async (event) => {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
-    loginUser(email, password, mensaje);
+    const user = await loginUser(email, password, mensaje);
+    if (user) {
+      navigateTo('/feed');
+    }
   });
 
   passAnchor.addEventListener('click', () => {
@@ -86,4 +89,3 @@ function login(navigateTo) {
 }
 
 export default login;
-

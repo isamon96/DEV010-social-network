@@ -1,36 +1,30 @@
 function navigationBar(navigateTo) {
   const barContainer = document.createElement('section');
-  barContainer.className = 'buttons-container';
+  barContainer.className = 'buttonsContainer';
+
+  const homeButton = document.createElement('button');
+  homeButton.textContent = 'Home';
+  homeButton.id = 'homeButton';
+  homeButton.className = 'navigationButtons';
+
   const feedButton = document.createElement('button');
   feedButton.textContent = 'Feed';
-  feedButton.id = 'feedbutton';
-  feedButton.className = 'navigation-buttons';
-  const recipesButton = document.createElement('button');
-  recipesButton.textContent = 'Recipes';
-  recipesButton.className = 'navigation-buttons';
-  recipesButton.id = 'recipesbutton';
-  const workoutButton = document.createElement('button');
-  workoutButton.textContent = 'Workout';
-  workoutButton.className = 'navigation-buttons';
-  workoutButton.id = 'workoutbutton';
+  feedButton.className = 'navigationButtons';
+  feedButton.id = 'feedButton';
+
   const profileButton = document.createElement('button');
   profileButton.textContent = 'Profile';
-  profileButton.className = 'navigation-buttons';
-  profileButton.id = 'profilebutton';
+  profileButton.className = 'navigationButtons';
+  profileButton.id = 'profileButton';
 
-  feedButton.addEventListener('click', async (e) => {
+  homeButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    navigateTo('/');
+  });
+
+  feedButton.addEventListener('click', (e) => {
     e.preventDefault();
     navigateTo('/feed');
-  });
-
-  recipesButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateTo('/recipes');
-  });
-
-  workoutButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateTo('/workout');
   });
 
   profileButton.addEventListener('click', (e) => {
@@ -38,37 +32,27 @@ function navigationBar(navigateTo) {
     navigateTo('/profile');
   });
 
-  if (window.location.pathname === '/feed') {
-    feedButton.style.color = '#00bcd4';
+  if (window.location.pathname === '/home') {
+    homeButton.style.color = 'var--';
+    homeButton.style.fontSize = '1rem';
+    homeButton.innerHTML = '<b>home</b>';
+    feedButton.style.color = 'black';
+    profileButton.style.color = 'black';
+  } else if (window.location.pathname === '/feed') {
+    homeButton.style.color = 'black';
+    feedButton.style.color = '#FFB11E';
     feedButton.style.fontSize = '1rem';
     feedButton.innerHTML = '<b>Feed</b>';
-    recipesButton.style.color = 'black';
-    workoutButton.style.color = 'black';
-    profileButton.style.color = 'black';
-  } else if (window.location.pathname === '/recipes') {
-    feedButton.style.color = 'black';
-    recipesButton.style.color = '#00bcd4';
-    recipesButton.style.fontSize = '1rem';
-    recipesButton.innerHTML = '<b>Recipes</b>';
-    workoutButton.style.color = 'black';
-    profileButton.style.color = 'black';
-  } else if (window.location.pathname === '/workout') {
-    feedButton.style.color = 'black';
-    recipesButton.style.color = 'black';
-    workoutButton.style.color = '#00bcd4';
-    workoutButton.style.fontSize = '1rem';
-    workoutButton.innerHTML = '<b>Workout</b>';
     profileButton.style.color = 'black';
   } else if (window.location.pathname === '/profile') {
+    homeButton.style.color = 'black';
     feedButton.style.color = 'black';
-    recipesButton.style.color = 'black';
-    workoutButton.style.color = 'black';
-    profileButton.style.color = '#00bcd4';
+    profileButton.style.color = '#FFB11E';
     profileButton.style.fontSize = '1rem';
     profileButton.innerHTML = '<b>Profile</b>';
   }
 
-  barContainer.append(feedButton, recipesButton, workoutButton, profileButton);
+  barContainer.append(homeButton, feedButton, profileButton);
   return barContainer;
 }
 
