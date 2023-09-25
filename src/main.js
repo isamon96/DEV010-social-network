@@ -26,8 +26,10 @@ const rutas = {
   '/about': about(onNavigate),
   '/forgotPassword': forgotPassword(onNavigate),
   '/feed': feed(onNavigate),
+
   // '/PerfilUsuario': PerfilUsuario(onNavigate),
 };
+
 /* eslint-enable */
 const component = () => rutas[window.location.pathname];
 
@@ -37,5 +39,4 @@ window.onpopstate = () => {
   }
   root.appendChild(rutas[window.location.pathname]);
 };
-
 root.appendChild(component());
