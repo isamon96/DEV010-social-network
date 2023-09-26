@@ -1,5 +1,6 @@
 import { addPost, getPosts, showPosts } from '../lib/index.js';
 import navigationBar from './navigationBar.js';
+import like from './like.js';
 
 function feed(navigateTo) {
   const section = document.createElement('section');
@@ -20,6 +21,7 @@ function feed(navigateTo) {
   textAreaSection.classList.add('textAreaSection');
 
   // const postContainer = document.createElement('container');
+  // const postContainer = document.createElement('container');
 
   const form = document.createElement('form');
 
@@ -29,18 +31,27 @@ function feed(navigateTo) {
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
+
   inputTitle.className = 'inputLog';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
   // inputPost.type = 'text';
+  // inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
   btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
+  btnPost.className = 'btnPost';
+  btnPost.textContent = 'Enviar';
+
   // Escuchar cambios en el área de texto y actualizar el contador de caracteres
+  inputPost.addEventListener('input', () => {
+    const characterCount = inputPost.value.length;
+    charCount.textContent = `${characterCount}/500`;
+  });
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
     charCount.textContent = `${characterCount}/500`;
@@ -57,6 +68,8 @@ function feed(navigateTo) {
     });
     postsSection.innerHTML = '';
     postsSection.appendChild(posts, button);
+    postsSection.innerHTML = '';
+    postsSection.appendChild(posts);
   }
 
   loadAndShowPosts();
@@ -74,12 +87,15 @@ function feed(navigateTo) {
     inputPost.value = '';
     withOutPost.textContent = '';
     loadAndShowPosts();
+    loadAndShowPosts();
   });
 
   section.append(header, textAreaSection, withOutPost, postsSection, footer);
   header.append(logoImg);
+  header.append(logoImg);
   textAreaSection.append(form, inputTitle, inputPost, btnPost);
   form.append(inputTitle, inputPost, charCount, btnPost);
+  footer.appendChild(navigationBar(navigateTo));
   footer.appendChild(navigationBar(navigateTo));
 
   logoImg.addEventListener('click', () => {

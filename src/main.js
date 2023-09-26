@@ -5,7 +5,7 @@ import register from './components/register.js';
 import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
 import feed from './components/feed.js';
-
+import profile from './components/profile.js';
 
 const root = document.getElementById('root');
 /* eslint-disable */
@@ -19,7 +19,6 @@ const onNavigate = (pathname) => {
   root.appendChild(rutas[pathname]);
 };
 
-
 const rutas = {
   '/': home(onNavigate),
   '/login': login(onNavigate),
@@ -28,8 +27,7 @@ const rutas = {
   '/about': about(onNavigate),
   '/forgotPassword': forgotPassword(onNavigate),
   '/feed': feed(onNavigate),
-  
-  // '/PerfilUsuario': PerfilUsuario(onNavigate),
+  '/profile': profile(onNavigate),
 };
 
 /* eslint-enable */

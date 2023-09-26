@@ -5,6 +5,7 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -129,12 +130,5 @@ const updateDisplayName = async (newDisplayName) => {
 };
 
 export {
-  sigInWithGoogle,
-  createUser,
-  loginUser,
-  updateOutput,
-  addPost,
-  getPosts,
-  showPosts,
-  updateDisplayName,
+  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts, showPosts,
 };

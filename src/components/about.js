@@ -14,7 +14,7 @@ function about(navigateTo) {
 
   // Función para crear un div con clase y texto opcional
   function createDivWithClass(className, textContent) {
-    const div = document.createElement('div');
+    const div = document.createElement('testDiv');
     div.className = className;
     div.textContent = textContent || '';
     return div;
@@ -34,8 +34,8 @@ function about(navigateTo) {
   });
 
   // Agregar elementos hijos a la sección
-  section.append(chevron);
-  section.append(logoIconImg);
+  // section.append(chevron);
+  section.append(chevron, logoIconImg);
   section.append(reDiv, misionDiv, whatDiv, planetImg);
   return section;
 }

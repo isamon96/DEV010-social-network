@@ -10,6 +10,10 @@ body{
   padding: 0px;
   margin: 0px;
   border: 0px;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
 
 :root {
@@ -465,75 +469,4 @@ span {
 /* FOOTER - NAVIGATION BAR */
 .buttonsContainer {
   background-color: var(--verdeclaro);
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  font-size: 16px;
-}
-
-.navigationButtons {
-  background: transparent;
-  border: transparent;
-  cursor: pointer;
-}
-
-/* PROFILE */
-
-.profileContainer {
-  width: 100%;
-  max-width: 400px;
-  height: 100%;
-  border: 1px solid #e5e8e8;
-  background: #f8f9f9;
-  border-radius: 8px;
-  position: relative;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.profileTitle {
-  position: absolute;
-  left: 0;
-  color: var(--naranjaclaro);
-}
-
-.btnSignOut {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  width: 100%;
-  max-width: 60px;
-  height: 5vh;
-  border: none;
-  border-radius: 8px;
-  background-color: #00bcd4;
-  cursor: pointer;
-}
-
-.nameProfile {
-  margin-top: 20px;
-  color: #cddc39;
-}
-
-.email {
-  width: 300px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid black;
-  text-align: center;
-  background: transparent;
-}
-#like-button img {
-  width: 25px;
-  height: 25px;
-  cursor: pointer; 
-}
-
-#like-counter {
-  font-size: 16px; 
-  margin-left: 10px;
-  color: #333;
 }
