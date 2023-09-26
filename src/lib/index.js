@@ -101,6 +101,8 @@ const showPosts = async (array) => {
   const individualPost = document.createElement('section');
   individualPost.className = 'individualPost';
   array.forEach((post) => {
+    const onePost = document.createElement('section');
+    onePost.className = 'individualPost';
     const postName = document.createElement('p');
     postName.textContent = post.name;
     const postDate = document.createElement('p');
@@ -109,7 +111,8 @@ const showPosts = async (array) => {
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
-    individualPost.append(postTitle, postName, postDate, postContent);
+    onePost.append(postTitle, postName, postDate, postContent);
+    individualPost.append(onePost);
   });
   return individualPost;
 };

@@ -174,7 +174,7 @@ h3{
   font-size: 14px;
   text-align: center;
 }
-  
+
 figure {
   width: 40px;
   height: 40px;
@@ -390,6 +390,7 @@ figure {
   width: 100%;
   height: 100px;
   background-color: var(--naranjaclaro);
+  display: flex;
 }
 
 .logoImgFeed {
@@ -431,8 +432,8 @@ span {
   text-align: justify;
   padding: 0px 30px; /* Agregamos espacio de 20px alrededor de cada publicación */
   margin: 20px; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
-/* background-color: hsl(270, 6%, 97%); */
-/*border: 1px solid var(--naranja); */
+  /* background-color: hsl(270, 6%, 97%); */
+  border: 1px solid var(--naranja);
 }
 
 .btnPost{
@@ -454,10 +455,11 @@ span {
 }
 
 .footer {
-  bottom: 0;
-  width: 100%;
-  height: 100px;
   background-color: var(--verdeclaro);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 16px;
 }
 
 /* FOOTER - NAVIGATION BAR */
@@ -473,4 +475,54 @@ span {
   background: transparent;
   border: transparent;
   cursor: pointer;
+}
+
+/* PROFILE */
+
+.profileContainer {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  border: 1px solid #e5e8e8;
+  background: #f8f9f9;
+  border-radius: 8px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.profileTitle {
+  position: absolute;
+  left: 0;
+  color: var(--naranjaclaro);
+}
+
+.btnSignOut {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 100%;
+  max-width: 60px;
+  height: 5vh;
+  border: none;
+  border-radius: 8px;
+  background-color: #00bcd4;
+  cursor: pointer;
+}
+
+.nameProfile {
+  margin-top: 20px;
+  color: #cddc39;
+}
+
+.email {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background: transparent;
 }
