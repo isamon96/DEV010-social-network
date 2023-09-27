@@ -531,3 +531,15 @@ span {
   flex-direction: column;
   justify-content: space-between;
 }
+
+#like-button img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer; 
+}
+
+#like-counter {
+  font-size: 16px; 
+  margin-left: 10px;
+  color: #333;
+}
