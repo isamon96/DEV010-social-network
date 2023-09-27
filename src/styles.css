@@ -10,10 +10,6 @@ body{
   padding: 0px;
   margin: 0px;
   border: 0px;
-  height: 100vh;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
 }
 
 :root {
@@ -388,18 +384,18 @@ figure {
   color: var(--naranjaclaro);
 }
 
-/*Feed*/
+/*--------Feed--------*/
 
 .header {
   width: 100%;
   height: 100px;
   background-color: var(--naranjaclaro);
-  display: flex;
 }
 
 .logoImgFeed {
   width: 100px;
-  margin: 10px 10px 10px 30px;
+  margin: 10px;
+  padding-left: 20px;
 }
 
 .textAreaSection {
@@ -459,14 +455,91 @@ span {
 }
 
 .footer {
+  height: 10vh;
   background-color: var(--verdeclaro);
-  display: flex;
   justify-content: space-around;
   width: 100%;
   font-size: 16px;
+  margin-bottom: 0px;
+  bottom: 0;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  background-color: var(--naranjaclaro);
 }
 
 /* FOOTER - NAVIGATION BAR */
 .buttonsContainer {
   background-color: var(--verdeclaro);
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 0px;
+  bottom: 0;
+}
+
+.navigationButtons {
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+/* PROFILE */
+
+.profileTitle, .feedTitle {
+  position: initial;
+  color: var(--naranjaclaro);
+}
+
+.btnSignOut {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 100%;
+  max-width: 60px;
+  height: 5vh;
+  border: none;
+  border-radius: 8px;
+  background-color: #00bcd4;
+  cursor: pointer;
+}
+
+.nameProfile {
+  margin-top: 20px;
+  color: #cddc39;
+}
+
+.email {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background: transparent;
+}
+
+.profileSection {
+  height: 80vh;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#like-button img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer; 
+}
+
+#like-counter {
+  font-size: 16px; 
+  margin-left: 10px;
+  color: #333;
 }
