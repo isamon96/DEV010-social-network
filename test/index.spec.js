@@ -5,6 +5,7 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+
 import {
   sigInWithGoogle, updateOutput, createUser, loginUser,
 } from '../src/lib/index.js'; // Importa la función

@@ -35,7 +35,6 @@ function feed(navigateTo) {
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
-
   inputTitle.className = 'inputLog';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
@@ -91,8 +90,6 @@ function feed(navigateTo) {
     inputPost.value = '';
     withOutPost.textContent = '';
     loadAndShowPosts();
-    loadAndShowPosts();
-  });
 
   section.append(header, textAreaSection, withOutPost, postsSection, footer);
   header.append(logoImg);

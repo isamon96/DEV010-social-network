@@ -10,7 +10,7 @@ import {
 
 import {
   addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
-} from 'firebase/firestore';
+} from 'firebase/auth';
 
 import { db, auth } from '../firebase';
 
