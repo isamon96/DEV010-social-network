@@ -1,4 +1,5 @@
 import { addPost, getPosts, showPosts } from '../lib/index.js';
+import navigationBar from './navigationBar.js';
 
 function feed(navigateTo) {
   if (!localStorage.getItem('user')) {
@@ -9,6 +10,10 @@ function feed(navigateTo) {
 
   const header = document.createElement('header');
   header.classList.add('header');
+
+  const feedTitle = document.createElement('h3');
+  feedTitle.classList.add('feedTitle');
+  feedTitle.textContent = 'Feed';
 
   const postsSection = document.createElement('section');
   postsSection.className = 'postsSection';
@@ -21,13 +26,10 @@ function feed(navigateTo) {
   const textAreaSection = document.createElement('section');
   textAreaSection.classList.add('textAreaSection');
 
-  const postContainer = document.createElement('container');
-
   const form = document.createElement('form');
-
   const inputTitle = document.createElement('input');
-  const inputPost = document.createElement('textarea');
-  const charCount = document.createElement('span');
+  const inputPost = document.createElement('textarea'); // Cambia input a textarea para un área de texto
+  const charCount = document.createElement('span'); // Para contar los caracteres
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
@@ -36,17 +38,20 @@ function feed(navigateTo) {
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
+  // inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
-  btnPost.className = 'button';
+
+  btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
+  // Escuchar cambios en el área de texto y actualizar el contador de caracteres
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
-    charCount.textContent = `${characterCount}/2000`;
+    charCount.textContent = `${characterCount}/500`;
   });
 
   const footer = document.createElement('footer');
-  footer.classList.add('footer');
+  footer.className = ('footer');
 
   async function loadAndShowPosts() {
     const postsList = await getPosts();
@@ -74,9 +79,9 @@ function feed(navigateTo) {
 
   section.append(header, textAreaSection, withOutPost, postsSection, footer);
   header.append(logoImg);
-  textAreaSection.append(form, inputTitle, inputPost, btnPost);
-  postsSection.append(postContainer);
+  textAreaSection.append(feedTitle, form, inputTitle, inputPost, btnPost);
   form.append(inputTitle, inputPost, charCount, btnPost);
+  footer.appendChild(navigationBar(navigateTo));
 
   logoImg.addEventListener('click', () => {
     navigateTo('/');

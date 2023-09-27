@@ -33,4 +33,9 @@ describe('Testing about component', () => {
     chevron.click();
     expect(navigateToMockAbout).toHaveBeenCalledWith('/'); // Verifica que se llamó con el argumento '/'
   });
+
+  it('Should create a div with no text content when textContent is not provided', () => {
+    const div = aboutComponent.querySelector('.testdiv'); // Use the appropriate class name
+    expect(div.textContent).toBe('');
+  });
 });

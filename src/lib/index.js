@@ -58,7 +58,6 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    window.console.log('aaaaaaaaaaaaaaaaaa');
     localStorage.setItem('user', 'Usuario logueado');
     return userCredential;
   })
@@ -112,6 +111,7 @@ const showPosts = async (array) => {
   individualPost.className = 'individualPost';
   array.forEach((post) => {
     const postContainer = document.createElement('section');
+    postContainer.className = 'postContainer';
     const postName = document.createElement('p');
     postName.textContent = post.name;
     const postDate = document.createElement('p');
@@ -141,12 +141,12 @@ const obtainUserInfo = () => {
   const user = auth.currentUser;
   const name = user.displayName;
   const email = user.email;
-  const userId = user.uid;
+  const id = user.uid;
   const photo = user.photoURL;
   const userInfo = {
     name,
     email,
-    userId,
+    id,
     photo,
   };
   return userInfo;
@@ -160,7 +160,6 @@ const signOutUser = () => async () => {
     return error;
   }
 };
-
 export {
   sigInWithGoogle,
   createUser,
@@ -173,4 +172,3 @@ export {
   obtainUserInfo,
   signOutUser,
 };
-

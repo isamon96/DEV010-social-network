@@ -6,8 +6,10 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  /* background-image: url("assets/background3.jpg"); */
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
 
 :root {
@@ -34,12 +36,11 @@ body{
   height: 100vh;
   width: 50vh;
   font-family: var(--principal);
-  justify-content: space-evenly;
   box-shadow: 0 0 10px var(--verdeclaro);
 }
 
 .logoImg {
-  width: 50%;
+  width: 40%;
 }
 
 .inputLog {
@@ -64,28 +65,18 @@ hr{
   border: 1px solid rgba(0, 0, 0, 0.145);
 }
 
-a, button, .iconImg {
+a, p, button, .iconImg {
   cursor: pointer;
   margin: 20px 0;
+  font-size: 14px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 0px;
+  width: 45vh;
   align-items: center;
-}
-
-.btnLogin {
-  background-color: var(--naranjaclaro);
-  color: white;
-  border: none;
-  padding: 1%;
-  border-radius: 10px;
-  min-width: 252px;
-  min-height: 45px;
-  font-family: var(--principal);
-  cursor: pointer;
 }
 
 .btnGoogle {
@@ -94,12 +85,15 @@ form {
   color: white;
   border: none;
   border-radius: 2px;
-  /* min-width: 300px;
-  min-height: 41px; */
   font-family: var(--principal);
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-  /* display: flex; */
-  /* align-items: center; */
+  width: 252px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 16px;
 }	
 
 .btnGoogle:hover {
@@ -143,50 +137,42 @@ section {
   
 .slogan {
   width: 253px;
-  height: 70px;
-  margin: 20px 20px;
   font-family: var(--principal);
   font-size: 20px;
-  font-weight: 300;
   text-align: center;
   color: #353519;
 }
   
-button {
-  height: 50px;
+.buttons {
   min-width: 252px;
-  min-height: 45px;
-  flex-grow: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 16px 32px;
+  padding: 14px;
   border-radius: 10px;
   background-color: #ffb11e;
   border-style: none;
-  font-size: 18px;
+  font-size: 16px;
   font-family: var(--principal);
   color: #fff;
 }
 
-button:hover {
-  box-shadow: #c992d2;
+.buttons:hover {
+  background-color:#fffbba;
+  color:#bb713C;
 }
   
 h2 {
-  width: 240px;
   height: 30px;
   margin: 60px 20px 0px 20px;
   font-size: 18px;
-  text-align: center;
   color: #353519;
 }
 
 h3{
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
-  
+
 figure {
   width: 40px;
   height: 40px;
@@ -396,7 +382,7 @@ figure {
   color: var(--naranjaclaro);
 }
 
-/*Feed*/
+/*--------Feed--------*/
 
 .header {
   width: 100%;
@@ -406,54 +392,155 @@ figure {
 
 .logoImgFeed {
   width: 100px;
-  margin: 10px;
+  padding-left: 20px;
 }
 
 .textAreaSection {
   display: flex;
   flex-direction: column;
+  height: 35vh;
+  justify-content: center;
   align-items: center;
-  /* margin: 3px 0; */
 }
 
 .inputPost {
-  margin: 15px;
-  border: 1px solid var(--naranja);
-  border-radius: 5px;
+  margin: 10px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
   min-width: 250px;
-  min-height: 100px;
-  resize: none;
+  min-height: 60px;
   font-family: var(--principal);
   padding: 10px; /* Agrega un espacio interno para el texto */
-  font-size: 14px; /*Tamaño de fuente */
+  font-size: 12px; /*Tamaño de fuente */
+  text-align: center;
 }
 
 /* Estilo para el contador de caracteres */
-.charCount {
-  font-size: 9px;
-  }
+span {
+  font-size: 12px;
+  justify-items: center;
+  border: 0px, 0px, 20px, 0px;
+}
 
 .postsSection {
   margin: auto;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
-  max-height: calc(100vh - 200px); /* Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
-  width: 100%;
-  height: 40vh;
+  /* max-height: calc(100vh - 200px); Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
+  font-size: 12px;
 }
 
-.individualPost {
-font-size: 10px;
-text-align: justify;
-padding: 20px; /* Agregamos espacio de 20px alrededor de cada publicación */
-margin: 10px 0; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
-background-color: hsl(270, 6%, 94%); /* Agrega un fondo gris claro */
+.postContainer {
+  text-align: justify;
+  padding: 0px 30px; 
+  margin: 10px 30px 10px 30px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
+}
 
+.btnPost{
+  margin-left: 10px;
+  padding: 14px;
+  border-radius: 10px;
+  background-color: #ffb11e;
+  font-size: 14px;
+  border-style: none;
+  font-family: var(--principal);
+  color: #fff;
+  flex-direction: unset;
+  width: 100px;
+}
+
+.btnPost:hover {
+  background-color:#fffbba;
+  color:#bb713C;
 }
 
 .footer {
-  /* position: fixed; */
-  bottom: 0;
-  width: 100%;
-  height: 100px;
+  height: 10vh;
   background-color: var(--verdeclaro);
+  justify-content: space-around;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 0px;
+  bottom: 0;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  background-color: var(--naranjaclaro);
+}
+
+/* FOOTER - NAVIGATION BAR */
+.buttonsContainer {
+  background-color: var(--verdeclaro);
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 0px;
+  bottom: 0;
+}
+
+.navigationButtons {
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+/* PROFILE */
+
+.profileTitle, .feedTitle {
+  position: initial;
+  color: var(--naranjaclaro);
+}
+
+.btnSignOut {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 100%;
+  max-width: 60px;
+  height: 5vh;
+  border: none;
+  border-radius: 8px;
+  background-color: #00bcd4;
+  cursor: pointer;
+}
+
+.nameProfile {
+  margin-top: 20px;
+  color: #cddc39;
+}
+
+.email {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background: transparent;
+}
+
+.profileSection {
+  height: 80vh;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#like-button img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer; 
+}
+
+#like-counter {
+  font-size: 16px; 
+  margin-left: 10px;
+  color: #333;
 }

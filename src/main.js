@@ -5,6 +5,7 @@ import register from './components/register.js';
 import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
 import feed from './components/feed.js';
+import profile from './components/profile.js';
 
 const rutas = {
   '/': home,
@@ -14,7 +15,7 @@ const rutas = {
   '/about': about,
   '/forgotPassword': forgotPassword,
   '/feed': feed,
-  // '/PerfilUsuario': PerfilUsuario(onNavigate),
+  '/profile': profile,
 };
 
 const root = document.getElementById('root');
