@@ -1,4 +1,11 @@
-import { signOutUser, obtainUserInfo } from '../lib/index.js';
+import {
+  updatePassword,
+} from 'firebase/auth';
+import { auth } from '../firebase';
+
+const newPassword = 'nueva_contraseña';
+// import { signOutUser } from '../lib/auth';
+// import { signOut } from '@firebase/auth';
 import navigationBar from './navigationBar';
 
 function profile(navigateTo) {
