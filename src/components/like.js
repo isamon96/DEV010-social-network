@@ -1,6 +1,6 @@
-import {
-  updateProfile
-} from 'firebase/auth';
+// import {
+//   updateProfile,
+// } from 'firebase/auth';
 import { db, auth } from '../firebase';
 
 // Selecciono el botón y contador con querySelector
@@ -9,11 +9,11 @@ import { db, auth } from '../firebase';
 // Incremento/decremento el contador según liked
 // Actualizo el innerText del contador
 
-// Crear botón like 
-const button = document.querySelector('button');
+// Crear botón like
+const likeButton = document.querySelector('button');
 likeButton.id = 'like-button';
 
-// Crea la imagen  
+// Crea la imagen
 const img = document.createElement('img');
 img.src = 'heart.png';
 
@@ -22,23 +22,22 @@ const counter = document.createElement('span');
 counter.id = 'like-counter';
 counter.innerText = '0';
 
-// Obtén el contador 
+// Obtén el contador
 const likeCounter = document.querySelector('#like-counter');
 
-// Estado del botón 
+// Estado del botón
 let liked = false;
 
 // Contador
-let count = 0; 
+let count = 0;
 
 // Añade manejador de clics
 likeButton.addEventListener('click', () => {
-
   // Alterna estado
   liked = !liked;
 
   // Actualiza estilos
-  if(liked) {
+  if (liked) {
     likeButton.style.color = 'blue';
   } else {
     likeButton.style.color = 'black';
@@ -47,14 +46,13 @@ likeButton.addEventListener('click', () => {
   // Actualiza contador
   liked ? count++ : count--;
   likeCounter.innerText = count;
-
 });
 
-button.appendChild(img);
-document.body.appendChild(button);
+likeButton.appendChild(img);
+document.body.appendChild(likeButton);
 // Agrega el contador al DOM
 document.body.appendChild(counter);
 
 export {
-likeButton,
+  likeButton,
 };

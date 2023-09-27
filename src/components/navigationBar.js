@@ -17,9 +17,9 @@ function navigationBar(navigateTo) {
   profileButton.className = 'navigationButtons';
   profileButton.id = 'profileButton';
 
-  homeButton.addEventListener('click', async (e) => {
+  homeButton.addEventListener('click', (e) => {
     e.preventDefault();
-    navigateTo('/');
+    navigateTo('/login');
   });
 
   feedButton.addEventListener('click', (e) => {
@@ -34,22 +34,22 @@ function navigationBar(navigateTo) {
 
   if (window.location.pathname === '/login') {
     homeButton.style.color = '#FFB11E';
-    homeButton.style.fontSize = '1rem';
-    homeButton.innerHTML = '<b>home</b>';
+    homeButton.style.fontSize = '1.2rem';
+    homeButton.innerHTML = '<b>Home 🌎</b>';
     feedButton.style.color = 'black';
     profileButton.style.color = 'black';
   } else if (window.location.pathname === '/feed') {
     homeButton.style.color = 'black';
     feedButton.style.color = '#FFB11E';
-    feedButton.style.fontSize = '1rem';
-    feedButton.innerHTML = '<b>Feed</b>';
+    feedButton.style.fontSize = '1.2rem';
+    feedButton.innerHTML = '<b>Feed 🌱</b>';
     profileButton.style.color = 'black';
   } else if (window.location.pathname === '/profile') {
     homeButton.style.color = 'black';
     feedButton.style.color = 'black';
     profileButton.style.color = '#FFB11E';
-    profileButton.style.fontSize = '1rem';
-    profileButton.innerHTML = '<b>Profile</b>';
+    profileButton.style.fontSize = '1.2rem';
+    profileButton.innerHTML = '<b>Profile 👤</b>';
   }
 
   barContainer.append(homeButton, feedButton, profileButton);
