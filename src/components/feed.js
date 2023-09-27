@@ -1,5 +1,6 @@
 import { addPost, getPosts, showPosts } from '../lib/index.js';
 import navigationBar from './navigationBar.js';
+import like from './like.js';
 
 function feed(navigateTo) {
   const section = document.createElement('section');
@@ -24,6 +25,7 @@ function feed(navigateTo) {
   textAreaSection.classList.add('textAreaSection');
 
   // const postContainer = document.createElement('container');
+  // const postContainer = document.createElement('container');
 
   const form = document.createElement('form');
 
@@ -33,18 +35,27 @@ function feed(navigateTo) {
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
+
   inputTitle.className = 'inputLog';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
   // inputPost.type = 'text';
+  // inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
   btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
+  btnPost.className = 'btnPost';
+  btnPost.textContent = 'Enviar';
+
   // Escuchar cambios en el área de texto y actualizar el contador de caracteres
+  inputPost.addEventListener('input', () => {
+    const characterCount = inputPost.value.length;
+    charCount.textContent = `${characterCount}/500`;
+  });
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
     charCount.textContent = `${characterCount}/500`;
@@ -56,6 +67,11 @@ function feed(navigateTo) {
   async function loadAndShowPosts() {
     const postsList = await getPosts();
     const posts = await showPosts(postsList);
+    posts.array.forEach(post => {
+    const button = document.createElement ('button');
+    });
+    postsSection.innerHTML = '';
+    postsSection.appendChild(posts, button);
     postsSection.innerHTML = '';
     postsSection.appendChild(posts);
   }
@@ -74,6 +90,7 @@ function feed(navigateTo) {
     inputTitle.value = '';
     inputPost.value = '';
     withOutPost.textContent = '';
+    loadAndShowPosts();
     loadAndShowPosts();
   });
 
