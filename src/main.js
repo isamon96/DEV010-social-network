@@ -6,6 +6,17 @@ import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
 import feed from './components/feed.js';
 
+const rutas = {
+  '/': home,
+  '/login': login,
+  '/error': error,
+  '/register': register,
+  '/about': about,
+  '/forgotPassword': forgotPassword,
+  '/feed': feed,
+  // '/PerfilUsuario': PerfilUsuario(onNavigate),
+};
+
 const root = document.getElementById('root');
 /* eslint-disable */
 const onNavigate = (pathname) => {
@@ -15,28 +26,15 @@ const onNavigate = (pathname) => {
     root.removeChild(root.firstChild);
   }
 
-  root.appendChild(rutas[pathname]);
+  root.appendChild(rutas[pathname](onNavigate));
 };
 
-
-const rutas = {
-  '/': home(onNavigate),
-  '/login': login(onNavigate),
-  '/error': error(onNavigate),
-  '/register': register(onNavigate),
-  '/about': about(onNavigate),
-  '/forgotPassword': forgotPassword(onNavigate),
-  '/feed': feed(onNavigate),
-  // '/PerfilUsuario': PerfilUsuario(onNavigate),
-};
-/* eslint-enable */
-const component = () => rutas[window.location.pathname];
 
 window.onpopstate = () => {
   while (root.firstChild) {
     root.removeChild(root.firstChild);
   }
-  root.appendChild(rutas[window.location.pathname]);
+  root.appendChild(rutas[window.location.pathname](onNavigate));
 };
 
-root.appendChild(component());
+root.appendChild(rutas[window.location.pathname](onNavigate));

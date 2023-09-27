@@ -57,7 +57,11 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
   });
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => userCredential)
+  .then((userCredential) => {
+    window.console.log('aaaaaaaaaaaaaaaaaa');
+    localStorage.setItem('user', 'Usuario logueado');
+    return userCredential;
+  })
   .catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/invalid-email') {
@@ -77,16 +81,19 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
 
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
-  const id = auth.currentUser.uid;
-  const date = Timestamp.now().toDate().toLocaleString();
+  const userId = auth.currentUser.uid;
+  const date = Timestamp.now().toDate().toLocaleString('en-US');
+  const likes = 0;
   const postsCollection = collection(db, 'posts');
-  await addDoc(postsCollection, {
+  const docRef = await addDoc(postsCollection, {
     name,
     date,
     title,
     post,
-    id,
+    userId,
+    likes,
   });
+  return docRef;
 };
 
 const getPosts = async () => {
@@ -134,12 +141,12 @@ const obtainUserInfo = () => {
   const user = auth.currentUser;
   const name = user.displayName;
   const email = user.email;
-  const id = user.uid;
+  const userId = user.uid;
   const photo = user.photoURL;
   const userInfo = {
     name,
     email,
-    id,
+    userId,
     photo,
   };
   return userInfo;
@@ -166,3 +173,4 @@ export {
   obtainUserInfo,
   signOutUser,
 };
+

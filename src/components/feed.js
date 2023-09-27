@@ -1,6 +1,9 @@
 import { addPost, getPosts, showPosts } from '../lib/index.js';
 
 function feed(navigateTo) {
+  if (!localStorage.getItem('user')) {
+    return navigateTo('/login');
+  }
   const section = document.createElement('section');
   section.className = 'container';
 
