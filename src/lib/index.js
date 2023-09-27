@@ -10,7 +10,7 @@ import {
 
 import {
   addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
-} from 'firebase/auth';
+} from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
 
@@ -105,6 +105,7 @@ const showPosts = async (array) => {
   individualPost.className = 'individualPost';
   array.forEach((post) => {
     const postContainer = document.createElement('section');
+    postContainer.className = 'postContainer';
     const postName = document.createElement('p');
     postName.textContent = post.name;
     const postDate = document.createElement('p');
