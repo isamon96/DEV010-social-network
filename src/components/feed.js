@@ -8,6 +8,10 @@ function feed(navigateTo) {
   const header = document.createElement('header');
   header.classList.add('header');
 
+  const feedTitle = document.createElement('h3');
+  feedTitle.classList.add('feedTitle');
+  feedTitle.textContent = 'Feed';
+
   const postsSection = document.createElement('section');
   postsSection.className = 'postsSection';
 
@@ -47,7 +51,7 @@ function feed(navigateTo) {
   });
 
   const footer = document.createElement('footer');
-  footer.classList.add('footer');
+  footer.className = ('footer');
 
   async function loadAndShowPosts() {
     const postsList = await getPosts();
@@ -75,7 +79,7 @@ function feed(navigateTo) {
 
   section.append(header, textAreaSection, withOutPost, postsSection, footer);
   header.append(logoImg);
-  textAreaSection.append(form, inputTitle, inputPost, btnPost);
+  textAreaSection.append(feedTitle, form, inputTitle, inputPost, btnPost);
   form.append(inputTitle, inputPost, charCount, btnPost);
   footer.appendChild(navigationBar(navigateTo));
 
