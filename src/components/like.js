@@ -1,8 +1,4 @@
-import {
-  updateProfile
-} from 'firebase/auth';
-import { db, auth } from '../firebase';
-
+// import { updateProfile, db, auth } from '../firebase
 // Selecciono el botón y contador con querySelector
 // Defino estado liked y contador count
 // En el click alterno el estado y actualizo estilos

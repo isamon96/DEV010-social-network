@@ -1,6 +1,6 @@
 import { addPost, getPosts, showPosts } from '../lib/index.js';
 import navigationBar from './navigationBar.js';
-import like from './like.js';
+import likeButton from './like.js';
 
 function feed(navigateTo) {
   const section = document.createElement('section');
@@ -95,7 +95,6 @@ function feed(navigateTo) {
   header.append(logoImg);
   textAreaSection.append(form, inputTitle, inputPost, btnPost);
   form.append(inputTitle, inputPost, charCount, btnPost);
-  footer.appendChild(navigationBar(navigateTo));
   footer.appendChild(navigationBar(navigateTo));
 
   logoImg.addEventListener('click', () => {
