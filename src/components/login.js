@@ -1,6 +1,9 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
+  if (localStorage.getItem('user')) {
+    return navigateTo('/feed');
+  }
   const section = document.createElement('section');
   const logoImg = document.createElement('img');
   const btnLoginGoogle = document.createElement('button');

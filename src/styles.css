@@ -31,7 +31,6 @@ body{
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
   height: 100vh;
@@ -77,6 +76,7 @@ form {
   flex-direction: column;
   margin: 0px;
   width: 45vh;
+  align-items: center;
 }
 
 .btnGoogle {
@@ -396,8 +396,11 @@ figure {
 }
 
 .textAreaSection {
+  display: flex;
   flex-direction: column;
   height: 35vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputPost {
@@ -409,6 +412,7 @@ figure {
   font-family: var(--principal);
   padding: 10px; /* Agrega un espacio interno para el texto */
   font-size: 12px; /*Tamaño de fuente */
+  text-align: center;
 }
 
 /* Estilo para el contador de caracteres */
