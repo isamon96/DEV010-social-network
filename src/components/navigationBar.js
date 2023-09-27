@@ -51,6 +51,8 @@ function navigationBar(navigateTo) {
     profileButton.style.fontSize = '1.2rem';
     profileButton.innerHTML = '<b>Profile 👤</b>';
   }
+  // Modificar para que estén los estilos en CSS
+  // Estado del botón
 
   barContainer.append(homeButton, feedButton, profileButton);
   return barContainer;

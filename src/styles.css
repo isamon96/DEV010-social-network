@@ -76,7 +76,7 @@ form {
   display: flex;
   flex-direction: column;
   margin: 0px;
-  align-items: center;
+  width: 45vh;
 }
 
 .btnGoogle {
@@ -425,9 +425,9 @@ span {
   font-size: 12px;
 }
 
-.individualPost {
+.postContainer {
   text-align: justify;
-  padding: 0px 30px; /* Agregamos espacio de 20px alrededor de cada publicación */
+  padding: 0px 30px; 
   margin: 10px 30px 10px 30px;
   border: 1px solid var(--naranjaclaro);
   border-radius: 10px;

@@ -1,11 +1,4 @@
-import {
-  updatePassword,
-} from 'firebase/auth';
-import { auth } from '../firebase';
-
-const newPassword = 'nueva_contraseña';
-// import { signOutUser } from '../lib/auth';
-// import { signOut } from '@firebase/auth';
+import { signOutUser, obtainUserInfo } from '../lib/index.js';
 import navigationBar from './navigationBar';
 
 function profile(navigateTo) {
@@ -38,7 +31,7 @@ function profile(navigateTo) {
 
   const nameProfile = document.createElement('h2');
   nameProfile.className = 'nameProfile';
-  // nameProfile.textContent = user;
+  nameProfile.textContent = obtainUserInfo;
 
   const email = document.createElement('input');
   email.placeholder = 'Correo del usuario';
@@ -60,3 +53,4 @@ function profile(navigateTo) {
 }
 
 export default profile;
+
