@@ -137,8 +137,6 @@ section {
   
 .slogan {
   width: 253px;
-  /* height: 70px; */
-  /* margin: 20px 20px; */
   font-family: var(--principal);
   font-size: 20px;
   text-align: center;
@@ -171,7 +169,7 @@ h2 {
 }
 
 h3{
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -394,7 +392,6 @@ figure {
 
 .logoImgFeed {
   width: 100px;
-  margin: 10px;
   padding-left: 20px;
 }
 
@@ -405,9 +402,9 @@ figure {
 
 .inputPost {
   margin: 10px;
-  border: 1px solid var(--naranja);
-  border-radius: 5px;
-  min-width: 300px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
+  min-width: 250px;
   min-height: 60px;
   font-family: var(--principal);
   padding: 10px; /* Agrega un espacio interno para el texto */
@@ -431,9 +428,9 @@ span {
 .individualPost {
   text-align: justify;
   padding: 0px 30px; /* Agregamos espacio de 20px alrededor de cada publicación */
-  margin: 20px; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
-  /* background-color: hsl(270, 6%, 97%); */
-  border: 1px solid var(--naranja);
+  margin: 10px 30px 10px 30px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
 }
 
 .btnPost{
