@@ -5,10 +5,11 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, Timestamp, getDocs, query, orderBy,
+  addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
@@ -76,6 +77,7 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
 
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
+  const id = auth.currentUser.uid;
   const date = Timestamp.now().toDate().toLocaleString();
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
@@ -83,6 +85,7 @@ const addPost = async (title, post) => {
     date,
     title,
     post,
+    id,
   });
 };
 
@@ -127,6 +130,30 @@ const updateDisplayName = async (newDisplayName) => {
   }
 };
 
+const obtainUserInfo = () => {
+  const user = auth.currentUser;
+  const name = user.displayName;
+  const email = user.email;
+  const id = user.uid;
+  const photo = user.photoURL;
+  const userInfo = {
+    name,
+    email,
+    id,
+    photo,
+  };
+  return userInfo;
+};
+
+const signOutUser = () => async () => {
+  try {
+    await signOut(auth);
+    return true;
+  } catch (error) {
+    return error;
+  }
+};
+
 export {
   sigInWithGoogle,
   createUser,
@@ -136,4 +163,6 @@ export {
   getPosts,
   showPosts,
   updateDisplayName,
+  obtainUserInfo,
+  signOutUser,
 };
