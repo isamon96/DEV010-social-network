@@ -2,7 +2,7 @@ import { addPost, getPosts, showPosts } from '../lib/index.js';
 import navigationBar from './navigationBar.js';
 
 function feed(navigateTo) {
-  if (!localStorage.getItem('user')) {
+  if (localStorage.getItem('userRegistered') !== 'true') {
     return navigateTo('/login');
   }
   const section = document.createElement('section');

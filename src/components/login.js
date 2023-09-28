@@ -1,7 +1,7 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
   }
   const section = document.createElement('section');
