@@ -18,14 +18,6 @@ function profile(navigateTo) {
   const profileSection = document.createElement('section');
   profileSection.className = ('profileSection');
 
-  const nameProfile = document.createElement('h2');
-  nameProfile.className = 'nameProfile';
-  // nameProfile.textContent = obtainUserInfo;
-
-  const imgProfile = document.createElement('img');
-  imgProfile.className = 'imgProfile';
-
-  const email = document.createElement('input');
   email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
   //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
   //   email.setAttribute('disabled', true);

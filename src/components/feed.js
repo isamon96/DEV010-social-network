@@ -5,6 +5,7 @@ function feed(navigateTo) {
   if (localStorage.getItem('userRegistered') !== 'true') {
     return navigateTo('/login');
   }
+
   const section = document.createElement('section');
   section.className = 'container';
 

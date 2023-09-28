@@ -373,12 +373,14 @@ span {
   justify-items: center;
   border: 0px, 0px, 20px, 0px;
 }
+
 .postsSection {
   margin-top: 0;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
   /* max-height: calc(100vh - 200px); Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
   font-size: 12px;
 }
+
 .postContainer {
   text-align: justify;
   padding: 0px 30px;
@@ -386,7 +388,7 @@ span {
   border: 1px solid #fff;
   border-radius: 10px;
   background-color: #edd4f375;
-}
+
 .btnPost{
   margin-left: 10px;
   margin-top: 0;
