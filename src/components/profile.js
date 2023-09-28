@@ -56,6 +56,7 @@ function profile(navigateTo) {
   btnSignOut.addEventListener('click', async (e) => {
     e.preventDefault(e);
     signOutUser();
+    localStorage.clear();
     navigateTo('/');
   });
 

@@ -26,7 +26,6 @@ function forgotPassword(navigateTo) {
   btnRecover.textContent = 'Recuperar';
 
   section.append(logoImg, emailSearchAnchor, form, btnRecover, mensaje, homeImg);
-  // btnRecover.append(btnRecover);
   form.append(inputEmail);
 
   homeImg.addEventListener('click', () => {
