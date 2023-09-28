@@ -25,7 +25,9 @@ const sigInWithGoogle = async (event) => {
   const provider = new GoogleAuthProvider();
   try {
     const userCredential = await signInWithPopup(auth, provider);
-    const user = (userCredential);
+    const user = userCredential.user;
+    // Actualizar el estado del usuario registrado en localStorage
+    localStorage.setItem('userRegistered', 'true');
     return user;
   } catch (error) {
     return error;
@@ -57,10 +59,7 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
   });
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    localStorage.setItem('user', 'Usuario logueado');
-    return userCredential;
-  })
+  .then((userCredential) => userCredential)
   .catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/invalid-email') {
@@ -80,19 +79,16 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
 
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
-  const userId = auth.currentUser.uid;
-  const date = Timestamp.now().toDate().toLocaleString('en-US');
-  const likes = 0;
+  const id = auth.currentUser.uid;
+  const date = Timestamp.now().toDate().toLocaleString();
   const postsCollection = collection(db, 'posts');
-  const docRef = await addDoc(postsCollection, {
+  await addDoc(postsCollection, {
     name,
     date,
     title,
     post,
-    userId,
-    likes,
+    id,
   });
-  return docRef;
 };
 
 const getPosts = async () => {
@@ -160,6 +156,7 @@ const signOutUser = () => async () => {
     return error;
   }
 };
+
 export {
   sigInWithGoogle,
   createUser,

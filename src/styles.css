@@ -1,7 +1,6 @@
 html {
   height: 100%;
 }
-
 body{
   display: flex;
   justify-content: center;
@@ -11,23 +10,23 @@ body{
   margin: 0px;
   border: 0px;
 }
-
 :root {
   /*Colores*/
-  --naranja: #bb713C;
-  --naranjaclaro: #ffb11e;
-  --verdeclaro: #c6dfc5;
+  --naranja: #BB713C;
+  --naranjaclaro: #FFB11E;
+  --verdeclaro: #C6DFC5;
   --verdeoscuro: #353519;
   --inputField: rgba(255, 255, 0, 0.3);
-  --azulGoogle: #4285f4;
+  --azulGoogle: #4285F4;
   --azulGoogleActivo: #1669F2;
-
   /*FUENTES*/
-  --titulos: 'Tenor Sans', sans-serif;
+  --titulos: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --principal: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --googleButton: 'Roboto', sans-serif;
 }
-
+p {
+  font-size: 12px;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -38,11 +37,9 @@ body{
   font-family: var(--principal);
   box-shadow: 0 0 10px var(--verdeclaro);
 }
-
 .logoImg {
   width: 40%;
 }
-
 .inputLog {
   font-family: var(--principal);
   background-color: var(--inputField);
@@ -55,22 +52,18 @@ body{
   margin: 10px;
   text-align: center;
 }
-
 .inputLog::placeholder {
   color: var(--naranja);
 }
-
 hr{
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.145);
 }
-
-a, p, button, .iconImg {
+a, button, .iconImg {
   cursor: pointer;
   margin: 20px 0;
   font-size: 14px;
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -78,7 +71,6 @@ form {
   width: 45vh;
   align-items: center;
 }
-
 .btnGoogle {
   background-color: var(--azulGoogle);
   padding: 0rem;
@@ -94,16 +86,13 @@ form {
   align-items: center;
   border-radius: 10px;
   font-size: 16px;
-}	
-
+}
 .btnGoogle:hover {
   box-shadow: 0 0 6px var(--azulGoogle);
 }
-
 .btnGoogle:active {
   background-color: var(--azulGoogleActivo);
 }
-
 .btnGoogle p {
   font-family: var(--googleButton);
   font-size: 14px;
@@ -111,7 +100,6 @@ form {
   margin-left: 18px;
   margin-right: 18px;
 }
-
 #iconGoogle {
   width: 2rem;
   height: auto;
@@ -119,14 +107,12 @@ form {
   border-radius: 2px;
   flex-direction: initial;
 }
-
 section {
   flex-grow: 0;
   background-color: #fff;
   justify-content: center;
   align-items: center;
 }
-  
 .logoImgPlus {
   width: 280px;
   height: 251px;
@@ -134,7 +120,6 @@ section {
   justify-content: center;
   align-items: center;
 }
-  
 .slogan {
   width: 253px;
   font-family: var(--principal);
@@ -142,37 +127,33 @@ section {
   text-align: center;
   color: #353519;
 }
-  
 .buttons {
   min-width: 252px;
   display: flex;
   justify-content: center;
   padding: 14px;
   border-radius: 10px;
-  background-color: #ffb11e;
+  background-color: #FFB11E;
   border-style: none;
   font-size: 16px;
   font-family: var(--principal);
   color: #fff;
 }
-
 .buttons:hover {
   background-color:#fffbba;
   color:#bb713C;
 }
-  
 h2 {
   height: 30px;
   margin: 60px 20px 0px 20px;
   font-size: 18px;
   color: #353519;
 }
-
 h3{
-  font-size: 16px;
+  font-size: 12px bold;
   text-align: center;
+  color: #77587C;
 }
-
 figure {
   width: 40px;
   height: 40px;
@@ -180,7 +161,6 @@ figure {
   margin: 11px 32px 0;
   object-fit: contain;
 }
-  
 .chevronIcon {
   width: 40px;
   height: 40px;
@@ -188,7 +168,6 @@ figure {
   position: flex;
   flex-grow: 0;
 }
-  
 .new,
 .forget {
   position: absolute;
@@ -196,11 +175,9 @@ figure {
   left: 95px;
   text-align: left;
 }
-
 .new {
   top: 531px;
 }
-
 .loginChild,
 .loginItem {
   position: absolute;
@@ -210,11 +187,9 @@ figure {
   width: 252px;
   height: 45px;
 }
-
 .loginItem {
   top: 436px;
 }
-  
 .loginInner {
   position: absolute;
   top: 307.5px;
@@ -224,7 +199,6 @@ figure {
   width: 391px;
   height: 1px;
 }
-
 .entrar {
   position: absolute;
   top: calc(50% - 14.5px);
@@ -233,7 +207,6 @@ figure {
   width: 129px;
   height: 38px;
 }
-
 .email {
   position: absolute;
   top: 372px;
@@ -243,7 +216,6 @@ figure {
   display: inline-block;
   width: 173px;
 }
-
 .pass {
   position: absolute;
   top: 450px;
@@ -253,7 +225,6 @@ figure {
   display: inline-block;
   width: 173px;
 }
-
 .googleloginIcon {
   position: absolute;
   top: 206px;
@@ -262,7 +233,6 @@ figure {
   height: 60.52px;
   object-fit: cover;
 }
-
 .home-03-icon {
   position: absolute;
   top: 750px;
@@ -271,7 +241,6 @@ figure {
   height: 40px;
   overflow: hidden;
 }
-
 .logoIcon {
   position: absolute;
   top: 83px;
@@ -280,7 +249,6 @@ figure {
   height: 116px;
   object-fit: cover;
 }
-
 .login {
   position: relative;
   background-color: var(--color-white);
@@ -291,7 +259,6 @@ figure {
   color: var(--color-darkslategray);
   font-family: var(--font-ubuntu);
 }
-  
 .inputEmail {
   position: absolute;
   top: 305px;
@@ -303,7 +270,6 @@ figure {
   border-radius: 10px;
   background-color: rgba(255, 255, 0, 0.3);
 }
-  
 .inputPass {
   position: absolute;
   top: 419px;
@@ -314,7 +280,6 @@ figure {
   border-radius: 10px;
   background-color: rgba(255, 255, 0, 0.3);
 }
-  
 .return {
   top: 120em;
   left: 160px;
@@ -325,7 +290,6 @@ figure {
   font-family: var(--principal);
   color: #353519;
 }
-  
 .logoIconImg {
   position: flex;
   top: 83px;
@@ -334,30 +298,26 @@ figure {
   height: 116px;
   object-fit: cover;
 }
-  
 .re {
   margin: 20px 4.8px 0px 0;
   font-family: var(--principal);
   text-align: center;
 }
-  
 .re-container {
   position: flex;
   top: 265px;
   left: 102px;
   white-space: pre-wrap;
-  justify-content: center;  
+  justify-content: center;
 }
-  
 .mision {
   width: 344px;
   height: 24px;
   margin: 40px 4.8px 20px 0;
   font-family: var(--principal);
   text-align: center;
-  color: #c992d2;
+  color: #C992D2;
 }
-  
 .what {
   width: 294px;
   height: 0px;
@@ -367,7 +327,6 @@ figure {
   text-align: justify;
   color: #353519;
 }
-  
 .planetImg {
   width: 336.8px;
   height: 279px;
@@ -376,25 +335,20 @@ figure {
   margin: 0px;
   align-items: flex-end;
 }
-
 #mensaje {
   font-family: var(--principal);
   color: var(--naranjaclaro);
 }
-
 /*--------Feed--------*/
-
 .header {
   width: 100%;
   height: 100px;
-  background-color: var(--naranjaclaro);
+  background-color: #ffb01d9e;
 }
-
 .logoImgFeed {
   width: 100px;
   padding-left: 20px;
 }
-
 .textAreaSection {
   display: flex;
   flex-direction: column;
@@ -402,7 +356,6 @@ figure {
   justify-content: center;
   align-items: center;
 }
-
 .inputPost {
   margin: 10px;
   border: 1px solid var(--naranjaclaro);
@@ -414,34 +367,32 @@ figure {
   font-size: 12px; /*Tamaño de fuente */
   text-align: center;
 }
-
 /* Estilo para el contador de caracteres */
 span {
   font-size: 12px;
   justify-items: center;
   border: 0px, 0px, 20px, 0px;
 }
-
 .postsSection {
-  margin: auto;
+  margin-top: 0;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
   /* max-height: calc(100vh - 200px); Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
   font-size: 12px;
 }
-
 .postContainer {
   text-align: justify;
-  padding: 0px 30px; 
+  padding: 0px 30px;
   margin: 10px 30px 10px 30px;
-  border: 1px solid var(--naranjaclaro);
+  border: 1px solid #fff;
   border-radius: 10px;
+  background-color: #edd4f375;
 }
-
 .btnPost{
   margin-left: 10px;
+  margin-top: 0;
   padding: 14px;
   border-radius: 10px;
-  background-color: #ffb11e;
+  background-color: #FFB11E;
   font-size: 14px;
   border-style: none;
   font-family: var(--principal);
@@ -449,12 +400,11 @@ span {
   flex-direction: unset;
   width: 100px;
 }
-
 .btnPost:hover {
+  margin-top: 0;
   background-color:#fffbba;
   color:#bb713C;
 }
-
 .footer {
   height: 10vh;
   background-color: var(--verdeclaro);
@@ -464,13 +414,6 @@ span {
   margin-bottom: 0px;
   bottom: 0;
 }
-
-.header {
-  width: 100%;
-  height: 10vh;
-  background-color: var(--naranjaclaro);
-}
-
 /* FOOTER - NAVIGATION BAR */
 .buttonsContainer {
   background-color: var(--verdeclaro);
@@ -482,20 +425,16 @@ span {
   margin-bottom: 0px;
   bottom: 0;
 }
-
 .navigationButtons {
   background: transparent;
   border: transparent;
   cursor: pointer;
 }
-
 /* PROFILE */
-
 .profileTitle, .feedTitle {
   position: initial;
   color: var(--naranjaclaro);
 }
-
 .btnSignOut {
   position: absolute;
   top: 30px;
@@ -505,17 +444,15 @@ span {
   height: 5vh;
   border: none;
   border-radius: 8px;
-  background-color: #00bcd4;
+  background-color: #00BCD4;
   cursor: pointer;
 }
-
 .nameProfile {
   margin-top: 20px;
-  color: #cddc39;
+  color: #CDDC39;
 }
-
 .email {
-  width: 300px;
+  width: 330px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -524,23 +461,20 @@ span {
   text-align: center;
   background: transparent;
 }
-
 .profileSection {
   height: 80vh;
   width: 50vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
-
 #like-button img {
   width: 25px;
   height: 25px;
-  cursor: pointer; 
+  cursor: pointer;
 }
-
 #like-counter {
-  font-size: 16px; 
+  font-size: 16px;
   margin-left: 10px;
   color: #333;
 }

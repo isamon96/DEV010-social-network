@@ -1,7 +1,7 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
   }
   const section = document.createElement('section');
@@ -83,6 +83,8 @@ function login(navigateTo) {
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
   });
+
+  
 
   section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
   btnLoginGoogle.append(logoGoogle, googleText);
