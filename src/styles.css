@@ -457,7 +457,7 @@ span {
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--naranjaclaro);
   text-align: center;
   background: transparent;
 }
@@ -477,4 +477,7 @@ span {
   font-size: 16px;
   margin-left: 10px;
   color: #333;
+}
+.nameProfile {
+  color: #1669F2;
 }
