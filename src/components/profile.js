@@ -26,7 +26,6 @@ function profile(navigateTo) {
   imgProfile.className = 'imgProfile';
 
   const email = document.createElement('input');
-  email.placeholder = 'Correo del usuario';
   email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
   //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
   //   email.setAttribute('disabled', true);
@@ -36,17 +35,14 @@ function profile(navigateTo) {
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
-      const userInfo = obtainUserInfo(); // Obtener la información del usuario
+      const userInfo = obtainUserInfo();
       const photo = auth.currentUser.photoURL;
-
-      nameProfile.textContent = userInfo.displayName; // Mostrar el nombre del usuario
-      email.value = userInfo.email; // Establecer el valor del correo del usuario
+      nameProfile.textContent = userInfo.displayName;
+      email.value = userInfo.email;
       imgProfile.src = user.photoURL;
       if (photo === null || photo === undefined) {
         imgProfile.src = '../assets/user-circle@2x.png';
       }
-      await showPosts(nameProfile, postsSection);
-      navigateTo('/noFeed');
     }
   });
 

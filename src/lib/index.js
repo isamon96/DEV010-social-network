@@ -130,7 +130,16 @@ const showPosts = async (array) => {
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
-    postContainer.append(postTitle, postName, postDate, postContent);
+    const editIcon = document.createElement('img');
+    editIcon.className = 'editIcon';
+    editIcon.src = '../assets/edit.png';
+    const deleteIcon = document.createElement('img');
+    deleteIcon.className = 'deleteIcon';
+    deleteIcon.src = '../assets/delete.png';
+    const iconSection = document.createElement('section');
+    iconSection.className = 'iconSection';
+    iconSection.append(editIcon, deleteIcon);
+    postContainer.append(iconSection, postTitle, postName, postDate, postContent);
     individualPost.appendChild(postContainer);
   });
   return individualPost;
