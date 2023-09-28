@@ -24,20 +24,15 @@ body{
 }
 :root {
   /*Colores*/
-  --naranja: #BB713C
-;
-  --naranjaclaro: #FFB11E
-;
-  --verdeclaro: #C6DFC5
-;
-  --verdeoscuro: #353519
-;
+  --naranja: #BB713C;
+  --naranjaclaro: #FFB11E;
+  --verdeclaro: #C6DFC5;
+  --verdeoscuro: #353519;
   --inputField: rgba(255, 255, 0, 0.3);
-  --azulGoogle: #4285F4
-;
-  --azulGoogleActivo: #1669F2
-;
+  --azulGoogle: #4285F4;
+  --azulGoogleActivo: #1669F2;
   /*FUENTES*/
+  --titulos: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --titulos: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --principal: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --googleButton: 'Roboto', sans-serif;
@@ -152,8 +147,7 @@ section {
   justify-content: center;
   padding: 14px;
   border-radius: 10px;
-  background-color: #FFB11E
-;
+  background-color: #FFB11E;
   border-style: none;
   font-size: 16px;
   font-family: var(--principal);
@@ -173,8 +167,6 @@ h2 {
 h3{
   font-size: 12px bold;
   text-align: center;
-  color: #77587C
-;
 }
 figure {
   width: 40px;
@@ -339,8 +331,7 @@ figure {
   margin: 40px 4.8px 20px 0;
   font-family: var(--principal);
   text-align: center;
-  color: #C992D2
-;
+  color: #c992d2;
 }
 .what {
   width: 294px;
@@ -410,15 +401,14 @@ span {
   margin: 10px 30px 10px 30px;
   border: 1px solid #fff;
   border-radius: 10px;
-  background-color: #edd4f375;
 }
+
 .btnPost{
   margin-left: 10px;
   margin-top: 0;
   padding: 14px;
   border-radius: 10px;
-  background-color: #FFB11E
-;
+  background-color: #ffb11e;
   font-size: 14px;
   border-style: none;
   font-family: var(--principal);
@@ -470,22 +460,20 @@ span {
   height: 5vh;
   border: none;
   border-radius: 8px;
-  background-color: #00BCD4
-;
+  background-color: #00bcd4;
   cursor: pointer;
 }
 .nameProfile {
   margin-top: 20px;
-  color: #CDDC39
-;
+  color: #cddc39;
 }
 .email {
-  width: 300px;
+  width: 330px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--naranjaclaro);
   text-align: center;
   background: transparent;
 }
@@ -494,7 +482,7 @@ span {
   width: 50vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 #like-button img {
   width: 25px;
@@ -505,4 +493,7 @@ span {
   font-size: 16px;
   margin-left: 10px;
   color: #333;
+}
+.nameProfile {
+  color: #1669F2;
 }

@@ -4,11 +4,25 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  // updateProfile,
 } from 'firebase/auth';
+
 import {
-  sigInWithGoogle, updateOutput, createUser, loginUser,
-} from '../src/lib/index.js'; // Importa la función
-import { auth } from '../src/firebase.js'; // Importa la instancia de Firebase auth
+  addDoc, // collection, getDocs, query, orderBy,
+} from 'firebase/firestore';
+
+import {
+  sigInWithGoogle,
+  updateOutput,
+  createUser,
+  loginUser,
+  addPost,
+  getPosts,
+  showPosts,
+  updateDisplayName,
+} from '../src/lib/index.js';
+
+import { auth, db } from '../src/firebase.js';
 
 jest.mock('firebase/auth', () => ({
   signInWithPopup: jest.fn(),
@@ -23,6 +37,13 @@ jest.mock('firebase/auth', () => ({
   auth: jest.fn(() => Promise.resolve({})),
   sendEmailVerification: jest.fn(() => Promise.resolve({})),
   signInWithEmailAndPassword: jest.fn(() => Promise.resolve({})),
+}));
+
+jest.mock('firebase/firestore', () => ({
+  getFirestore: jest.fn(() => Promise.resolve({})),
+  addDoc: jest.fn(() => Promise.resolve({ id: 'fake-id' })),
+  collection: jest.fn(() => Promise.resolve({})),
+  db: jest.fn(() => Promise.resolve({})),
 }));
 
 describe('updateOutput', () => {
@@ -201,5 +222,60 @@ describe('loginUser', () => {
     signInWithEmailAndPassword.mockRejectedValueOnce({ code: 'auth/wrong-password' });
     await loginUser(email, password, element);
     expect(element.textContent).toBe('La contraseña es incorrecta.');
+  });
+});
+
+describe('addPost', () => {
+  it('should be a function', () => {
+    expect(typeof addPost).toBe('function');
+  });
+  it('should receive title and post as arguments', () => {
+    expect(addPost).toHaveLength(2);
+  });
+  it('name should be equal to auth.currentUser.displayName', async () => {
+    const name = auth.currentUser.displayName;
+    expect(name).toBe(auth.currentUser.displayName);
+  });
+  it('should call addDoc with postsCollection and object with name, date, title and post', async () => {
+    const title = 'test title';
+    const post = 'test post';
+    const name = auth.currentUser.displayName;
+    const date = 'test date';
+    const postsCollection = (db, 'posts');
+    const object = {
+      name,
+      date,
+      title,
+      post,
+    };
+    await addPost(title, post);
+    expect(addDoc).toHaveBeenCalledWith(postsCollection, object);
+  });
+});
+
+describe('getPosts', () => {
+  it('should be a function', () => {
+    expect(typeof getPosts).toBe('function');
+  });
+  it('should not receive arguments', () => {
+    expect(getPosts).toHaveLength(0);
+  });
+});
+
+describe('showPosts', () => {
+  it('should be a function', () => {
+    expect(typeof showPosts).toBe('function');
+  });
+  it('should receive array as argument', () => {
+    expect(showPosts).toHaveLength(1);
+  });
+});
+
+describe('updateDisplayName', () => {
+  it('should be a function', () => {
+    expect(typeof updateDisplayName).toBe('function');
+  });
+  it('should receive newDisplayName as argument', () => {
+    expect(updateDisplayName).toHaveLength(1);
   });
 });

@@ -6,6 +6,7 @@ function forgotPassword(navigateTo) {
   const form = document.createElement('form');
   const btnRecover = document.createElement('button');
   const homeImg = document.createElement('img');
+  const mensaje = document.createElement('p');
   section.className = 'container';
 
   logoImg.className = 'logoImg';
@@ -24,7 +25,7 @@ function forgotPassword(navigateTo) {
   btnRecover.className = 'buttons';
   btnRecover.textContent = 'Recuperar';
 
-  section.append(logoImg, emailSearchAnchor, form, btnRecover, homeImg);
+  section.append(logoImg, emailSearchAnchor, form, btnRecover, mensaje, homeImg);
   // btnRecover.append(btnRecover);
   form.append(inputEmail);
 

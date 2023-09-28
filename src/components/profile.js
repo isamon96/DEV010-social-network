@@ -1,5 +1,7 @@
-import { signOutUser, obtainUserInfo } from '../lib/index.js';
+import { onAuthStateChanged } from 'firebase/auth';
+import { signOutUser, obtainUserInfo, showPosts } from '../lib/index.js';
 import navigationBar from './navigationBar';
+import { auth } from '../firebase.js';
 
 function profile(navigateTo) {
   const section = document.createElement('section');
@@ -16,9 +18,25 @@ function profile(navigateTo) {
   const profileSection = document.createElement('section');
   profileSection.className = ('profileSection');
 
-  const profileTitle = document.createElement('h3');
-  profileTitle.classList.add('profileTitle');
-  profileTitle.textContent = 'Profile';
+  email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
+  //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
+  //   email.setAttribute('disabled', true);
+
+  const postsSection = document.createElement('section');
+  postsSection.className = 'postsSection';
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userInfo = obtainUserInfo();
+      const photo = auth.currentUser.photoURL;
+      nameProfile.textContent = userInfo.displayName;
+      email.value = userInfo.email;
+      imgProfile.src = user.photoURL;
+      if (photo === null || photo === undefined) {
+        imgProfile.src = '../assets/user-circle@2x.png';
+      }
+    }
+  });
 
   const btnSignOut = document.createElement('button');
   btnSignOut.className = 'buttons';
@@ -29,24 +47,12 @@ function profile(navigateTo) {
     navigateTo('/');
   });
 
-  const nameProfile = document.createElement('h2');
-  nameProfile.className = 'nameProfile';
-  nameProfile.textContent = obtainUserInfo;
-
-  const email = document.createElement('input');
-  email.placeholder = 'Correo del usuario';
-  email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
-  //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
-  //   email.setAttribute('disabled', true); // Label de titulo para post del usuario
-  //   const h3 = document.createElement('h3'); // Titulo post of user
-  //   h3.textContent = `Posts of ${user.displayName}`;
-
   const footer = document.createElement('footer');
   footer.className = ('footer');
 
-  section.append(header, profileSection, footer);
+  section.append(header, profileSection, btnSignOut, footer);
   header.append(logoImg);
-  profileSection.append(profileTitle, nameProfile, email, btnSignOut);
+  profileSection.append(nameProfile, imgProfile, email, postsSection);
   footer.appendChild(navigationBar(navigateTo));
 
   return section;
