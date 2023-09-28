@@ -84,8 +84,6 @@ function login(navigateTo) {
     navigateTo('/forgotPassword');
   });
 
-  
-
   section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass, mensaje);
