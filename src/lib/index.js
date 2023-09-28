@@ -6,10 +6,19 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
+  addDoc,
+  collection,
+  Timestamp,
+  getDocs,
+  query,
+  orderBy,
+  updateDoc,
+  doc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
@@ -25,7 +34,8 @@ const sigInWithGoogle = async (event) => {
   const provider = new GoogleAuthProvider();
   try {
     const userCredential = await signInWithPopup(auth, provider);
-    const user = (userCredential);
+    const user = userCredential.user;
+    localStorage.setItem('userRegistered', 'true');
     return user;
   } catch (error) {
     return error;
@@ -58,7 +68,7 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    localStorage.setItem('user', 'Usuario logueado');
+    localStorage.setItem('userRegistered', 'true');
     return userCredential;
   })
   .catch((error) => {
@@ -160,6 +170,37 @@ const signOutUser = () => async () => {
     return error;
   }
 };
+
+const deletePost = async (id) => {
+  await deleteDoc(doc(db, 'posts', id));
+};
+
+const editPost = async (id, title, post, likes) => {
+  const postRef = doc(db, 'posts', id);
+  await updateDoc(postRef, {
+    title,
+    post,
+    likes,
+  });
+};
+
+const resetPassword = async (email, element) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    const message = 'Correo enviado para restablecer contraseña.';
+    updateOutput(element, message);
+  } catch (error) {
+    const errorCode = error.code;
+    if (errorCode === 'auth/invalid-email') {
+      const message = 'El correo no es válido.';
+      updateOutput(element, message);
+    } else if (errorCode === 'auth/user-not-found') {
+      const message = 'El usuario no existe.';
+      updateOutput(element, message);
+    }
+  }
+};
+
 export {
   sigInWithGoogle,
   createUser,
@@ -171,4 +212,7 @@ export {
   updateDisplayName,
   obtainUserInfo,
   signOutUser,
+  deletePost,
+  editPost,
+  resetPassword,
 };

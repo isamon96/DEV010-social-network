@@ -46,8 +46,8 @@ function register(navigateTo) {
   inputPass.type = 'password';
   inputPass.placeholder = '🔑 Contraseña';
 
-   registerButton.className = 'buttons';
-  
+  registerButton.className = 'buttons';
+
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
