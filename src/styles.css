@@ -10,6 +10,7 @@
     width: 50vh; /* Mantén el ancho para pantallas más grandes */
   }
 }
+
 html {
   height: 100%;
 }
@@ -32,7 +33,6 @@ body{
   --azulGoogle: #4285F4;
   --azulGoogleActivo: #1669F2;
   /*FUENTES*/
-  --titulos: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --titulos: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --principal: 'Ubuntu', 'Ubuntu Mono', sans-serif;
   --googleButton: 'Roboto', sans-serif;
@@ -138,8 +138,7 @@ section {
   font-family: var(--principal);
   font-size: 20px;
   text-align: center;
-  color: #353519
-;
+  color: #353519;
 }
 .buttons {
   min-width: 252px;
@@ -161,12 +160,12 @@ h2 {
   height: 30px;
   margin: 60px 20px 0px 20px;
   font-size: 18px;
-  color: #353519
-;
+  color: #353519;
 }
 h3{
   font-size: 12px bold;
   text-align: center;
+  color: #77587C;
 }
 figure {
   width: 40px;
@@ -302,8 +301,7 @@ figure {
   flex-grow: 0;
   margin: 75px 120px 4px 131px;
   font-family: var(--principal);
-  color: #353519
-;
+  color: #353519;
 }
 .logoIconImg {
   position: flex;
@@ -331,7 +329,7 @@ figure {
   margin: 40px 4.8px 20px 0;
   font-family: var(--principal);
   text-align: center;
-  color: #c992d2;
+  color: #C992D2;
 }
 .what {
   width: 294px;
@@ -340,8 +338,7 @@ figure {
   font-family: var(--principal);
   font-weight: 300;
   text-align: justify;
-  color: #353519
-;
+  color: #353519;
 }
 .planetImg {
   width: 336.8px;
@@ -401,14 +398,14 @@ span {
   margin: 10px 30px 10px 30px;
   border: 1px solid #fff;
   border-radius: 10px;
+  background-color: #edd4f375;
 }
-
 .btnPost{
   margin-left: 10px;
   margin-top: 0;
   padding: 14px;
   border-radius: 10px;
-  background-color: #ffb11e;
+  background-color: #FFB11E;
   font-size: 14px;
   border-style: none;
   font-family: var(--principal);
@@ -460,12 +457,12 @@ span {
   height: 5vh;
   border: none;
   border-radius: 8px;
-  background-color: #00bcd4;
+  background-color: #00BCD4;
   cursor: pointer;
 }
 .nameProfile {
   margin-top: 20px;
-  color: #cddc39;
+  color: #CDDC39;
 }
 .email {
   width: 330px;

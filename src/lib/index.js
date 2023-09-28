@@ -22,9 +22,6 @@ import {
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
-} from 'firebase/firestore';
-
-import { db, auth } from '../firebase';
 
 const updateOutput = (outputElement, message) => {
   if (outputElement) {
@@ -136,7 +133,6 @@ const showPosts = async (array) => {
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
-
     const editIcon = document.createElement('img');
     editIcon.className = 'editIcon';
     editIcon.src = '../assets/edit.png';
@@ -147,9 +143,6 @@ const showPosts = async (array) => {
     iconSection.className = 'iconSection';
     iconSection.append(editIcon, deleteIcon);
     postContainer.append(iconSection, postTitle, postName, postDate, postContent);
-=======
-    postContainer.append(postTitle, postName, postDate, postContent);
-
     individualPost.appendChild(postContainer);
   });
   return individualPost;
@@ -179,7 +172,6 @@ const obtainUserInfo = () => {
     photo,
   };
   return userInfo;
-
 };
 
 const signOutUser = () => async () => {
@@ -235,26 +227,4 @@ export {
   deletePost,
   editPost,
   resetPassword,
-
-};
-
-const signOutUser = () => async () => {
-  try {
-    await signOut(auth);
-    return true;
-  } catch (error) {
-    return error;
-  }
-};
-export {
-  sigInWithGoogle,
-  createUser,
-  loginUser,
-  updateOutput,
-  addPost,
-  getPosts,
-  showPosts,
-  updateDisplayName,
-  obtainUserInfo,
-  signOutUser,
 };
