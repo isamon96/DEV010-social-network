@@ -31,7 +31,6 @@ body{
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
   height: 100vh;
@@ -76,6 +75,7 @@ form {
   display: flex;
   flex-direction: column;
   margin: 0px;
+  width: 45vh;
   align-items: center;
 }
 
@@ -137,8 +137,6 @@ section {
   
 .slogan {
   width: 253px;
-  /* height: 70px; */
-  /* margin: 20px 20px; */
   font-family: var(--principal);
   font-size: 20px;
   text-align: center;
@@ -171,7 +169,7 @@ h2 {
 }
 
 h3{
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -394,24 +392,27 @@ figure {
 
 .logoImgFeed {
   width: 100px;
-  margin: 10px;
   padding-left: 20px;
 }
 
 .textAreaSection {
+  display: flex;
   flex-direction: column;
   height: 35vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputPost {
   margin: 10px;
-  border: 1px solid var(--naranja);
-  border-radius: 5px;
-  min-width: 300px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
+  min-width: 250px;
   min-height: 60px;
   font-family: var(--principal);
   padding: 10px; /* Agrega un espacio interno para el texto */
   font-size: 12px; /*Tamaño de fuente */
+  text-align: center;
 }
 
 /* Estilo para el contador de caracteres */
@@ -419,25 +420,26 @@ span {
   font-size: 12px;
   justify-items: center;
   border: 0px, 0px, 20px, 0px;
-  }
+}
 
 .postsSection {
-  margin: auto;
+  margin-top: 0;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
   /* max-height: calc(100vh - 200px); Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
   font-size: 12px;
 }
 
-.individualPost {
+.postContainer {
   text-align: justify;
-  padding: 0px 30px; /* Agregamos espacio de 20px alrededor de cada publicación */
-  margin: 20px; /* Agregamos espacio de 10px arriba y abajo para separar las publicaciones */
-  /* background-color: hsl(270, 6%, 97%); */
-  border: 1px solid var(--naranja);
+  padding: 0px 30px; 
+  margin: 10px 30px 10px 30px;
+  border: 1px solid var(--naranjaclaro);
+  border-radius: 10px;
 }
 
 .btnPost{
   margin-left: 10px;
+  margin-top: 0;
   padding: 14px;
   border-radius: 10px;
   background-color: #ffb11e;
@@ -450,6 +452,7 @@ span {
 }
 
 .btnPost:hover {
+  margin-top: 0;
   background-color:#fffbba;
   color:#bb713C;
 }
