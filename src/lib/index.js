@@ -6,10 +6,22 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
+  addDoc,
+  collection,
+  Timestamp,
+  getDocs,
+  query,
+  orderBy,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
+
+import { db, auth } from '../firebase';
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
@@ -124,7 +136,20 @@ const showPosts = async (array) => {
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
+
+    const editIcon = document.createElement('img');
+    editIcon.className = 'editIcon';
+    editIcon.src = '../assets/edit.png';
+    const deleteIcon = document.createElement('img');
+    deleteIcon.className = 'deleteIcon';
+    deleteIcon.src = '../assets/delete.png';
+    const iconSection = document.createElement('section');
+    iconSection.className = 'iconSection';
+    iconSection.append(editIcon, deleteIcon);
+    postContainer.append(iconSection, postTitle, postName, postDate, postContent);
+=======
     postContainer.append(postTitle, postName, postDate, postContent);
+
     individualPost.appendChild(postContainer);
   });
   return individualPost;
@@ -154,6 +179,63 @@ const obtainUserInfo = () => {
     photo,
   };
   return userInfo;
+
+};
+
+const signOutUser = () => async () => {
+  try {
+    await signOut(auth);
+    return true;
+  } catch (error) {
+    return error;
+  }
+};
+
+const deletePost = async (id) => {
+  await deleteDoc(doc(db, 'posts', id));
+};
+
+const editPost = async (id, title, post, likes) => {
+  const postRef = doc(db, 'posts', id);
+  await updateDoc(postRef, {
+    title,
+    post,
+    likes,
+  });
+};
+
+const resetPassword = async (email, element) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    const message = 'Correo enviado para restablecer contraseña.';
+    updateOutput(element, message);
+  } catch (error) {
+    const errorCode = error.code;
+    if (errorCode === 'auth/invalid-email') {
+      const message = 'El correo no es válido.';
+      updateOutput(element, message);
+    } else if (errorCode === 'auth/user-not-found') {
+      const message = 'El usuario no existe.';
+      updateOutput(element, message);
+    }
+  }
+};
+
+export {
+  sigInWithGoogle,
+  createUser,
+  loginUser,
+  updateOutput,
+  addPost,
+  getPosts,
+  showPosts,
+  updateDisplayName,
+  obtainUserInfo,
+  signOutUser,
+  deletePost,
+  editPost,
+  resetPassword,
+
 };
 
 const signOutUser = () => async () => {
