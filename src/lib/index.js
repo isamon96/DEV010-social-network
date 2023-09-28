@@ -5,11 +5,11 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
-  updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, Timestamp, getDocs, query, orderBy,
+  addDoc, collection, Timestamp, getDocs, query, orderBy, updateDoc, doc, deleteDoc,
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
@@ -25,7 +25,11 @@ const sigInWithGoogle = async (event) => {
   const provider = new GoogleAuthProvider();
   try {
     const userCredential = await signInWithPopup(auth, provider);
-    const user = (userCredential);
+    // const user = (userCredential);
+    const user = userCredential.user;
+  // Actualizar el estado del usuario registrado en localStorage
+  localStorage.setItem('userRegistered', 'true');
+
     return user;
   } catch (error) {
     return error;
@@ -57,7 +61,10 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
   });
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => userCredential)
+  .then((userCredential) => {
+    localStorage.setItem('userRegistered', 'true');
+    return userCredential;
+  })
   .catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/invalid-email') {
@@ -77,14 +84,19 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
 
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
-  const date = Timestamp.now().toDate().toLocaleString();
+  const userId = auth.currentUser.uid;
+  const date = Timestamp.now().toDate().toLocaleString('en-US');
+  const likes = 0;
   const postsCollection = collection(db, 'posts');
-  await addDoc(postsCollection, {
+  const docRef = await addDoc(postsCollection, {
     name,
     date,
     title,
     post,
+    userId,
+    likes,
   });
+  return docRef;
 };
 
 const getPosts = async () => {
@@ -102,8 +114,8 @@ const showPosts = async (array) => {
   const individualPost = document.createElement('section');
   individualPost.className = 'individualPost';
   array.forEach((post) => {
-    const onePost = document.createElement('section');
-    onePost.className = 'individualPost';
+    const postContainer = document.createElement('section');
+    postContainer.className = 'postContainer';
     const postName = document.createElement('p');
     postName.textContent = post.name;
     const postDate = document.createElement('p');
@@ -112,8 +124,8 @@ const showPosts = async (array) => {
     postTitle.textContent = post.title;
     const postContent = document.createElement('p');
     postContent.textContent = post.post;
-    onePost.append(postTitle, postName, postDate, postContent);
-    individualPost.append(onePost);
+    postContainer.append(postTitle, postName, postDate, postContent);
+    individualPost.appendChild(postContainer);
   });
   return individualPost;
 };
@@ -129,6 +141,38 @@ const updateDisplayName = async (newDisplayName) => {
   }
 };
 
+const obtainUserInfo = () => {
+  const user = auth.currentUser;
+  const name = user.displayName;
+  const email = user.email;
+  const id = user.uid;
+  const photo = user.photoURL;
+  const userInfo = {
+    name,
+    email,
+    id,
+    photo,
+  };
+  return userInfo;
+};
+
+const signOutUser = () => async () => {
+  try {
+    await signOut(auth);
+    return true;
+  } catch (error) {
+    return error;
+  }
+};
 export {
-  sigInWithGoogle, createUser, loginUser, updateOutput, addPost, getPosts, showPosts,
+  sigInWithGoogle,
+  createUser,
+  loginUser,
+  updateOutput,
+  addPost,
+  getPosts,
+  showPosts,
+  updateDisplayName,
+  obtainUserInfo,
+  signOutUser,
 };

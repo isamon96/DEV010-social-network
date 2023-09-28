@@ -1,11 +1,4 @@
-import {
-  updatePassword,
-} from 'firebase/auth';
-import { auth } from '../firebase';
-
-const newPassword = 'nueva_contraseña';
-// import { signOutUser } from '../lib/auth';
-// import { signOut } from '@firebase/auth';
+import { signOutUser, obtainUserInfo } from '../lib/index.js';
 import navigationBar from './navigationBar';
 
 function profile(navigateTo) {
@@ -30,18 +23,18 @@ function profile(navigateTo) {
   const btnSignOut = document.createElement('button');
   btnSignOut.className = 'buttons';
   btnSignOut.textContent = 'Cerra sesión';
-  //   botonSignOut.addEventListener('click', async (e) => {
-  //     e.preventDefault(e);
-  //     await signOutUser();
-  //     navigateTo('/');
-  //   });
+  btnSignOut.addEventListener('click', async (e) => {
+    e.preventDefault(e);
+    signOutUser();
+    navigateTo('/');
+  });
 
   const nameProfile = document.createElement('h2');
   nameProfile.className = 'nameProfile';
-  // nameProfile.textContent = user.displayName;
+  nameProfile.textContent = obtainUserInfo;
 
   const email = document.createElement('input');
-  email.placeholder = 'Aquí aparecerá el correo del usuario';
+  email.placeholder = 'Correo del usuario';
   email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
   //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
   //   email.setAttribute('disabled', true); // Label de titulo para post del usuario
