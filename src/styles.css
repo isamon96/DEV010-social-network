@@ -64,6 +64,7 @@ p {
   min-height: 45px;
   margin: 10px;
   text-align: center;
+  margin-top: 30px;  
 }
 .inputLog::placeholder {
   color: var(--naranja);
@@ -122,7 +123,7 @@ form {
 }
 section {
   flex-grow: 0;
-  background-color: #fff;
+  /* background-color: #fff; */
   justify-content: center;
   align-items: center;
 }
@@ -163,6 +164,7 @@ h2 {
   color: #353519;
 }
 h3{
+  margin-top: 0px;
   font-size: 12px bold;
   text-align: center;
   color: #77587C;
@@ -370,7 +372,7 @@ figure {
   align-items: center;
 }
 .inputPost {
-  margin: 10px;
+  /* margin: 10px; */
   border: 1px solid var(--naranjaclaro);
   border-radius: 10px;
   min-width: 250px;
@@ -494,3 +496,17 @@ span {
 .nameProfile {
   color: #1669F2;
 }
+
+#iconSection {
+  background-color: #77587C;
+}
+
+.deleteIcon {
+width: 25px ;
+transform: translate(174px, 25px);
+}
+
+.editIcon {
+  width: 28px;
+  transform: translate(200px);
+  }
