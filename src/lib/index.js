@@ -7,6 +7,7 @@ import {
   updateProfile,
   signOut,
   sendPasswordResetEmail,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import {
@@ -19,9 +20,13 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  getDoc,
 } from 'firebase/firestore';
 
 import { db, auth } from '../firebase';
+
+import popUpConfirm from '../components/popUpConfirm';
+import popUpEditPost from '../components/popUpEditPost';
 
 const updateOutput = (outputElement, message) => {
   if (outputElement) {
@@ -34,11 +39,8 @@ const sigInWithGoogle = async (event) => {
   const provider = new GoogleAuthProvider();
   try {
     const userCredential = await signInWithPopup(auth, provider);
-    // const user = (userCredential);
     const user = userCredential.user;
-  // Actualizar el estado del usuario registrado en localStorage
-  localStorage.setItem('userRegistered', 'true');
-
+    localStorage.setItem('userRegistered', 'true');
     return user;
   } catch (error) {
     return error;
@@ -95,7 +97,7 @@ const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
   const date = Timestamp.now().toDate().toLocaleString('en-US');
-  const likes = 0;
+  const likes = [];
   const postsCollection = collection(db, 'posts');
   const docRef = await addDoc(postsCollection, {
     name,
@@ -113,39 +115,137 @@ const getPosts = async () => {
   const q = query(postsCollection, orderBy('date', 'desc'));
   const postsQuery = await getDocs((q));
   const posts = [];
-  postsQuery.forEach((post) => {
-    posts.push(post.data());
+  postsQuery.forEach((postDoc) => {
+    const post = postDoc.data();
+    post.id = postDoc.id;
+    posts.push(post);
   });
   return posts;
 };
 
+const deletePost = async (id) => {
+  await deleteDoc(doc(db, 'posts', id));
+};
+
+const editPost = async (id, title, post, likes) => {
+  const postRef = doc(db, 'posts', id);
+  const postDoc = await getDoc(postRef);
+  const existingData = postDoc.data();
+
+  const dataToUpdate = {
+    title: title !== undefined ? title : existingData.title,
+    post: post !== undefined ? post : existingData.post,
+  };
+
+  if (likes !== undefined) {
+    dataToUpdate.likes = likes;
+  }
+
+  await updateDoc(postRef, dataToUpdate);
+};
+
+const toggleLike = async (id, element) => {
+  const postRef = doc(db, 'posts', id);
+  const currentUser = auth.currentUser.uid;
+  const postDoc = await getDoc(postRef);
+  if (postDoc.exists()) {
+    const postData = postDoc.data();
+    const likes = postData.likes || [];
+    const userLiked = likes.includes(currentUser);
+    if (userLiked) {
+      const updatedLikes = likes.filter((like) => like !== currentUser);
+      await editPost(id, undefined, undefined, updatedLikes);
+      const numberOfLikes = updatedLikes.length;
+      element.textContent = numberOfLikes;
+    } else {
+      const updatedLikes = [...likes, currentUser];
+      await editPost(id, undefined, undefined, updatedLikes);
+      const numberOfLikes = updatedLikes.length;
+      element.textContent = numberOfLikes;
+    }
+    return likes.length;
+  }
+  return false;
+};
+
 const showPosts = async (array) => {
-  const individualPost = document.createElement('section');
-  individualPost.className = 'individualPost';
-  array.forEach((post) => {
-    const postContainer = document.createElement('section');
-    postContainer.className = 'postContainer';
-    const postName = document.createElement('p');
-    postName.textContent = post.name;
-    const postDate = document.createElement('p');
-    postDate.textContent = post.date;
-    const postTitle = document.createElement('h3');
-    postTitle.textContent = post.title;
-    const postContent = document.createElement('p');
-    postContent.textContent = post.post;
-    const editIcon = document.createElement('img');
-    editIcon.className = 'editIcon';
-    editIcon.src = '../assets/edit.png';
-    const deleteIcon = document.createElement('img');
-    deleteIcon.className = 'deleteIcon';
-    deleteIcon.src = '../assets/delete.png';
-    const iconSection = document.createElement('section');
-    iconSection.className = 'iconSection';
-    iconSection.append(editIcon, deleteIcon);
-    postContainer.append(iconSection, postTitle, postName, postDate, postContent);
-    individualPost.appendChild(postContainer);
-  });
-  return individualPost;
+  const postsSection = document.getElementById('postsSection');
+  const currentUser = auth.currentUser.uid;
+  const postsList = await getPosts();
+  if (postsList) {
+    postsSection.innerHTML = '';
+    array.forEach((post) => {
+      const postUser = post.userId;
+      const postContainer = document.createElement('section');
+      postContainer.className = 'postContainer';
+
+      const postName = document.createElement('p');
+      postName.textContent = post.name;
+
+      const postDate = document.createElement('p');
+      postDate.textContent = post.date;
+
+      const postTitle = document.createElement('h3');
+      postTitle.textContent = post.title;
+
+      const postContent = document.createElement('p');
+      postContent.textContent = post.post;
+
+      const likesIcon = document.createElement('img');
+      const likesNumber = document.createElement('h3');
+      likesNumber.className = 'likesNumber';
+      likesNumber.textContent = post.likes.length;
+      likesIcon.className = 'likesIcon';
+      likesIcon.src = '../assets/likes.png';
+      likesIcon.addEventListener('click', async () => {
+        const postId = post.id;
+        const numberOfLikes = await toggleLike(postId, likesNumber);
+        likesNumber.textContent = numberOfLikes;
+      });
+
+      const iconSection = document.createElement('section');
+      iconSection.className = 'iconSection';
+
+      const likesSection = document.createElement('section');
+      likesSection.className = 'likesSection';
+      likesSection.append(likesNumber, likesIcon);
+
+      if (currentUser === postUser) {
+        const editIcon = document.createElement('img');
+        editIcon.className = 'editIcon';
+        editIcon.src = '../assets/edit.png';
+        editIcon.addEventListener('click', async () => {
+          const editedPost = await popUpEditPost(post.title, post.post);
+          const postId = post.id;
+          const editedTitle = editedPost.title;
+          const editedContent = editedPost.content;
+          await editPost(postId, editedTitle, editedContent);
+          postTitle.textContent = editedTitle;
+          postContent.textContent = editedContent;
+        });
+
+        const deleteIcon = document.createElement('img');
+        deleteIcon.className = 'deleteIcon';
+        deleteIcon.src = '../assets/delete.png';
+        deleteIcon.addEventListener('click', async () => {
+          const postId = post.id;
+          const confirmed = await popUpConfirm('¿Estás seguro de que quieres eliminar este post?');
+          if (confirmed) {
+            await deletePost(postId);
+            postContainer.remove();
+          }
+        });
+
+        iconSection.append(postTitle, editIcon, deleteIcon);
+      } else {
+        iconSection.append(postTitle);
+      }
+
+      postContainer.append(iconSection, postName, postDate, postContent, likesSection);
+      postsSection.append(postContainer);
+    });
+  }
+  return postsSection;
 };
 
 const updateDisplayName = async (newDisplayName) => {
@@ -159,21 +259,6 @@ const updateDisplayName = async (newDisplayName) => {
   }
 };
 
-const obtainUserInfo = () => {
-  const user = auth.currentUser;
-  const name = user.displayName;
-  const email = user.email;
-  const id = user.uid;
-  const photo = user.photoURL;
-  const userInfo = {
-    name,
-    email,
-    id,
-    photo,
-  };
-  return userInfo;
-};
-
 const signOutUser = () => async () => {
   try {
     await signOut(auth);
@@ -181,19 +266,6 @@ const signOutUser = () => async () => {
   } catch (error) {
     return error;
   }
-};
-
-const deletePost = async (id) => {
-  await deleteDoc(doc(db, 'posts', id));
-};
-
-const editPost = async (id, title, post, likes) => {
-  const postRef = doc(db, 'posts', id);
-  await updateDoc(postRef, {
-    title,
-    post,
-    likes,
-  });
 };
 
 const resetPassword = async (email, element) => {
@@ -213,6 +285,22 @@ const resetPassword = async (email, element) => {
   }
 };
 
+const obtainUserInfo = async () => new Promise((resolve, reject) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const name = user.displayName;
+      const email = user.email;
+      const imgProfile = user.photoURL;
+      const userId = user.uid;
+      resolve({
+        name, email, imgProfile, userId,
+      });
+    } else {
+      reject(Error('No hay usuario'));
+    }
+  });
+});
+
 export {
   sigInWithGoogle,
   createUser,
@@ -222,9 +310,9 @@ export {
   getPosts,
   showPosts,
   updateDisplayName,
-  obtainUserInfo,
   signOutUser,
   deletePost,
   editPost,
   resetPassword,
+  obtainUserInfo,
 };

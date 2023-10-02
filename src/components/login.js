@@ -18,18 +18,22 @@ function login(navigateTo) {
   const passAnchor = document.createElement('a');
   const homeImg = document.createElement('img');
   const mensaje = document.createElement('p');
+  const contentSection = document.createElement('section');
+  const formSection = document.createElement('section');
 
   section.className = 'container';
+  contentSection.className = 'contentSection';
+  formSection.className = 'formSection';
 
   logoImg.className = 'logoImg';
   logoImg.alt = 'Logo de la página';
-  logoImg.src = '../assets/logo.png';
+  logoImg.src = '../assets/logo.svg';
 
   btnLoginGoogle.className = 'btnGoogle';
 
   logoGoogle.id = 'iconGoogle';
   logoGoogle.alt = 'Logo de Google';
-  logoGoogle.src = '../assets/googleIcon.svg';
+  logoGoogle.src = '../assets/googleIcon.png';
 
   googleText.textContent = 'Inicia sesión con Google';
 
@@ -84,7 +88,9 @@ function login(navigateTo) {
     navigateTo('/forgotPassword');
   });
 
-  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  section.append(contentSection);
+  contentSection.append(logoImg, formSection);
+  formSection.append(btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass, mensaje);
 

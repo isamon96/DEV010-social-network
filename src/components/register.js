@@ -15,10 +15,16 @@ function register(navigateTo) {
   const registerButton = document.createElement('button');
   const loginAnchor = document.createElement('a');
   const mensaje = document.createElement('p');
+  const contentSection = document.createElement('section');
+  const formSection = document.createElement('section');
+
   section.className = 'container';
+  contentSection.className = 'contentSection';
+  formSection.className = 'formSection';
+
   logoImg.className = 'logoImg';
   logoImg.alt = 'Logo de la página';
-  logoImg.src = '../assets/logo.png';
+  logoImg.src = '../assets/logo.svg';
   btnLoginGoogle.className = 'btnGoogle';
 
   logoGoogle.id = 'iconGoogle';
@@ -81,7 +87,9 @@ function register(navigateTo) {
 
   form.append(inputName, inputEmail, inputPass, mensaje, registerButton, loginAnchor);
   btnLoginGoogle.append(logoGoogle, googleText);
-  section.append(logoImg, btnLoginGoogle, hr, form, homeImg);
+  contentSection.append(logoImg, formSection);
+  formSection.append(btnLoginGoogle, hr, form, homeImg);
+  section.append(contentSection);
 
   return section;
 }

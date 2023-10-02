@@ -13,7 +13,14 @@ function feed(navigateTo) {
   header.classList.add('header');
 
   const postsSection = document.createElement('section');
-  postsSection.className = 'postsSection';
+  postsSection.id = 'postsSection';
+
+  async function loadAndShowPosts() {
+    postsSection.innerHTML = '';
+    const postsList = await getPosts();
+    const posts = await showPosts(postsList);
+    return posts;
+  }
 
   const logoImg = document.createElement('img');
   logoImg.className = 'logoImgFeed';
@@ -25,8 +32,8 @@ function feed(navigateTo) {
 
   const form = document.createElement('form');
   const inputTitle = document.createElement('input');
-  const inputPost = document.createElement('textarea'); // Cambia input a textarea para un área de texto
-  const charCount = document.createElement('span'); // Para contar los caracteres
+  const inputPost = document.createElement('textarea');
+  const charCount = document.createElement('span');
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
@@ -35,13 +42,11 @@ function feed(navigateTo) {
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
-  // inputPost.type = 'text';
   inputPost.placeholder = 'Escribe tu post';
 
   btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
-  // Escuchar cambios en el área de texto y actualizar el contador de caracteres
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
     charCount.textContent = `${characterCount}/500`;
@@ -49,13 +54,6 @@ function feed(navigateTo) {
 
   const footer = document.createElement('footer');
   footer.className = ('footer');
-
-  async function loadAndShowPosts() {
-    const postsList = await getPosts();
-    const posts = await showPosts(postsList);
-    postsSection.innerHTML = '';
-    postsSection.appendChild(posts);
-  }
 
   loadAndShowPosts();
 
