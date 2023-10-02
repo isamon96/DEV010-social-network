@@ -4,6 +4,10 @@ function home(navigateTo) {
   const button = document.createElement('button');
   button.classList.add('buttons');
   const slogan = document.createElement('p');
+  const contentSection = document.createElement('section');
+  contentSection.className = 'contentSection';
+  const elementsSection = document.createElement('section');
+  elementsSection.className = 'elementsSection';
 
   const logoImgPlus = document.createElement('img');
   const chevron = document.createElement('img');
@@ -11,7 +15,7 @@ function home(navigateTo) {
   section.className = 'container';
   logoImgPlus.src = './assets/re+.png';
   logoImgPlus.alt = 'logo de re+';
-  logoImgPlus.className = 'logoImgPlus';
+  logoImgPlus.className = 'logoImg';
 
   chevron.src = './assets/chevron.gif';
   chevron.alt = 'flecha hacia abajo';
@@ -32,7 +36,9 @@ function home(navigateTo) {
     navigateTo('/about');
   });
 
-  section.append(logoImgPlus, slogan, button, title, chevron);
+  elementsSection.append(slogan, button, title, chevron);
+  contentSection.append(logoImgPlus, elementsSection);
+  section.appendChild(contentSection);
 
   return section;
 }
