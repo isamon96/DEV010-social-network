@@ -6,6 +6,7 @@ import about from './components/about.js';
 import forgotPassword from './components/forgotPassword.js';
 import feed from './components/feed.js';
 import profile from './components/profile.js';
+import navigationBar from './components/navigationBar.js';
 
 const rutas = {
   '/': home,
@@ -16,6 +17,7 @@ const rutas = {
   '/forgotPassword': forgotPassword,
   '/feed': feed,
   '/profile': profile,
+  '/navigationBar': navigationBar,
 };
 
 const root = document.getElementById('root');
