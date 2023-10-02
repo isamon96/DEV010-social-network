@@ -1,9 +1,25 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { signOutUser, obtainUserInfo, showPosts } from '../lib/index.js';
+import { signOutUser, obtainUserInfo } from '../lib/index.js';
 import navigationBar from './navigationBar';
-import { auth } from '../firebase.js';
 
 function profile(navigateTo) {
+  obtainUserInfo().then((user) => {
+    if (user) {
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const imgProfile = document.getElementById('imgProfile');
+      name.textContent = user.name;
+      email.textContent = user.email;
+      if (user.imgProfile) {
+        imgProfile.src = user.imgProfile;
+      } else {
+        const firstLetter = user.name.charAt(0).toUpperCase();
+        imgProfile.src = `https://ui-avatars.com/api/?name=${firstLetter}&background=C992D2&rounded=true&color=fff`;
+      }
+      return user;
+    }
+    return false;
+  });
+
   const section = document.createElement('section');
   section.className = 'container';
 
@@ -16,51 +32,39 @@ function profile(navigateTo) {
   logoImg.src = '../assets/logo.png';
 
   const profileSection = document.createElement('section');
-  profileSection.className = ('profileSection');
-
-  const nameProfile = document.createElement('h2');
-  nameProfile.className = 'nameProfile';
-  // nameProfile.textContent = obtainUserInfo;
+  profileSection.id = 'profileSection';
 
   const imgProfile = document.createElement('img');
-  imgProfile.className = 'imgProfile';
+  imgProfile.id = 'imgProfile';
 
-  const email = document.createElement('input');
-  email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
-  //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
-  //   email.setAttribute('disabled', true);
+  const name = document.createElement('p');
+  name.className = '.userData';
+  name.id = 'name';
+
+  const email = document.createElement('p');
+  email.className = '.userData';
+  email.id = 'email';
 
   const postsSection = document.createElement('section');
   postsSection.className = 'postsSection';
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const userInfo = obtainUserInfo();
-      const photo = auth.currentUser.photoURL;
-      nameProfile.textContent = userInfo.displayName;
-      email.value = userInfo.email;
-      imgProfile.src = user.photoURL;
-      if (photo === null || photo === undefined) {
-        imgProfile.src = '../assets/user-circle@2x.png';
-      }
-    }
-  });
+  const footer = document.createElement('footer');
+  footer.className = ('footer');
 
   const btnSignOut = document.createElement('button');
   btnSignOut.className = 'buttons';
+  btnSignOut.id = 'btnSignOut';
   btnSignOut.textContent = 'Cerra sesión';
   btnSignOut.addEventListener('click', async (e) => {
     e.preventDefault(e);
     signOutUser();
+    localStorage.clear();
     navigateTo('/');
   });
 
-  const footer = document.createElement('footer');
-  footer.className = ('footer');
-
-  section.append(header, profileSection, btnSignOut, footer);
+  section.append(header, profileSection, footer);
   header.append(logoImg);
-  profileSection.append(nameProfile, imgProfile, email, postsSection);
+  profileSection.append(imgProfile, name, email, postsSection, btnSignOut);
   footer.appendChild(navigationBar(navigateTo));
 
   return section;
