@@ -18,7 +18,7 @@ function profile(navigateTo) {
   const profileSection = document.createElement('section');
   profileSection.className = ('profileSection');
 
-  email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
+  // email.className = 'email'; // asiganmos al input el valor del correo del usuario de firebase
   //   email.value = user.email; // Deshabilitamos el input para que sea solo de lectura
   //   email.setAttribute('disabled', true);
 
