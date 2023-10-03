@@ -7,6 +7,7 @@ function popUpConfirm(message) {
     const popupMessage = document.createElement('p');
     popupMessage.textContent = message;
     const yesButton = document.createElement('button');
+    yesButton.className = 'buttonEdit';
     yesButton.textContent = 'Sí';
     yesButton.addEventListener('click', () => {
       resolve(true);
@@ -14,6 +15,7 @@ function popUpConfirm(message) {
     });
     const noButton = document.createElement('button');
     noButton.textContent = 'No';
+    noButton.className = 'buttonEdit';
     noButton.addEventListener('click', () => {
       resolve(false);
       dialog.close();
