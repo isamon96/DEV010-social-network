@@ -13,7 +13,6 @@ import {
 import {
   addDoc,
   collection,
-  Timestamp,
   getDocs,
   query,
   orderBy,
@@ -186,6 +185,7 @@ const showPosts = async (array) => {
   const postsSection = document.getElementById('postsSection');
   const currentUser = auth.currentUser.uid;
   const postsList = await getPosts();
+  console.log = postsList;
   if (postsList) {
     postsSection.innerHTML = '';
     array.forEach((post) => {
