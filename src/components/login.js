@@ -74,15 +74,18 @@ function login(navigateTo) {
     navigateTo('/register');
   });
 
-  btnLogin.addEventListener('click', async (event) => {
-    event.preventDefault();
-    const email = inputEmail.value;
-    const password = inputPass.value;
-    const user = await loginUser(email, password, mensaje);
-    if (user) {
-      navigateTo('/feed');
-    }
-  });
+  // Agregar event listener solo si el usuario no está registrado
+  if (localStorage.getItem('userRegistered') !== 'true') {
+    btnLogin.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const email = inputEmail.value;
+      const password = inputPass.value;
+      const user = await loginUser(email, password, mensaje);
+      if (user) {
+        navigateTo('/feed');
+      }
+    });
+  }
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
