@@ -23,9 +23,9 @@ function popUpConfirm(message) {
       resolve(false);
       dialog.close();
     });
-    popUpSection.appendChild(popupMessage, yesButton, noButton);
-    // popUpSection.appendChild(yesButton);
-    // popUpSection.appendChild(noButton);
+    popUpSection.appendChild(popupMessage);
+    popUpSection.appendChild(yesButton);
+    popUpSection.appendChild(noButton);
     dialog.appendChild(popUpSection);
     document.body.appendChild(dialog);
     dialog.showModal();

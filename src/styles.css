@@ -37,6 +37,18 @@ body{
 p {
   font-size: 12px;
 }
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/background11.jpg");
+  background-position: 30%;
+  opacity: 0.4; /* Ajusta la opacidad según tus necesidades */
+  z-index: -1; /* Asegura que el fondo esté detrás de otros contenidos */
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -47,8 +59,6 @@ p {
   font-family: var(--principal);
   box-sizing: border-box;
   justify-content: space-between;
-  background-image: url("assets/background11.jpg");
-  background-position: 25%;
 }
 .contentSection {
   height: 100vh;

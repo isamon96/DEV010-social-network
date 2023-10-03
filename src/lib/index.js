@@ -13,7 +13,6 @@ import {
 import {
   addDoc,
   collection,
-  Timestamp,
   getDocs,
   query,
   orderBy,
@@ -96,12 +95,14 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
-  const date = Timestamp.now().toDate().toLocaleString('en-US');
+  const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
+  const utcDate = convertToUTC(date); // Convierte la fecha a UTC
+  const formattedDate = formatDate(date); // Formatea la fecha
   const likes = [];
   const postsCollection = collection(db, 'posts');
   const docRef = await addDoc(postsCollection, {
     name,
-    date,
+    date: formattedDate,
     title,
     post,
     userId,
@@ -109,6 +110,20 @@ const addPost = async (title, post) => {
   });
   return docRef;
 };
+
+// Función para convertir una fecha a UTC
+function convertToUTC(date) {
+  const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+  return utcDate;
+}
+
+// Función para formatear la fecha en un formato legible
+function formatDate(date) {
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC',
+  };
+  return date.toLocaleDateString('en-US', options);
+}
 
 const getPosts = async () => {
   const postsCollection = collection(db, 'posts');
