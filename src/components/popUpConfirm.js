@@ -1,11 +1,14 @@
 function popUpConfirm(message) {
   return new Promise((resolve) => {
     const dialog = document.createElement('dialog');
-    dialog.className = 'popup-container';
+    dialog.className = 'popupContainer';
+
     const popUpSection = document.createElement('section');
     popUpSection.className = 'popUpSection';
+
     const popupMessage = document.createElement('p');
     popupMessage.textContent = message;
+
     const yesButton = document.createElement('button');
     yesButton.textContent = 'Sí';
     yesButton.addEventListener('click', () => {
