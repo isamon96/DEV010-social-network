@@ -247,7 +247,9 @@ describe('addPost', () => {
       date,
       title,
       post,
-    };
+      userId,
+      likes,
+          };
     await addPost(title, post);
     expect(addDoc).toHaveBeenCalledWith(postsCollection, object);
   });
