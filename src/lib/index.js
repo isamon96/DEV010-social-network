@@ -97,6 +97,7 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     const name = auth.currentUser.displayName;
     const userId = auth.currentUser.uid;
     const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
+    const utcDate = convertToUTC(date); // Convierte la fecha a UTC
     const formattedDate = formatDate(date); // Formatea la fecha
     const likes = [];
     const postsCollection = collection(db, 'posts');
@@ -111,9 +112,15 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
   return docRef;
 };
 
+// Función para convertir una fecha a UTC
+function convertToUTC(date) {
+  const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+  return utcDate;
+}
+
 // Función para formatear la fecha en un formato legible
 function formatDate(date) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC' };
   return date.toLocaleDateString('en-US', options);
 }
 
