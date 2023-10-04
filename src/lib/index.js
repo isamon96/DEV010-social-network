@@ -92,22 +92,22 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     }
   });
 
-  const addPost = async (title, post) => {
-    const name = auth.currentUser.displayName;
-    const userId = auth.currentUser.uid;
-    const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
-    const utcDate = convertToUTC(date); // Convierte la fecha a UTC
-    const formattedDate = formatDate(date); // Formatea la fecha
-    const likes = [];
-    const postsCollection = collection(db, 'posts');
-    const docRef = await addDoc(postsCollection, {
-      name,
-      date: formattedDate,
-      title,
-      post,
-      userId,
-      likes,
-    });
+const addPost = async (title, post) => {
+  const name = auth.currentUser.displayName;
+  const userId = auth.currentUser.uid;
+  const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
+  const utcDate = convertToUTC(date); // Convierte la fecha a UTC
+  const formattedDate = formatDate(date); // Formatea la fecha
+  const likes = [];
+  const postsCollection = collection(db, 'posts');
+  const docRef = await addDoc(postsCollection, {
+    name,
+    date: formattedDate,
+    title,
+    post,
+    userId,
+    likes,
+  });
   return docRef;
 };
 
@@ -119,7 +119,9 @@ function convertToUTC(date) {
 
 // Función para formatear la fecha en un formato legible
 function formatDate(date) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC' };
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC',
+  };
   return date.toLocaleDateString('en-US', options);
 }
 
@@ -185,7 +187,6 @@ const showPosts = async (array) => {
   const postsSection = document.getElementById('postsSection');
   const currentUser = auth.currentUser.uid;
   const postsList = await getPosts();
-  console.log = postsList;
   if (postsList) {
     postsSection.innerHTML = '';
     array.forEach((post) => {

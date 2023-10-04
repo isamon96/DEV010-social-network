@@ -47,7 +47,7 @@ function login(navigateTo) {
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
-  btnLogin.className = 'buttons'; // btn Login
+  btnLogin.className = 'buttons';
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';

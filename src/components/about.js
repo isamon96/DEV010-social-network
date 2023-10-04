@@ -7,7 +7,6 @@ function about(navigateTo) {
   function createImgWithClass(className, src) {
     const img = document.createElement('img');
     img.className = className;
-    img.alt = '';
     img.src = src;
     return img;
   }
@@ -22,7 +21,7 @@ function about(navigateTo) {
 
   // Crear elementos hijos
   // const returnDiv = createDivWithClass('return', 'REGRESAR');
-  const reDiv = createDivWithClass('re', 'BIENVENID@ A  RE+');
+  const reDiv = createDivWithClass('re', 'Bienvenid@ a re+');
   const misionDiv = createDivWithClass('mision', 'MISIÓN');
   const whatDiv = createDivWithClass('what', 'Creemos que cada pequeño esfuerzo suma, y a través de la educación, la inspiración y la colaboración, podemos hacer una diferencia significativa en la preservación de nuestro hogar.');
   const planetImg = createImgWithClass('planetImg', './assets/planet.png');
@@ -34,9 +33,7 @@ function about(navigateTo) {
   });
 
   // Agregar elementos hijos a la sección
-  // section.append(chevron);
-  section.append(chevron, logoIconImg);
-  section.append(reDiv, misionDiv, whatDiv, planetImg);
+  section.append(chevron, reDiv, logoIconImg, misionDiv, whatDiv, planetImg);
   return section;
 }
 

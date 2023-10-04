@@ -25,7 +25,7 @@ function navigationBar(navigateTo) {
   if (window.location.pathname === '/feed') {
     feedButton.style.color = '#FFB11E';
     feedButton.style.fontSize = '1.2rem';
-    feedButton.innerHTML = '<b>Feed 🌱</b>';
+    feedButton.innerHTML = '<b>Feed ♻️</b>';
     profileButton.style.color = 'black';
   } else if (window.location.pathname === '/profile') {
     feedButton.style.color = 'black';
