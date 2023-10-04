@@ -93,15 +93,24 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     }
   });
 
+function formatDate(date) {
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+  };
+  return date.toLocaleDateString('en-US', options);
+}
+
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
-  const date = Timestamp.now().toDate().toLocaleString('en-US');
+  // const date = Timestamp.now().toDate().toLocaleString('en-US');
+  const date = new Date();
+  const formattedDate = formatDate(date);
   const likes = [];
   const postsCollection = collection(db, 'posts');
   const docRef = await addDoc(postsCollection, {
     name,
-    date,
+    date: formattedDate,
     title,
     post,
     userId,

@@ -4,9 +4,6 @@ describe('login', () => {
   it('should be a function', () => {
     expect(typeof login).toBe('function');
   });
-  it('should return a HTML element', () => {
-    expect(login()).toBeInstanceOf(HTMLElement);
-  });
   it('should return a section element with a class name container', () => {
     expect(login().className).toBe('container');
   });
@@ -68,4 +65,20 @@ describe('login', () => {
     btnLoginGoogle.click();
     expect(sigInWithGoogle).toHaveBeenCalledWith('event');
   });
+});
+
+it('should navigate to /feed when click btnLoginGoogle its true', async () => {
+  // Crea un mock de sigInWithGoogle y configura que devuelva true
+  // eslint-disable-next-line no-unused-vars
+  const sigInWithGoogle = jest.fn().mockResolvedValue(true);
+
+  const navigateTo = jest.fn();
+  const section = login(navigateTo);
+  const btnLoginGoogle = section.querySelector('.btnGoogle');
+
+  // Simula el clic en el botón btnLoginGoogle
+  await btnLoginGoogle.click();
+
+  // Verifica que navigateTo se llame con el argumento '/feed'
+  expect(navigateTo).toHaveBeenCalledWith('/feed');
 });

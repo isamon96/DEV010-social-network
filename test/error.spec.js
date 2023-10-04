@@ -11,8 +11,6 @@ describe('Testing error component', () => {
     errorComponent = error(navigateToMockError);
     DOM.appendChild(errorComponent);
   });
-
-// el contenido del elelmento body en una cadena vacía y luego la elimina con clearAllMocks()
   afterEach(() => {
     document.body.innerHTML = '';
     jest.clearAllMocks();
