@@ -18,3 +18,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 export { auth, db };
+
+// plataforma de desarrollo de aplicaciones móviles y web de Google 
+// que ofrece una amplia gama de servicios en la nube 
+// para simplificar el desarrollo y el crecimiento de aplicaciones.

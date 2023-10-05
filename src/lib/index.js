@@ -27,18 +27,29 @@ import { db, auth } from '../firebase';
 import popUpConfirm from '../components/popUpConfirm';
 import popUpEditPost from '../components/popUpEditPost';
 
+// La función "updateOutput" toma dos argumentos: outputElement y message. Su propósito es actualizar 
+// el contenido de un elemento HTML (outputElement) con el texto proporcionado en el elemento message
 const updateOutput = (outputElement, message) => {
+  // if (outputElement) verifica si outputElement es un valor válido (no es null ni undefined) antes de continuar.
   if (outputElement) {
+  // Si outputElement es válido, esta línea actualiza 
+  // el contenido de outputElement con el texto contenido en la variable message utilizando la propiedad textContent.
     outputElement.textContent = message;
   }
 };
-
+//función es asincrónica(es una fila de espera donde puedes seguir haciendo tareas mientras esperas la respuesta)
+// y se espera que sea llamada con un objeto de evento como argumento (button clic)
 const sigInWithGoogle = async (event) => {
+// previene el comportamiento predeterminado del evento
   event.preventDefault();
+// Este objeto se utiliza para establecer cómo se realizará la autenticación con Google.
   const provider = new GoogleAuthProvider();
+// Se utiliza una estructura de promesa try-catch para manejar errores que puedan ocurrir durante el proceso de inicio de sesión.
   try {
     const userCredential = await signInWithPopup(auth, provider);
+  // Inicio de sesión exitoso, se extrae la información del usuario del objeto userCredential y se almacena en la variable user.
     const user = userCredential.user;
+  // "localStorage" Recordar la sesión del usuario en futuras visitas
     localStorage.setItem('userRegistered', 'true');
     return user;
   } catch (error) {
@@ -46,16 +57,22 @@ const sigInWithGoogle = async (event) => {
   }
 };
 
-// eslint-disable-next-line max-len
+// Esta función toma tres argumentos: email (el correo del nuevo usuario), password (la contraseña) 
+// y element (un elemento HTML en el que se mostrarán mensajes de salida).
 const createUser = (email, password, element) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
+  // el objeto auth crear un nuevo usuario 
     auth.signOut();
+  // devuelve una promesa que se resuelve con un objeto userCredential cuando se crea el usuario.
+  // utiliza la estrutura de promesas encadenadas .then para manejar el caso de éxito
     sendEmailVerification(auth.currentUser).then(() => {
+    // Envía un correo electrónico de verificación al usuario actualmente autenticado.
       const message = 'Usuario creado, revisa tu correo para verificar tu cuenta.';
       updateOutput(element, message);
     });
     return userCredential;
   })
+  // estructura de promesa para manejar cualquier error que pueda ocurrir durante el proceso de creación del usuario. 
   .catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/email-already-in-use') {
@@ -69,12 +86,14 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
       updateOutput(element, message);
     }
   });
-
+// función para ingresar con correo y contraseña
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
+  // utiliza la estrutura de promesas encadenadas .then para manejar el caso de éxito 
   .then((userCredential) => {
     localStorage.setItem('userRegistered', 'true');
     return userCredential;
   })
+  // estructura de promesa para manejar cualquier error que pueda ocurrir durante el proceso de creación del usuario.
   .catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/invalid-email') {
@@ -91,15 +110,18 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
       updateOutput(element, message);
     }
   });
-
+//  función asincrónica que toma dos argumentos: title (título de la publicación) y post (contenido de la publicación).
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
   const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
   const utcDate = convertToUTC(date); // Convierte la fecha a UTC
   const formattedDate = formatDate(date); // Formatea la fecha
+  // Se inicializa un arreglo vacío llamado likes para almacenar futuras interacciones 
+  // de "me gusta" u otro tipo de interacción de usuarios con la publicación.
   const likes = [];
   const postsCollection = collection(db, 'posts');
+  //  la función addDoc para agregar un nuevo documento (o registro) a la colección "posts"
   const docRef = await addDoc(postsCollection, {
     name,
     date: formattedDate,
@@ -113,12 +135,19 @@ const addPost = async (title, post) => {
 
 // Función para convertir una fecha a UTC
 function convertToUTC(date) {
+// date.getTime() devuelve la zona horaria del usuario en milisegundos
+// date.getTimezoneOffset() devuelve la diferencia, en minutos, entre la zona horaria local del usuario y la zona horaria UTC
+// UTC (Tiempo Universal Coordinado)
+// multiplica el valor de la diferencia de zona horaria en minutos por 60000 para convertirlo en milisegundos
+// se suma y se tiene un nuevo objeto
   const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+//  El resultado se almacena en la variable utcDate.
   return utcDate;
 }
 
 // Función para formatear la fecha en un formato legible
 function formatDate(date) {
+// El objeto options utiliza propiedades como month: 'long' para incluir por ej: "septiembre" en lugar de "09"
   const options = {
     year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC',
   };
@@ -127,15 +156,24 @@ function formatDate(date) {
 
 const getPosts = async () => {
   const postsCollection = collection(db, 'posts');
+// Se crea una consulta (query) que selecciona todos los documentos en la colección "posts" y los ordena en orden descendente 
   const q = query(postsCollection, orderBy('date', 'desc'));
+// La función getDocs() obtiene los documentos que cumplen con los criterios de la consulta. 
+// La palabra clave await se utiliza aquí para esperar a que se resuelva la consulta antes de continuar. 
+// postsQuery contendrá los resultados de la consulta.
   const postsQuery = await getDocs((q));
+// arreglo vacío llamado posts que se utilizará para almacenar los documentos recuperados de la base de datos.
   const posts = [];
+// Se itera a través de los resultados de la consulta utilizando el método forEach(). 
   postsQuery.forEach((postDoc) => {
+  // el método data() devuelve un objeto que representa los datos almacenados en el documento.
     const post = postDoc.data();
+  // Se agrega una propiedad "id" al objeto post
     post.id = postDoc.id;
+  // al arreglo posts construye una lista de todas las publicaciones recuperadas de la base de datos.
     posts.push(post);
   });
-  return posts;
+  return posts; // devuelve el arreglo
 };
 
 const deletePost = async (id) => {
