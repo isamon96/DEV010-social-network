@@ -13,7 +13,6 @@ import {
 import {
   addDoc,
   collection,
-  Timestamp,
   getDocs,
   query,
   orderBy,
@@ -103,7 +102,6 @@ function formatDate(date) {
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
-  // const date = Timestamp.now().toDate().toLocaleString('en-US');
   const date = new Date();
   const formattedDate = formatDate(date);
   const likes = [];
@@ -157,7 +155,7 @@ const toggleLike = async (id, element) => {
   const postRef = doc(db, 'posts', id);
   const currentUser = auth.currentUser.uid;
   const postDoc = await getDoc(postRef);
-  if (postDoc.exists()) {
+  if (postDoc.exists) {
     const postData = postDoc.data();
     const likes = postData.likes || [];
     const userLiked = likes.includes(currentUser);
@@ -295,7 +293,8 @@ const resetPassword = async (email, element) => {
 };
 
 const obtainUserInfo = async () => new Promise((resolve, reject) => {
-  onAuthStateChanged(auth, (user) => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    unsubscribe();
     if (user) {
       const name = user.displayName;
       const email = user.email;
@@ -305,7 +304,7 @@ const obtainUserInfo = async () => new Promise((resolve, reject) => {
         name, email, imgProfile, userId,
       });
     } else {
-      reject(Error('No hay usuario'));
+      reject(new Error('No hay usuario'));
     }
   });
 });
@@ -324,4 +323,6 @@ export {
   editPost,
   resetPassword,
   obtainUserInfo,
+  formatDate,
+  toggleLike,
 };

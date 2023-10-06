@@ -21,8 +21,8 @@ describe('Testing error component', () => {
     expect(typeof error).toBe('function');
   });
 
-  test('error function should return a section element', () => {
+  test('error function should return a h2 element', () => {
     // Utiliza la variable errorComponent en lugar de aboutComponent
-    expect(errorComponent.tagName).toBe('SECTION');
+    expect(errorComponent.tagName).toBe('H2');
   });
 });

@@ -47,7 +47,7 @@ function login(navigateTo) {
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
-  btnLogin.className = 'buttons'; // btn Login
+  btnLogin.className = 'buttons';
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
@@ -74,18 +74,15 @@ function login(navigateTo) {
     navigateTo('/register');
   });
 
-  // Agregar event listener solo si el usuario no está registrado
-  if (localStorage.getItem('userRegistered') !== 'true') {
-    btnLogin.addEventListener('click', async (event) => {
-      event.preventDefault();
-      const email = inputEmail.value;
-      const password = inputPass.value;
-      const user = await loginUser(email, password, mensaje);
-      if (user) {
-        navigateTo('/feed');
-      }
-    });
-  }
+  btnLogin.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPass.value;
+    const user = await loginUser(email, password, mensaje);
+    if (user) {
+      navigateTo('/feed');
+    }
+  });
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
