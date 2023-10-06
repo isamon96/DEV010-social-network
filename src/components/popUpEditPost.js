@@ -16,6 +16,7 @@ function popUpEditPost(title, content) {
     contentTextArea.value = content;
 
     const saveButton = document.createElement('button');
+    saveButton.id = 'saveButton';
     saveButton.textContent = 'Guardar';
     saveButton.addEventListener('click', () => {
       const editedTitle = titleTextArea.value;
@@ -25,6 +26,7 @@ function popUpEditPost(title, content) {
     });
 
     const cancelButton = document.createElement('button');
+    cancelButton.id = 'cancelButton';
     cancelButton.textContent = 'Cancelar';
     cancelButton.addEventListener('click', () => {
       dialog.close();

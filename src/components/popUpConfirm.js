@@ -8,12 +8,14 @@ function popUpConfirm(message) {
     popupMessage.textContent = message;
     const yesButton = document.createElement('button');
     yesButton.textContent = 'Sí';
+    yesButton.id = 'yesButton';
     yesButton.addEventListener('click', () => {
       resolve(true);
       dialog.close();
     });
     const noButton = document.createElement('button');
     noButton.textContent = 'No';
+    noButton.id = 'noButton';
     noButton.addEventListener('click', () => {
       resolve(false);
       dialog.close();
