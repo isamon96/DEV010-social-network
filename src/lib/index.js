@@ -92,12 +92,18 @@ const loginUser = (email, password, element) => signInWithEmailAndPassword(auth,
     }
   });
 
+function formatDate(date) {
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+  };
+  return date.toLocaleDateString('en-US', options);
+}
+
 const addPost = async (title, post) => {
   const name = auth.currentUser.displayName;
   const userId = auth.currentUser.uid;
-  const date = new Date(); // Obtiene la fecha actual en la zona horaria del usuario
-  const utcDate = convertToUTC(date); // Convierte la fecha a UTC
-  const formattedDate = formatDate(date); // Formatea la fecha
+  const date = new Date();
+  const formattedDate = formatDate(date);
   const likes = [];
   const postsCollection = collection(db, 'posts');
   const docRef = await addDoc(postsCollection, {
@@ -110,20 +116,6 @@ const addPost = async (title, post) => {
   });
   return docRef;
 };
-
-// Función para convertir una fecha a UTC
-function convertToUTC(date) {
-  const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
-  return utcDate;
-}
-
-// Función para formatear la fecha en un formato legible
-function formatDate(date) {
-  const options = {
-    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'UTC',
-  };
-  return date.toLocaleDateString('en-US', options);
-}
 
 const getPosts = async () => {
   const postsCollection = collection(db, 'posts');
@@ -163,7 +155,7 @@ const toggleLike = async (id, element) => {
   const postRef = doc(db, 'posts', id);
   const currentUser = auth.currentUser.uid;
   const postDoc = await getDoc(postRef);
-  if (postDoc.exists()) {
+  if (postDoc.exists) {
     const postData = postDoc.data();
     const likes = postData.likes || [];
     const userLiked = likes.includes(currentUser);
@@ -301,7 +293,8 @@ const resetPassword = async (email, element) => {
 };
 
 const obtainUserInfo = async () => new Promise((resolve, reject) => {
-  onAuthStateChanged(auth, (user) => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    unsubscribe();
     if (user) {
       const name = user.displayName;
       const email = user.email;
@@ -311,7 +304,7 @@ const obtainUserInfo = async () => new Promise((resolve, reject) => {
         name, email, imgProfile, userId,
       });
     } else {
-      reject(Error('No hay usuario'));
+      reject(new Error('No hay usuario'));
     }
   });
 });
@@ -330,4 +323,6 @@ export {
   editPost,
   resetPassword,
   obtainUserInfo,
+  formatDate,
+  toggleLike,
 };
