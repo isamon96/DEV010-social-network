@@ -1,6 +1,7 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
+// comprueba que el usuario este registrado con igual estricta y navega al Feed
   if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
   }
@@ -20,7 +21,7 @@ function login(navigateTo) {
   const mensaje = document.createElement('p');
   const contentSection = document.createElement('section');
   const formSection = document.createElement('section');
-
+  // section hace referencia a un elemento HTML
   section.className = 'container';
   contentSection.className = 'contentSection';
   formSection.className = 'formSection';
@@ -47,7 +48,7 @@ function login(navigateTo) {
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
-  btnLogin.className = 'buttons';
+  btnLogin.className = 'buttons'; 
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
@@ -59,7 +60,7 @@ function login(navigateTo) {
 
   // Agregando mensaje
   mensaje.id = 'mensaje';
-
+  // re direge al usuario a ...
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
