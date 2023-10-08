@@ -1,41 +1,55 @@
 import about from '../src/components/about.js';
 
-const DOM = document.createElement('section');
-
-const navigateToMockAbout = jest.fn();
-
-describe('Testing about component', () => {
-  let aboutComponent;
-
-  beforeEach(() => {
-    aboutComponent = about(navigateToMockAbout);
-    DOM.appendChild(aboutComponent);
-  });
-
-  afterEach(() => {
-    document.body.innerHTML = '';
-    jest.clearAllMocks();
-  });
-
-  it('Must be a function', () => {
-    // Corrige el nombre de la función a probar (debe ser 'about' en lugar de 'home')
+describe('about', () => {
+  it('should be a function', () => {
     expect(typeof about).toBe('function');
   });
 
-  test('about function should return a section element', () => {
-    // Utiliza la variable aboutComponent en lugar de crear una nueva instancia
-    expect(aboutComponent.tagName).toBe('SECTION');
+  it('should return a section element', () => {
+    const section = about();
+    expect(section.tagName).toBe('SECTION');
   });
 
-  it('Should navigate to home when clicking the button', async () => {
-    // Comprueba que el evento de clic en 'chevron' redirige correctamente
-    const chevron = aboutComponent.querySelector('.chevronIcon');
+  it('should contain a chevron element', () => {
+    const section = about();
+    const chevron = section.querySelector('.chevronIcon');
+    expect(chevron).toBeTruthy();
+  });
+
+  it('should contain a reDiv element', () => {
+    const section = about();
+    const reDiv = section.querySelector('.re');
+    expect(reDiv).toBeTruthy();
+  });
+
+  it('should contain a logoIconImg element', () => {
+    const section = about();
+    const logoIconImg = section.querySelector('.logoIconImg');
+    expect(logoIconImg).toBeTruthy();
+  });
+
+  it('should contain a misionDiv element', () => {
+    const section = about();
+    const misionDiv = section.querySelector('.mision');
+    expect(misionDiv).toBeTruthy();
+  });
+
+  it('should contain a whatDiv element', () => {
+    const section = about();
+    const whatDiv = section.querySelector('.what');
+    expect(whatDiv).toBeTruthy();
+  });
+
+  it('should contain a planetImg element', () => {
+    const section = about();
+    const planetImg = section.querySelector('.planetImg');
+    expect(planetImg).toBeTruthy();
+  });
+  it('should navigate to / when chevron is clicked', () => {
+    const navigateTo = jest.fn();
+    const section = about(navigateTo);
+    const chevron = section.querySelector('.chevronIcon');
     chevron.click();
-    expect(navigateToMockAbout).toHaveBeenCalledWith('/'); // Verifica que se llamó con el argumento '/'
-  });
-
-  it('Should create a div with no text content when textContent is not provided', () => {
-    const div = aboutComponent.querySelector('.testdiv'); // Use the appropriate class name
-    expect(div.textContent).toBe('');
+    expect(navigateTo).toHaveBeenCalledWith('/');
   });
 });

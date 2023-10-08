@@ -1,4 +1,3 @@
-// Crear un elemento de sección
 function about(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
