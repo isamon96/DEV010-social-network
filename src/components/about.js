@@ -1,4 +1,3 @@
-// Crear un elemento de sección
 function about(navigateTo) {
   const section = document.createElement('section');
   section.className = 'container';
@@ -7,7 +6,6 @@ function about(navigateTo) {
   function createImgWithClass(className, src) {
     const img = document.createElement('img');
     img.className = className;
-    img.alt = '';
     img.src = src;
     return img;
   }

@@ -9,7 +9,7 @@ describe('login', () => {
     expect(login().className).toBe('container');
   });
   it('should return a section element with a child element', () => {
-    expect(login().children).toHaveLength(8);
+    expect(login().children).toHaveLength(1);
   });
   it('should navigate to "/" when click homeImg', () => {
     const navigateTo = jest.fn();
@@ -24,17 +24,6 @@ describe('login', () => {
     const registerAnchor = section.querySelector('a');
     registerAnchor.click();
     expect(navigateTo).toHaveBeenCalledWith('/register');
-  });
-  it('should execute loginUser con email, password and mensaje as arguments when click btnLogin', () => {
-    const navigateTo = jest.fn();
-    const section = login(navigateTo);
-    const btnLogin = section.querySelector('.btnLogin');
-    const loginUser = jest.fn();
-    btnLogin.addEventListener('click', () => {
-      loginUser('email', 'password', 'mensaje');
-    });
-    btnLogin.click();
-    expect(loginUser).toHaveBeenCalledWith('email', 'password', 'mensaje');
   });
   it('should navigate to /forgotPassword when click passAnchor', () => {
     const navigateTo = jest.fn();
@@ -65,6 +54,23 @@ describe('login', () => {
     });
     btnLoginGoogle.click();
     expect(sigInWithGoogle).toHaveBeenCalledWith('event');
+  });
+  it('should execute sigInWithEmail with email and password as arguments when click button', () => {
+    const navigateTo = jest.fn();
+    const section = login(navigateTo);
+    const button = section.querySelector('.buttons');
+    const sigInWithEmail = jest.fn();
+    button.addEventListener('click', () => {
+      sigInWithEmail('email', 'password');
+    });
+    button.click();
+    expect(sigInWithEmail).toHaveBeenCalledWith('email', 'password');
+  });
+  it('should navigate to /feed if user is registered', () => {
+    const navigateTo = jest.fn();
+    localStorage.setItem('userRegistered', 'true');
+    login(navigateTo);
+    expect(navigateTo).toHaveBeenCalledWith('/feed');
   });
 });
 

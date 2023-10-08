@@ -11,8 +11,6 @@ describe('Testing error component', () => {
     errorComponent = error(navigateToMockError);
     DOM.appendChild(errorComponent);
   });
-
-// el contenido del elelmento body en una cadena vacía y luego la elimina con clearAllMocks()
   afterEach(() => {
     document.body.innerHTML = '';
     jest.clearAllMocks();
@@ -23,8 +21,8 @@ describe('Testing error component', () => {
     expect(typeof error).toBe('function');
   });
 
-  test('error function should return a section element', () => {
+  test('error function should return a h2 element', () => {
     // Utiliza la variable errorComponent en lugar de aboutComponent
-    expect(errorComponent.tagName).toBe('SECTION');
+    expect(errorComponent.tagName).toBe('H2');
   });
 });
