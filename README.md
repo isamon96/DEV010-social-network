@@ -99,9 +99,9 @@ Conteo de likes como usuario, quiero ver cuántos "me gusta" ha recibido una pub
 ![](https://raw.githubusercontent.com/RocioLV/DEV010-social-network/testing/src/assets/mobile.gif)
 
 ### 7.	RECURSOS ÚTILES
-![Responsive Design](https://mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ "Responsive Design") 
-![Navegar entre estas vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entrE vistas") 
-![Mobile First](https://www.ionos.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ "Mobile First") 
-![Jest](https://jestjs.io/es-ES/docs/asynchronous "Jest") 
-![Sobre Readme.md](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes "Sobre Read.me") 
-![Repositorio de Github: RE+ ](https://github.com/RocioLV/DEV010-social-network.git "Repositorio de Github: re+") 
+- [Responsive Design](https://mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ "Responsive Design") 
+- [Navegar entre estas vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entrE vistas") 
+- [Mobile First](https://www.ionos.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ "Mobile First") 
+- [Jest](https://jestjs.io/es-ES/docs/asynchronous "Jest") 
+- [Sobre Readme.md](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes "Sobre Read.me") 
+- [Repositorio de Github: RE+ ](https://github.com/RocioLV/DEV010-social-network.git "Repositorio de Github: re+") 
