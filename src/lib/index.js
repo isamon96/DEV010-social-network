@@ -323,7 +323,6 @@ export {
   editPost,
   resetPassword,
   obtainUserInfo,
-  testing
   formatDate,
   toggleLike,
 };

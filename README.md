@@ -17,7 +17,7 @@ El MVP (Minimum Viable Product) sería una plataforma de red social que permita 
 Cualquier persona interesada en el medio ambiente y la sostenibilidad. Esto podría incluir a activistas ambientales, profesionales dedicados al sector medioambiental, estudiantes, organizaciones y empresas relacionadas con el medio ambiente, así como a aquellos que buscan aprender más y contribuir a la protección del medio ambiente.
 
 ### 2.	OBJETIVOS GENERALES DE ESTE PROYECTO
-Los objetivos generales de nuestra red social **re+** son os siguientes:
+Los objetivos generales de nuestra red social **re+** son los siguientes:
 
 - Desarrollar una Single-page Application (SPA) con temática de red social.
 - Aplicar los conceptos de responsividad en el desarrollo de las vistas.
@@ -29,7 +29,7 @@ Los objetivos generales de nuestra red social **re+** son os siguientes:
 
 Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto.
 
-Establecimos la temática de la app. Ideamos el objetivo, nombre y logo de la app y diseñamos las siguientes historias de usuario:
+Se estableció la temática de la app y junto a ello ideamos el objetivo, nombre y logo de la app, información con la cual se diseñaron las siguientes historias de usuario:
 
 #### **Historia de Usuario 1 (HU1)**: 
 Creación y autenticación de cuenta como usuario, quiero poder crear una cuenta utilizando mi dirección de correo y una contraseña, o mediante mi cuenta de Google, para acceder de manera segura a la red social.
@@ -63,7 +63,7 @@ Eliminar un post como usuario autenticado, quiero tener la capacidad de eliminar
 -  	Después de confirmar, la publicación debe ser eliminada de forma permanente.
 	
 #### **Historia de Usuario 5 (HU5):** 
-Interacción con Publicaciones (Likes) Como usuario autenticado, quiero poder dar y quitar "me gusta" a las publicaciones de otros usuarios, limitado a un solo "me gusta" por publicación.
+Interacción con Publicaciones (likes) Como usuario autenticado, quiero poder dar y quitar "me gusta" a las publicaciones de otros usuarios, limitado a un solo "me gusta" por publicación.
 
 **Criterios de aceptación:**
 -  	Se debe restringir el “me gusta” a uno por usuario por publicación. 
@@ -72,13 +72,13 @@ Interacción con Publicaciones (Likes) Como usuario autenticado, quiero poder da
 -  	Debe haber un contador de "me gusta" en cada publicación.
 
 #### **Historia de Usuario 6 (HU6):**
-Conteo de Likes Como usuario, quiero ver cuántos "me gusta" ha recibido una publicación para entender su popularidad.
+Conteo de likes como usuario, quiero ver cuántos "me gusta" ha recibido una publicación para entender su popularidad.
 
 **Criterios de aceptación:**
 -  	Junto al botón de "me gusta" en cada publicación, debe haber un contador que muestre la cantidad de "me gusta".
 
-#### **Historia de Usuario 7 (HU7): ** 
-Editar publicaciones como usuario autenticado, deseo tener la opción de editar mis publicaciones existentes en caso de que quiera corregir errores o actualizar el contenido.
+#### **Historia de Usuario 7 (HU7):**
+-   Editar publicaciones como usuario autenticado, deseo tener la opción de editar mis publicaciones existentes en caso de que quiera corregir errores o actualizar el contenido.
 
 **Criterios de aceptación:**
 -  	Junto a cada publicación, debe haber una opción clara para editarla.
@@ -94,18 +94,14 @@ Editar publicaciones como usuario autenticado, deseo tener la opción de editar 
 
 ![](https://raw.githubusercontent.com/RocioLV/DEV010-social-network/testing/src/assets/prototipoFigma.png)
 
-Aplicamos test de usabilidad a usuarios.
-
 ### 6.	PRESENTACIÓN FINAL DEL PROYECTO
 
 ![](https://raw.githubusercontent.com/RocioLV/DEV010-social-network/testing/src/assets/mobile.gif)
 
 ### 7.	RECURSOS ÚTILES
-[Responsive Design](https://mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobil
-e-first/ "Responsive Design")
-[Navegar entre estas vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entre estas vistas")
-[Mobile First](https://www.ionos.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ "Mobile First")
-[Jest deo asíncrono  códig· Jest](https://jestjs.io/es-ES/docs/asynchronous "Jest deo asíncrono  códig· Jest")
-[Append VS appendChild](https://dev-to.translate.goog/ibn_abubakre/append-vs-appendchild-a4m?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=es-419 "Append VS appendChild")
-[Sobre Read.me](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes "Sobre Read.me")
-[Repositorio de Github ](https://github.com/RocioLV/DEV010-social-network.git "Repositorio de Github ")
+- [Responsive Design](https://mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ "Responsive Design") 
+- [Navegar entre vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entre vistas") 
+- [Mobile First](https://www.ionos.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ "Mobile First") 
+- [Jest](https://jestjs.io/es-ES/docs/asynchronous "Jest") 
+- [Sobre Readme.md](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes "Sobre Read.me") 
+- [Repositorio de Github: RE+ ](https://github.com/RocioLV/DEV010-social-network.git "Repositorio de Github: re+") 
