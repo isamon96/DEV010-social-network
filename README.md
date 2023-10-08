@@ -100,7 +100,7 @@ Conteo de likes como usuario, quiero ver cuántos "me gusta" ha recibido una pub
 
 ### 7.	RECURSOS ÚTILES
 - [Responsive Design](https://mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ "Responsive Design") 
-- [Navegar entre estas vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entrE vistas") 
+- [Navegar entre vistas](https://developer.mozilla.org/es/docs/Web/API/History_API "Navegar entre vistas") 
 - [Mobile First](https://www.ionos.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ "Mobile First") 
 - [Jest](https://jestjs.io/es-ES/docs/asynchronous "Jest") 
 - [Sobre Readme.md](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes "Sobre Read.me") 
