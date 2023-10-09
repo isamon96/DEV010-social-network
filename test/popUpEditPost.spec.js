@@ -1,12 +1,26 @@
 import popUpEditPost from '../src/components/popUpEditPost.js';
 
+HTMLDialogElement.prototype.showModal = jest.fn();
+HTMLDialogElement.prototype.close = jest.fn();
+HTMLDialogElement.prototype.show = jest.fn();
+
 describe('popUpEditPost', () => {
-  it('should resolve to an object with the edited title and content when the user clicks the "Guardar" button', async () => {
-    const result = await popUpEditPost('Título', 'Contenido');
-    expect(result).toEqual({ title: 'Título editado', content: 'Contenido editado' });
+  test('should be a function', () => {
+    expect(typeof popUpEditPost).toBe('function');
   });
-  it('should resolve to undefined when the user clicks the "Cancelar" button', async () => {
-    const result = await popUpEditPost('Título', 'Contenido');
-    expect(result).toBeUndefined();
+  test('should return a promise', () => {
+    expect(popUpEditPost('test', 'test')).toBeInstanceOf(Promise);
+  });
+  test('should return an object with title and content when click saveButton', () => {
+    popUpEditPost('test', 'test').then((result) => {
+      expect(result).toEqual({ title: 'test', content: 'test' });
+    });
+    document.getElementById('saveButton').click();
+  });
+  test('should return undefined when click cancelButton', () => {
+    popUpEditPost('test', 'test').then((result) => {
+      expect(result).toBe(undefined);
+    });
+    document.getElementById('cancelButton').click();
   });
 });

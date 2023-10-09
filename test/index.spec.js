@@ -318,8 +318,6 @@ describe('addPost', () => {
       post,
       userId,
       likes,
-            userId,
-      likes,
     });
   });
 });
