@@ -4,6 +4,7 @@ import navigationBar from './navigationBar';
 function profile(navigateTo) {
   obtainUserInfo().then((user) => {
     if (user) {
+      // verifica si el usuario existe y actualiza los elementos HTML con la info
       const name = document.getElementById('name');
       const email = document.getElementById('email');
       const imgProfile = document.getElementById('imgProfile');

@@ -1,17 +1,26 @@
 import popUpEditPost from '../src/components/popUpEditPost.js';
 
+HTMLDialogElement.prototype.showModal = jest.fn();
+HTMLDialogElement.prototype.close = jest.fn();
+HTMLDialogElement.prototype.show = jest.fn();
+
 describe('popUpEditPost', () => {
-  it('should be a function', () => {
+  test('should be a function', () => {
     expect(typeof popUpEditPost).toBe('function');
   });
-  it('should return a promise that resolves with the updated post', async () => {
-    const post = { id: 1, title: 'Old Title', content: 'Old Content' };
-    const updatedPost = { id: 1, title: 'New Title', content: 'New Content' };
-    const mockUpdatePost = jest.fn(() => Promise.resolve(updatedPost));
-    const result = await popUpEditPost(post, mockUpdatePost);
-    expect(result).toBeInstanceOf(Promise);
-    const resolvedValue = await result;
-    expect(resolvedValue).toEqual(updatedPost);
-    expect(mockUpdatePost).toHaveBeenCalledWith(post.id, updatedPost.title, updatedPost.content);
+  test('should return a promise', () => {
+    expect(popUpEditPost('test', 'test')).toBeInstanceOf(Promise);
+  });
+  test('should return an object with title and content when click saveButton', () => {
+    popUpEditPost('test', 'test').then((result) => {
+      expect(result).toEqual({ title: 'test', content: 'test' });
+    });
+    document.getElementById('saveButton').click();
+  });
+  test('should return undefined when click cancelButton', () => {
+    popUpEditPost('test', 'test').then((result) => {
+      expect(result).toBe(undefined);
+    });
+    document.getElementById('cancelButton').click();
   });
 });

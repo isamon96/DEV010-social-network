@@ -57,8 +57,9 @@ function login(navigateTo) {
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
-  // Agregando mensaje
   mensaje.id = 'mensaje';
+  // asigna valor mensaje a la propiedad id del elemento mensaje
+  // el elemento tiene un identificdor único (útil para seleccionar y manipular el elemento)
 
   homeImg.addEventListener('click', () => {
     navigateTo('/');
@@ -66,6 +67,7 @@ function login(navigateTo) {
   btnLoginGoogle.addEventListener('click', async (event) => {
     event.preventDefault();
     const user = await sigInWithGoogle(event);
+    // se llama a la fx pasando el evento como argumento
     if (user) {
       navigateTo('/feed');
     }
@@ -78,7 +80,9 @@ function login(navigateTo) {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
+    // obtiene los valores de email y password
     const user = await loginUser(email, password, mensaje);
+    // llama a loginUser pasando 3 argumentos
     if (user) {
       navigateTo('/feed');
     }
