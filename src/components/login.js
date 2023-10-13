@@ -1,6 +1,7 @@
 import { sigInWithGoogle, loginUser } from '../lib/index.js';
 
 function login(navigateTo) {
+// comprueba que el usuario este registrado con igual estricta y navega al Feed
   if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
     // si el valor almacenado en la clave 'userRegistered' en el localStorage es igual a 'true'
@@ -22,7 +23,7 @@ function login(navigateTo) {
   const mensaje = document.createElement('p');
   const contentSection = document.createElement('section');
   const formSection = document.createElement('section');
-
+  // section hace referencia a un elemento HTML
   section.className = 'container';
   contentSection.className = 'contentSection';
   formSection.className = 'formSection';
@@ -60,8 +61,10 @@ function login(navigateTo) {
   homeImg.src = '../assets/home.png';
 
   mensaje.id = 'mensaje';
+
   // asigna valor mensaje a la propiedad id del elemento mensaje
   // el elemento tiene un identificdor único (útil para seleccionar y manipular el elemento)
+  // re direge al usuario a ...
 
   homeImg.addEventListener('click', () => {
     navigateTo('/');
