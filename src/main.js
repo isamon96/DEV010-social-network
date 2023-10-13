@@ -21,7 +21,6 @@ const rutas = {
 };
 
 const root = document.getElementById('root');
-/* eslint-disable */
 const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
 
@@ -31,7 +30,6 @@ const onNavigate = (pathname) => {
 
   root.appendChild(rutas[pathname](onNavigate));
 };
-
 
 window.onpopstate = () => {
   while (root.firstChild) {

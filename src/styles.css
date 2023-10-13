@@ -126,7 +126,6 @@ textarea p {
   padding: 0rem;
   color: white;
   border: none;
-  border-radius: 2px;
   font-family: var(--principal);
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
   width: 252px;
