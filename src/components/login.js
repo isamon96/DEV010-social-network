@@ -3,6 +3,8 @@ import { sigInWithGoogle, loginUser } from '../lib/index.js';
 function login(navigateTo) {
   if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
+    // si el valor almacenado en la clave 'userRegistered' en el localStorage es igual a 'true'
+    // entonces se redirige al usuario a la página '/feed'.
   }
   const section = document.createElement('section');
   const logoImg = document.createElement('img');
@@ -64,14 +66,17 @@ function login(navigateTo) {
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
+
   btnLoginGoogle.addEventListener('click', async (event) => {
     event.preventDefault();
     const user = await sigInWithGoogle(event);
-    // se llama a la fx pasando el evento como argumento
+    // se llama a la fx pasando el evento como argumento y espera su respuesta
     if (user) {
       navigateTo('/feed');
+      // si se obtiene un usuario válido, se redirige a la página "/feed"
     }
   });
+
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });
@@ -85,11 +90,14 @@ function login(navigateTo) {
     // llama a loginUser pasando 3 argumentos
     if (user) {
       navigateTo('/feed');
+      // si se obtiene un usuario válido, se redirige a la página "/feed"
     }
   });
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
+    // se llama a la fx navigateTo con el argumento '/forgotPassword'
+    // lo que redirigirá al usuario a la página "/forgotPassword"
   });
 
   section.append(contentSection);

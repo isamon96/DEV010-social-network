@@ -456,12 +456,12 @@ textarea p {
   -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
 }
-/* .buttonEdit:hover {
+.buttonEdit:hover {
   background-color: var(--naranjaclaro);
   color:#fff;
   transition: 0.3s ease-in-out;
   box-shadow: inset 400px 0 0 0 #FFB11D;
-} */
+}
   
 /* MEDIA QUERIES */
 @media (min-width: 1200px) {

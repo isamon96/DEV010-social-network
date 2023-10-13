@@ -77,10 +77,10 @@ function register(navigateTo) {
       inputEmail.value = '';
       inputPass.value = '';
       inputName.value = '';
+      // se borran los valores de los campos de entrada
       return true;
     } catch (error) {
       return error;
-      // se borran los valores de los campos de entrada
       // se devuelve true si todo funciona correctamente o el error si hay algún problema
     }
   });

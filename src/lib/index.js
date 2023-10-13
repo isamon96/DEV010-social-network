@@ -1,5 +1,5 @@
 import {
-  // funciones y métodos del módilo firebase/auth
+  // funciones y métodos del módulo firebase/auth
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
@@ -30,14 +30,15 @@ import { db, auth } from '../firebase';
 
 import popUpConfirm from '../components/popUpConfirm';
 import popUpEditPost from '../components/popUpEditPost';
-// Mostrar ventanas emergentes de confirmación y edición de publicaciones
+// mostrar ventanas emergentes de confirmación y edición de publicaciones
 
 const updateOutput = (outputElement, message) => {
-  // Recibe dos parámetros: outputElement y message.
-  // Si outputElement existe, se actualiza el contenido de su texto con el valor de message
+  // recibe dos parámetros: outputElement y message
   if (outputElement) {
     outputElement.textContent = message;
+    // si outputElement existe, se actualiza el contenido de su texto con el valor de message
   }
+  // se usa para actualizar la salida de un elemento en interfaz de usuario con mensaje específico
 };
 
 const sigInWithGoogle = async (event) => {
@@ -51,7 +52,7 @@ const sigInWithGoogle = async (event) => {
     const user = userCredential.user;
     // si es exitosa se guarda el objeto de usuario en userCredential
     localStorage.setItem('userRegistered', 'true');
-    // se establece un valor de almacenamiento local
+    // se establece un valor de almacenamiento local llamado "userRegistered" como true
     return user;
   } catch (error) {
     return error;
@@ -63,8 +64,9 @@ const sigInWithGoogle = async (event) => {
 const createUser = (email, password, element) => createUserWithEmailAndPassword(auth, email, password)
   // toma 3 parámetros y luego usa la fx para crear un nuevo usuario
   .then((userCredential) => {
+    // función then() se utiliza para manejar el resultado exitoso de una promesa
     auth.signOut();
-    // si es exitosa, se cierra la sesión del usuario actual
+    // después que el usuario es autenticado, se cierra la sesión del usuario actual
     sendEmailVerification(auth.currentUser).then(() => {
       const message = 'Usuario creado, revisa tu correo para verificar tu cuenta.';
       updateOutput(element, message);
@@ -73,6 +75,7 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
     return userCredential;
   })
   .catch((error) => {
+    // si hay error en la creación de usuario, se muestra mensaje según el código de error recibido
     const errorCode = error.code;
     if (errorCode === 'auth/email-already-in-use') {
       const message = 'El correo ya está en uso.';
@@ -84,17 +87,20 @@ const createUser = (email, password, element) => createUserWithEmailAndPassword(
       const message = 'La contraseña es muy débil.';
       updateOutput(element, message);
     }
-    // Si hay error en la creación de usuario, se muestra mensaje según el código de error recibido
   });
 
 const loginUser = (email, password, element) => signInWithEmailAndPassword(auth, email, password)
-  // la fx recibe tres parámetros y utiliza la fx (...) con email y password proporcionados
+  // la fx recibe tres parámetros y utiliza la fx (signInWi...) con email y password proporcionados
   .then((userCredential) => {
     localStorage.setItem('userRegistered', 'true');
-    // si autenticación es exitosa, se guarda en localStorage y devuelve el objeto userCredential
+    // establece un valor en el almacenamiento local del navegador
+    // en este caso, se establece la clave 'userRegistered' con el valor 'true'
+    // significa que se guarda la info de que el usuario está registrado
     return userCredential;
+    // si autenticación es exitosa, se guarda en localStorage y devuelve el objeto userCredential
   })
   .catch((error) => {
+    // si hay error en la creación de usuario, se muestra mensaje según el código de error recibido
     const errorCode = error.code;
     if (errorCode === 'auth/invalid-email') {
       const message = 'El correo no es válido.';
@@ -125,6 +131,7 @@ const addPost = async (title, post) => {
   const userId = auth.currentUser.uid;
   // se obtiene name y ID a través del objeto authCurrentUser
   const date = new Date();
+  // crea un nuevo objeto de fecha y hora utilizando la clase Date
   const formattedDate = formatDate(date);
   // se obtiene fecha actual y se formatea con formatDate
   const likes = [];
@@ -147,14 +154,16 @@ const addPost = async (title, post) => {
 
 const getPosts = async () => {
   const postsCollection = collection(db, 'posts');
+  // crea una referencia a la colección "posts" en la db
   const q = query(postsCollection, orderBy('date', 'desc'));
   // obtiene todas las publicaciones de la colección en orden descendente según fecha
-  // fx query toma 2 argumentos
+  // fx query toma 2 argumentos (colección de publicaciones y ordenamiento según fecha)
   const postsQuery = await getDocs((q));
   // obtiene los docs de la colección utilizando la consulta q (se pasa como argumento)
   // el resultado se almacena en la variable postQuery
   // await = la operación es asíncrona y espera que se resuelva antes de continuar con el siguiente
   const posts = [];
+  // crea un array vacío llamado posts
   postsQuery.forEach((postDoc) => {
     // itera sobre cada doc utilizando forEach
     const post = postDoc.data();
@@ -202,11 +211,14 @@ const editPost = async (id, title, post, likes) => {
 };
 
 const toggleLike = async (id, element) => {
+  // esta función se utiliza para alternar (activar o desactivar) el "me gusta" de una publicación
   const postRef = doc(db, 'posts', id);
   // obtiene referencia al doc utilizando un id
   const currentUser = auth.currentUser.uid;
   // almacena el identificador único del usuario actual obtenido de la propiedad uid del objeto
   const postDoc = await getDoc(postRef);
+  // obtiene el doc de una publicación utilizando la referencia postRef y la fx getDoc()
+  // el resultado se guarda en la variable postDoc
   if (postDoc.exists) {
     // obtiene los datos del documento y verifica si el doc tiene contenido o datos asociados a él
     const postData = postDoc.data();
@@ -230,8 +242,11 @@ const toggleLike = async (id, element) => {
       const updatedLikes = [...likes, currentUser];
       // crea una nueva matriz con todos los elementos de likes y agrega currentUser al final
       await editPost(id, undefined, undefined, updatedLikes);
-      const numberOfLikes = updatedLikes.length;
+      // se utiliza la fx editPost() para editar una publicación con el identificador id
+      // sin realizar cambios en los argumentos title y content, pero actualizando la lista de likes
       element.textContent = numberOfLikes;
+      // se guarda la longitud de la matriz updatedLikes en la variable numberOfLikes 
+      // y se asigna ese valor como texto del elemento element
     }
     return likes.length;
   }
@@ -246,6 +261,7 @@ const showPosts = async (array) => {
   // obtiene el elemento y lo guarda en postsSection
   if (postsList) {
     postsSection.innerHTML = '';
+    // se eliminan todos los elementos hijos de ese elemento, dejándolo vacío
     array.forEach((post) => {
       const postUser = post.userId;
       const postContainer = document.createElement('section');
@@ -320,6 +336,7 @@ const showPosts = async (array) => {
 
         iconSection.append(postTitle, editIcon, deleteIcon);
       } else {
+        // si la condición es falsa, solo se agrega el elemento postTitle
         iconSection.append(postTitle);
       }
 
@@ -334,7 +351,9 @@ const updateDisplayName = async (newDisplayName) => {
   // actualiza el nombre de visualización del usuario actualmente autenticado
   try {
     await updateProfile(auth.currentUser, {
+      // intenta actualizar el nombre de visualización del usuario autenticado
       displayName: newDisplayName,
+      // se utiliza para actualizar el nombre de visualización del usuario actualmente autenticado
     });
     return true;
   } catch (error) {
@@ -346,9 +365,11 @@ const signOutUser = () => async () => {
   // fx flecha que devuelve otra fx asíncrona
   try {
     await signOut(auth);
-    // cerrar la sesión del usuario utilizando signOut de la biblioteca de autenticación auth
+    // intenta cerrar la sesión del usuario usando signOut de la biblioteca de autenticación auth
     return true;
+    // si el cierre es exitoso devuelve true
   } catch (error) {
+    // si ocurre algún error, devuelve el objeto error
     return error;
   }
 };
@@ -358,6 +379,7 @@ const resetPassword = async (email, element) => {
     await sendPasswordResetEmail(auth, email);
     // intenta enviar un email para restablecer la contraseña
     const message = 'Correo enviado para restablecer contraseña.';
+    // si tiene éxito, muestra un mensaje en el elemento
     updateOutput(element, message);
   } catch (error) {
     const errorCode = error.code;
@@ -377,12 +399,14 @@ const obtainUserInfo = async () => new Promise((resolve, reject) => {
   const unsubscribe = onAuthStateChanged(auth, (user) => {
     // se utiliza el método onAuthStateChanged para obtener info del usuario
     unsubscribe();
+    // unsubscribe se utiliza para almacenar la función de cancelación de suscripción devuelta
     if (user) {
       // Si hay usuario autenticado, se extraen los datos y se resuelve la promesa
       const name = user.displayName;
       const email = user.email;
       const imgProfile = user.photoURL;
       const userId = user.uid;
+      // se obtiene nombre, email, foto e ID del usuario y se resuelve la promesa con estos valores
       resolve({
         name, email, imgProfile, userId,
       });

@@ -1,8 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'; // Servicio de autenticación
 import { getFirestore } from 'firebase/firestore'; // Servicio de base de datos
+// importa las fx necesarias de la biblioteca Firebase para inicializar una aplicación,
+// obtener el servicio de autenticación y el servicio de base de datos
 
 const firebaseConfig = {
+  // define un objeto que contiene la configurción necesaria para conectar una app con firebase
   apiKey: 'AIzaSyCoGmbTy2vNte1Lju2vk-lRx0yF5NvOaPU',
   authDomain: 'dev010-social-network-c83f9.firebaseapp.com',
   projectId: 'dev010-social-network-c83f9',
@@ -13,8 +16,15 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+// crea una instancia de la aplicación Firebase utilizando la config proporcionada en el objeto
+// permite establecer una conexión entre la aplicación y Firebase
 
 const auth = getAuth(app);
+// obtiene el servicio de autenticación de Firebase utilizando la instancia de la app
+// la variable auth se utiliza para acceder a las funciones y mñetodos proporcionados
+
 const db = getFirestore(app);
+// obtiene el servicio de base de datos de Firebase utilizando la instancia de la app
+// permite interactuar con la base de datos de Firebase
 
 export { auth, db };

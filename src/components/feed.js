@@ -21,7 +21,7 @@ function feed(navigateTo) {
     // vacía el contenido usando innerHTML
     const postsList = await getPosts();
     const posts = await showPosts(postsList);
-    // utiliza ñas fx get y showposts para mostrar los posts
+    // utiliza las fx get y showposts para mostrar los posts
     return posts;
   }
 
@@ -54,7 +54,7 @@ function feed(navigateTo) {
     const characterCount = inputPost.value.length;
     // dentro del evento se obtiene la longitud del valor ingresado
     charCount.textContent = `${characterCount}/1000`;
-    // actualiz contenido del elemento charCount
+    // actualiza contenido del elemento charCount
   });
 
   const footer = document.createElement('footer');

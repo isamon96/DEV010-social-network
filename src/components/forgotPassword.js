@@ -42,6 +42,7 @@ function forgotPassword(navigateTo) {
   formSection.append(emailSearchAnchor, form, btnRecover, mensaje, homeImg);
   contentSection.append(logoImg, formSection);
   section.append(contentSection);
+  // agrega los elementos a sus respectivos contenedores
 
   homeImg.addEventListener('click', () => {
     navigateTo('/');

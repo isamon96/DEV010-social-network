@@ -3,6 +3,8 @@ import error from '../src/components/error.js';
 const DOM = document.createElement('section');
 
 const navigateToMockError = jest.fn();
+// crea una fx simulada utilizando la biblioteca de Jest
+// se puede utilizar para simular la navegación a un error en una prueba unitaria o de integración
 
 describe('Testing error component', () => {
   let errorComponent;
