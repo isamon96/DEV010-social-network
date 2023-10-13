@@ -6,18 +6,18 @@ function popUpEditPost(title, content) {
     const popUpSection = document.createElement('section');
     popUpSection.className = 'popUpSection';
 
-    const titleText = document.createElement('h3');
+    const titleText = document.createElement('p');
     titleText.textContent = 'Título';
     const titleTextArea = document.createElement('textarea');
     titleTextArea.value = title;
 
-    const contentText = document.createElement('h3');
+    const contentText = document.createElement('p');
     contentText.textContent = 'Contenido';
     const contentTextArea = document.createElement('textarea');
     contentTextArea.value = content;
 
     const saveButton = document.createElement('button');
-    saveButton.className = 'buttonEdit';
+    saveButton.id = 'saveButton';
     saveButton.textContent = 'Guardar';
 
     saveButton.addEventListener('click', () => {
@@ -32,7 +32,7 @@ function popUpEditPost(title, content) {
     });
 
     const cancelButton = document.createElement('button');
-    cancelButton.className = 'buttonEdit';
+    cancelButton.id = 'cancelButton';
     cancelButton.textContent = 'Cancelar';
     cancelButton.addEventListener('click', () => {
       dialog.close();
