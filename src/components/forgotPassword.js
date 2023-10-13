@@ -33,13 +33,16 @@ function forgotPassword(navigateTo) {
   btnRecover.textContent = 'Recuperar';
   btnRecover.addEventListener('click', (event) => {
     event.preventDefault();
+    // se evita que la página se recargue
     resetPassword(inputEmail.value, mensaje);
+    // se llama a la fx pasando los valores del campo de entrada de email y mensaje como argumentos
   });
 
   form.append(inputEmail);
   formSection.append(emailSearchAnchor, form, btnRecover, mensaje, homeImg);
   contentSection.append(logoImg, formSection);
   section.append(contentSection);
+  // agrega los elementos a sus respectivos contenedores
 
   homeImg.addEventListener('click', () => {
     navigateTo('/');

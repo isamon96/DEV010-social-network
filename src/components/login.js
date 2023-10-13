@@ -4,6 +4,8 @@ function login(navigateTo) {
 // comprueba que el usuario este registrado con igual estricta y navega al Feed
   if (localStorage.getItem('userRegistered') === 'true') {
     return navigateTo('/feed');
+    // si el valor almacenado en la clave 'userRegistered' en el localStorage es igual a 'true'
+    // entonces se redirige al usuario a la página '/feed'.
   }
   const section = document.createElement('section');
   const logoImg = document.createElement('img');
@@ -58,19 +60,26 @@ function login(navigateTo) {
   homeImg.alt = 'Icono de inicio';
   homeImg.src = '../assets/home.png';
 
-  // Agregando mensaje
   mensaje.id = 'mensaje';
+
+  // asigna valor mensaje a la propiedad id del elemento mensaje
+  // el elemento tiene un identificdor único (útil para seleccionar y manipular el elemento)
   // re direge al usuario a ...
+
   homeImg.addEventListener('click', () => {
     navigateTo('/');
   });
+
   btnLoginGoogle.addEventListener('click', async (event) => {
     event.preventDefault();
     const user = await sigInWithGoogle(event);
+    // se llama a la fx pasando el evento como argumento y espera su respuesta
     if (user) {
       navigateTo('/feed');
+      // si se obtiene un usuario válido, se redirige a la página "/feed"
     }
   });
+
   registerAnchor.addEventListener('click', () => {
     navigateTo('/register');
   });
@@ -79,14 +88,19 @@ function login(navigateTo) {
     event.preventDefault();
     const email = inputEmail.value;
     const password = inputPass.value;
+    // obtiene los valores de email y password
     const user = await loginUser(email, password, mensaje);
+    // llama a loginUser pasando 3 argumentos
     if (user) {
       navigateTo('/feed');
+      // si se obtiene un usuario válido, se redirige a la página "/feed"
     }
   });
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
+    // se llama a la fx navigateTo con el argumento '/forgotPassword'
+    // lo que redirigirá al usuario a la página "/forgotPassword"
   });
 
   section.append(contentSection);
