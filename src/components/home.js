@@ -1,6 +1,6 @@
 function home(navigateTo) {
   const section = document.createElement('section');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   const button = document.createElement('button');
   button.classList.add('buttons');
   const slogan = document.createElement('p');
@@ -23,7 +23,7 @@ function home(navigateTo) {
 
   button.textContent = 'Entrar';
   title.textContent = 'ACERCA DE';
-  title.className = 'acercaDe';
+  title.className = 'slogan';
 
   slogan.textContent = 'Conectando personas por un mundo más sostenible';
   slogan.className = 'slogan';
