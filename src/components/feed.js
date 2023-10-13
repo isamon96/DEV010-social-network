@@ -37,19 +37,19 @@ function feed(navigateTo) {
   const btnPost = document.createElement('button');
   const withOutPost = document.createElement('p');
 
-  inputTitle.className = 'inputLog';
+  inputTitle.className = 'inputTitle';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Título de tu post';
 
   inputPost.className = 'inputPost';
-  inputPost.placeholder = 'Escribe tu post';
+  inputPost.placeholder = '¿Qué deseas compartir?';
 
   btnPost.className = 'btnPost';
   btnPost.textContent = 'Enviar';
 
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
-    charCount.textContent = `${characterCount}/500`;
+    charCount.textContent = `${characterCount}/1000`;
   });
 
   const footer = document.createElement('footer');
