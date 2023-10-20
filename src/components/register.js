@@ -33,7 +33,7 @@ function register(navigateTo) {
 
   googleText.textContent = 'Inicia sesión con Google';
   loginAnchor.textContent = '¿Ya tienes una cuenta?';
-  // Agregando mensaje
+
   mensaje.id = 'mensaje';
 
   homeImg.className = 'iconImg';
@@ -69,15 +69,19 @@ function register(navigateTo) {
     const email = inputEmail.value;
     const password = inputPass.value;
     const name = inputName.value;
+    // se obtienen los valores de los campos de entrada
     try {
       await createUser(email, password, mensaje);
       await updateDisplayName(name);
+      // se llama a las funciones de forma asíncrona pasando los valores como argumentos
       inputEmail.value = '';
       inputPass.value = '';
       inputName.value = '';
+      // se borran los valores de los campos de entrada
       return true;
     } catch (error) {
       return error;
+      // se devuelve true si todo funciona correctamente o el error si hay algún problema
     }
   });
 

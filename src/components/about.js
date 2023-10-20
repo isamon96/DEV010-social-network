@@ -15,11 +15,11 @@ function about(navigateTo) {
     const div = document.createElement('testDiv');
     div.className = className;
     div.textContent = textContent || '';
+    // si no se proporciona ningún contenido de texto, el valor predeterminado será una cadena vacía
     return div;
   }
 
   // Crear elementos hijos
-  // const returnDiv = createDivWithClass('return', 'REGRESAR');
   const reDiv = createDivWithClass('re', 'Bienvenid@ a re+');
   const misionDiv = createDivWithClass('mision', 'MISIÓN');
   const whatDiv = createDivWithClass('what', 'Creemos que cada pequeño esfuerzo suma, y a través de la educación, la inspiración y la colaboración, podemos hacer una diferencia significativa en la preservación de nuestro hogar.');

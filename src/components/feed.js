@@ -4,6 +4,7 @@ import navigationBar from './navigationBar.js';
 function feed(navigateTo) {
   if (localStorage.getItem('userRegistered') !== 'true') {
     return navigateTo('/login');
+    // verifica si el usuario está registrado, si no es así, se redirige a login
   }
 
   const section = document.createElement('section');
@@ -17,8 +18,10 @@ function feed(navigateTo) {
 
   async function loadAndShowPosts() {
     postsSection.innerHTML = '';
+    // vacía el contenido usando innerHTML
     const postsList = await getPosts();
     const posts = await showPosts(postsList);
+    // utiliza las fx get y showposts para mostrar los posts
     return posts;
   }
 
@@ -49,26 +52,34 @@ function feed(navigateTo) {
 
   inputPost.addEventListener('input', () => {
     const characterCount = inputPost.value.length;
+    // dentro del evento se obtiene la longitud del valor ingresado
     charCount.textContent = `${characterCount}/1000`;
+    // actualiza contenido del elemento charCount
   });
 
   const footer = document.createElement('footer');
   footer.className = ('footer');
 
   loadAndShowPosts();
+  // se llama para cargar y mostrar los posts en la página
 
   btnPost.addEventListener('click', async (event) => {
     event.preventDefault();
+    // cuando se hace clic se evita que la página se recargue
     const title = inputTitle.value.trim();
     const post = inputPost.value.trim();
+    // se obtienen los valores del título y del post ingresados
     if (title === '' || post === '') {
       withOutPost.textContent = 'No puedes enviar un post vacío';
+      // si alguno de los campos está vacío se muestra un mensaje de error
       return;
     }
     await addPost(title, post);
+    // de lo contrario se llama a addPost para agregar título y post
     inputTitle.value = '';
     inputPost.value = '';
     withOutPost.textContent = '';
+    // se borran los valores de los campos de entrada
     loadAndShowPosts();
   });
 
