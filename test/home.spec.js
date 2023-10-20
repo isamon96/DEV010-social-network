@@ -29,14 +29,12 @@ describe('Testing home component', () => {
   it('Should navigate to Login when clicking the button', async () => {
     const buttonLogin = homeComponent.querySelector('button');
     buttonLogin.click();
-
     expect(navigateToMockHome).toHaveBeenCalledWith('/login');
   });
 
   it('Should navigate to About when clicking the chevron icon', async () => {
     const chevron = homeComponent.querySelector('.chevronIcon');
     chevron.click();
-
     expect(navigateToMockHome).toHaveBeenCalledWith('/about');
   });
 });

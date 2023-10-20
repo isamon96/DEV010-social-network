@@ -9,11 +9,11 @@ import {
   updateProfile,
   sendPasswordResetEmail,
   // onAuthStateChanged,
-} from 'firebase/auth';
+} from 'firebase/auth'; // importa fx y objetos del módulo firebase/auth
 
 import {
   addDoc, collection, getDocs, query, orderBy, doc, deleteDoc, updateDoc, getDoc,
-} from 'firebase/firestore';
+} from 'firebase/firestore'; // importa fx y objetos del módulo firebase/firestore
 
 import {
   sigInWithGoogle,
@@ -33,7 +33,7 @@ import {
   obtainUserInfo,
 } from '../src/lib/index.js';
 
-import { auth, db } from '../src/firebase.js';
+import { auth, db } from '../src/firebase.js'; // importa los objetos para interactuar con la autenticación y db
 
 jest.mock('firebase/auth', () => ({
   signInWithPopup: jest.fn(),
@@ -66,7 +66,7 @@ jest.mock('firebase/firestore', () => ({
   deleteDoc: jest.fn(() => Promise.resolve({})),
   updateDoc: jest.fn(() => Promise.resolve({})),
   getDoc: jest.fn(() => Promise.resolve({})),
-}));
+})); // se utiliza la fx para simular comportamiento de los métodos y objetos de firestore, regresa una promesa resulta con un objeto vacío
 
 describe('updateOutput', () => {
   it('should be a function', () => {
@@ -84,32 +84,32 @@ describe('updateOutput', () => {
     updateOutput(outputElement, message);
     expect(outputElement.textContent).toBe(message);
   });
-});
+}); // verifica fx updateOutput sea una fx, no se actualice si el contenido en null y sino que muestre el msj indicado
 
 describe('SigInWithGoogle', () => {
   it('should be a function', () => {
-    expect(typeof sigInWithGoogle).toBe('function');
+    expect(typeof sigInWithGoogle).toBe('function'); // igualdad estricta entre dos valores
   });
   it('it should call sigInWithPopUp', async () => {
     const event = { preventDefault: jest.fn() };
     await sigInWithGoogle(event);
-    expect(signInWithPopup).toHaveBeenCalledTimes(1);
+    expect(signInWithPopup).toHaveBeenCalledTimes(1); // cuántas veces se ha llamado a la fx en el test
   });
   it('it should call sigInWithPopUp with GoogleAuthProvider and auth as arguments', async () => {
     const event = { preventDefault: jest.fn() };
     await sigInWithGoogle(event);
-    expect(signInWithPopup).toHaveBeenCalledWith(auth, new GoogleAuthProvider());
+    expect(signInWithPopup).toHaveBeenCalledWith(auth, new GoogleAuthProvider()); // verifica si fue llamada con argumentos específicos
   });
   it('should return user if success', async () => {
     const event = { preventDefault: jest.fn() };
     const user = { uid: '123', displayName: 'John Doe', email: 'johndoe@example.com' };
-    signInWithPopup.mockResolvedValueOnce({ user });
+    signInWithPopup.mockResolvedValueOnce({ user }); // simula una promesa resuelta
     const result = await sigInWithGoogle(event);
     expect(result).toEqual(user);
   });
   it('should return error if fails', async () => {
     const event = { preventDefault: jest.fn() };
-    signInWithPopup.mockRejectedValueOnce(new Error('error'));
+    signInWithPopup.mockRejectedValueOnce(new Error('error')); // simula una promesa rechazada
     const error = await sigInWithGoogle(event);
     expect(error).toEqual(new Error('error'));
   });
@@ -247,6 +247,7 @@ describe('loginUser', () => {
     expect(element.textContent).toBe('La contraseña es incorrecta.');
   });
 });
+
 describe('showPosts', () => {
   it('should be a function', () => {
     expect(typeof showPosts).toBe('function');
@@ -255,6 +256,7 @@ describe('showPosts', () => {
     expect(showPosts).toHaveLength(1);
   });
 });
+
 describe('updateDisplayName', () => {
   it('should be a function', () => {
     expect(typeof updateDisplayName).toBe('function');
@@ -270,7 +272,6 @@ describe('updateDisplayName', () => {
       displayName: 'NewName',
     });
   });
-
   it('handles errors and returns the error object', async () => {
     const error = new Error('Something went wrong');
     updateProfile.mockRejectedValueOnce(error);
@@ -278,6 +279,7 @@ describe('updateDisplayName', () => {
     expect(result).toBe(error);
   });
 });
+
 describe('formatDate', () => {
   it('should be a function', () => {
     expect(typeof formatDate).toBe('function');
@@ -291,6 +293,7 @@ describe('formatDate', () => {
     expect(result).toBe('August 31, 2021 at 6:00 PM');
   });
 });
+
 describe('addPost', () => {
   it('should be a function', () => {
     expect(typeof addPost).toBe('function');
@@ -321,6 +324,7 @@ describe('addPost', () => {
     });
   });
 });
+
 describe('getPosts', () => {
   it('should be a function', () => {
     expect(typeof getPosts).toBe('function');
@@ -350,6 +354,7 @@ describe('getPosts', () => {
     ]);
   });
 });
+
 describe('deletePost', () => {
   it('should be a function', () => {
     expect(typeof deletePost).toBe('function');
@@ -366,6 +371,7 @@ describe('deletePost', () => {
     expect(deleteDoc).toHaveBeenCalledWith(postDoc);
   });
 });
+
 describe('editPost', () => {
   it('should be a function', () => {
     expect(typeof editPost).toBe('function');
@@ -413,6 +419,7 @@ describe('editPost', () => {
     expect(updateDoc).toHaveBeenCalledWith(postRef, dataToUpdate);
   });
 });
+
 describe('toggleLike', () => {
   it('should be a function', () => {
     expect(typeof toggleLike).toBe('function');
@@ -463,6 +470,7 @@ describe('toggleLike', () => {
     expect(result).toBe(false);
   });
 });
+
 describe('signOutUser', () => {
   it('should be a function', () => {
     expect(typeof signOutUser).toBe('function');
@@ -480,6 +488,7 @@ describe('signOutUser', () => {
     expect(result).toBe(error);
   });
 });
+
 describe('resetPassword', () => {
   it('should be a function', () => {
     expect(typeof createUser).toBe('function');
@@ -508,6 +517,7 @@ describe('resetPassword', () => {
     expect(element.textContent).toBe('El usuario no existe.');
   });
 });
+
 describe('obtainUserInfo', () => {
   it('should be a function', () => {
     expect(typeof obtainUserInfo).toBe('function');
